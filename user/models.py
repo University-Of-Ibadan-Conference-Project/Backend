@@ -35,16 +35,12 @@ class UserManager(BaseUserManager):
             raise ValueError("Superuser must have is_superuser=True.")
 
         return self._create_user(email, password, **extra_fields)
-    
-    
-AUTH_PROVIDERS = {'facebook': 'facebook', 'google': 'google',
-                  'twitter': 'twitter', 'email': 'email'}
 
 
 class User(AbstractUser):
     USERNAME_FIELD = "username"
+    EMAIL_FIELD = "email"
     REQUIRED_FIELDS = ["email"]
-    username = models.CharField(max_length=255, unique=True, db_index=True)
     first_name= models.CharField(max_length=200,null=False,blank=False)
     last_name= models.CharField(max_length=200,null=False,blank=False)
     email = models.EmailField(verbose_name="email address", unique=True)
@@ -52,19 +48,9 @@ class User(AbstractUser):
     phone_2 = models.CharField(max_length=20, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
     
-    
-    
+     
     objects = UserManager()
     
     def __str__(self):
-        return self.email
-    
-    
-    def tokens(self):
-        refresh = RefreshToken.for_user(self)
-        return {
-            'refresh': str(refresh),
-            'access': str(refresh.access_token)
-        }
+        return self.first_name

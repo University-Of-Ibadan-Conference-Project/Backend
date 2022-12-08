@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'corsheaders',
     'drf_yasg',
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -126,6 +127,10 @@ SWAGGER_SETTINGS = {
             'in': 'header'
         }
     }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 AUTH_USER_MODEL = "user.User" 
