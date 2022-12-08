@@ -2,4 +2,5 @@
 from django.db import models
 
 class Event(models.model):
-    pass
+    # topic,
+    # abstract,(ms word)
