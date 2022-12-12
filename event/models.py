@@ -28,15 +28,6 @@ class Event(models.Model):
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     
-    
 
     def __str__(self):
         return self.author
-    
-    
-class Author(models.Model):
-    pass
-
-class CoAuthor(models.Model):
-    name=models.CharField(max_length=200,null=False,blank=False)
-    email=models.EmailField(max_length=200,blank=False,null=False)
