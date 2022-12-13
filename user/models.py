@@ -41,6 +41,11 @@ AUTH_PROVIDERS = {'facebook': 'facebook', 'google': 'google',
                   'twitter': 'twitter', 'email': 'email'}
 
 
+GENDER_CHOICES = (
+    ('M', 'Male'),
+    ('F', 'Female'),
+)
+
 class User(AbstractUser):
     USERNAME_FIELD = "username"
     REQUIRED_FIELDS = ["email"]
@@ -52,6 +57,9 @@ class User(AbstractUser):
     phone_2 = models.CharField(max_length=20, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    address = models.CharField(max_length=300, blank=True)
+    gender = models.CharField(max_length=7, blank=True, choices=GENDER_CHOICES)
+    institution = models.CharField(max_length=300, blank=True)
 
     
     
