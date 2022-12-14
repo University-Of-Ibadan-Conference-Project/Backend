@@ -1,8 +1,13 @@
 # working no the models
 from django.db import models
+<<<<<<< HEAD
 # from django.contrib.auth.models import AbstractUser, BaseUserManager
 from ckeditor_uploader.fields import RichTextUploadingField
 from user.models import User
+=======
+
+
+>>>>>>> e356f8e65b8b1980fb6514f37fb82e4cfba1dea9
 
 TOPIC_CHOICES = (
     ('Bio', 'Biotechnology'),
@@ -25,6 +30,7 @@ STATUS_CHOICES = (
 )
 
 class Event(models.Model):
+<<<<<<< HEAD
     description = models.CharField(max_length=500, blank=True)
     date_created = models.DateTimeField(auto_now_add=True, editable=False, blank=True)
     date_updated = models.DateField(auto_now_add=True, blank=True)
@@ -74,6 +80,18 @@ class Abstract(models.Model):
     keywords = models.CharField(max_length=100,  choices=TOPIC_CHOICES)
     co_authors = models.ManyToManyField(CoAuthor)
     abstract = models.FileField(upload_to='uploads/', blank=True, editable=False)
+=======
+    author = models.CharField(max_length=250, blank=True)
+    topic = models.CharField(max_length=100,  choices=TOPIC_CHOICES)
+    abstract = models.FileField(upload_to='uploads/', blank=True)
+    submitted = models.DateField(auto_now_add=True)
+    phone = models.CharField(max_length=30, blank=True)
+    email = models.EmailField(max_length=140, blank=True)
+    co_authors = models.CharField(max_length=250, blank=True)
+    created_at=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now=True)
+    
+>>>>>>> e356f8e65b8b1980fb6514f37fb82e4cfba1dea9
 
     def __str__(self):
         return self.author

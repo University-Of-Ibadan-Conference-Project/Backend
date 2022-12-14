@@ -1,6 +1,6 @@
+from typing import Any
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
-# Create your models here.
 
 
 class UserManager(BaseUserManager):
@@ -8,7 +8,7 @@ class UserManager(BaseUserManager):
 
     use_in_migrations = True
 
-    def _create_user(self, email, password, **extra_fields):
+    def _create_user(self, email: str, password: str, **extra_fields: dict[str, Any]) -> models.Model:
         """Create and save a User with the given email and password."""
         if not email:
             raise ValueError("The given email must be set")
@@ -18,13 +18,13 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_user(self, email, password=None, **extra_fields):
+    def create_user(self, email: str, password: str | None = None, **extra_fields: dict[str, Any]) -> models.Model:
         """Create and save a regular User with the given email and password."""
         extra_fields.setdefault("is_staff", False)
         extra_fields.setdefault("is_superuser", False)
         return self._create_user(email, password, **extra_fields)
 
-    def create_superuser(self, email, password, **extra_fields):
+    def create_superuser(self, email: str, password: str, **extra_fields: dict[str, Any]) -> models.Model:
         """Create and save a SuperUser with the given email and password."""
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
@@ -35,10 +35,6 @@ class UserManager(BaseUserManager):
             raise ValueError("Superuser must have is_superuser=True.")
 
         return self._create_user(email, password, **extra_fields)
-    
-    
-AUTH_PROVIDERS = {'facebook': 'facebook', 'google': 'google',
-                  'twitter': 'twitter', 'email': 'email'}
 
 
 GENDER_CHOICES = (
@@ -47,6 +43,7 @@ GENDER_CHOICES = (
 )
 
 class User(AbstractUser):
+<<<<<<< HEAD
     USERNAME_FIELD = "username"
     REQUIRED_FIELDS = ["email"]
     username = models.CharField(max_length=255, unique=True, db_index=True)
@@ -60,19 +57,19 @@ class User(AbstractUser):
     address = models.CharField(max_length=300, blank=True)
     gender = models.CharField(max_length=7, blank=True, choices=GENDER_CHOICES)
     institution = models.CharField(max_length=300, blank=True)
+=======
+>>>>>>> e356f8e65b8b1980fb6514f37fb82e4cfba1dea9
 
-    
-    
-    
+    USERNAME_FIELD = "email"
+    EMAIL_FIELD = "email"
+    REQUIRED_FIELDS = []
+
+    email = models.EmailField(verbose_name="email address", unique=True)
+    phone = models.CharField(max_length=20)
+    created_datetime = models.DateTimeField(auto_now_add=True)
+    updated_datetime = models.DateTimeField(auto_now=True)
+
     objects = UserManager()
-    
+
     def __str__(self):
-        return self.email
-    
-    
-    def tokens(self):
-        refresh = RefreshToken.for_user(self)
-        return {
-            'refresh': str(refresh),
-            'access': str(refresh.access_token)
-        }
+        return f'{self.first_name} {self.last_name}'
