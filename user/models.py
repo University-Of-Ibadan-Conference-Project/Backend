@@ -43,7 +43,6 @@ GENDER_CHOICES = (
 )
 
 class User(AbstractUser):
-<<<<<<< HEAD
     USERNAME_FIELD = "username"
     REQUIRED_FIELDS = ["email"]
     username = models.CharField(max_length=255, unique=True, db_index=True)
@@ -57,8 +56,6 @@ class User(AbstractUser):
     address = models.CharField(max_length=300, blank=True)
     gender = models.CharField(max_length=7, blank=True, choices=GENDER_CHOICES)
     institution = models.CharField(max_length=300, blank=True)
-=======
->>>>>>> e356f8e65b8b1980fb6514f37fb82e4cfba1dea9
 
     USERNAME_FIELD = "email"
     EMAIL_FIELD = "email"
