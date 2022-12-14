@@ -73,7 +73,7 @@ class Abstract(models.Model):
     author_email = models.EmailField(max_length=140, blank=True)
     keywords = models.CharField(max_length=100,  choices=TOPIC_CHOICES)
     co_authors = models.ManyToManyField(CoAuthor)
-    abstract = models.FileField(upload_to='uploads/', blank=True, editable=False)
+    abstract = models.FileField(upload_to='uploads/', blank=True,)
 
     def __str__(self):
         return self.author
