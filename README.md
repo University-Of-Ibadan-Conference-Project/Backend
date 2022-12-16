@@ -57,6 +57,11 @@ Run the server
 python manage.py runserver
 ```
 
+Run celery worker
+ ```
+ python -m celery -A conference worker
+ ```
+
 ## To contribute :
 
 ### NOTE :

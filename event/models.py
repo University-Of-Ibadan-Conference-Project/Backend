@@ -2,7 +2,6 @@
 from django.db import models
 
 # from django.contrib.auth.models import AbstractUser, BaseUserManager
-from ckeditor_uploader.fields import RichTextUploadingField
 from user.models import User
 
 
@@ -78,14 +77,12 @@ class Abstract(models.Model):
     author_email = models.EmailField(max_length=140, blank=True)
     keywords = models.CharField(max_length=100,  choices=TOPIC_CHOICES)
     co_authors = models.ManyToManyField(CoAuthor)
-    abstract = models.FizleField(upload_to='uploads/', blank=True, editable=False)
+    abstract = models.FileField(upload_to='uploads/', blank=True, editable=False)
     author = models.CharField(max_length=250, blank=True)
     topic = models.CharField(max_length=100,  choices=TOPIC_CHOICES)
-    abstract = models.FileField(upload_to='uploads/', blank=True)
     submitted = models.DateField(auto_now_add=True)
     phone = models.CharField(max_length=30, blank=True)
     email = models.EmailField(max_length=140, blank=True)
-    co_authors = models.CharField(max_length=250, blank=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     
