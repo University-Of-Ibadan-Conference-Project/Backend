@@ -37,7 +37,8 @@ urlpatterns = [
     
     # Api v1 urls
     path('api/v1/accounts/', include(('user.api.v1.urls', 'accounts_api_v1'), namespace='accounts_api_v1')),
-    
+    path('api/v1/events/', include(('event.api.v1.urls', 'events_api_v1'), namespace='events_api_v1')),
+
     path('', schema_view.with_ui('swagger', cache_timeout = 0), name = 'schema-swagger-ui'),
 ]
 
