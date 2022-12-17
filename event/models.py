@@ -6,22 +6,6 @@ from user.models import User
 
 
 
-
-
-TOPIC_CHOICES = (
-    ('Bio', 'Biotechnology'),
-    ('Medicine', 'Medicinal plants and drug development'),
-    ('Conservation', 'Conservation and utilization of our natural heritage'),
-    ('Energy', 'Energy and Mineral Resources'),
-    ('Environmental', 'Environmental Pollution and Remediation'),
-    ('Science', 'Science and security'),
-    ('IT', 'Information technology'),
-    ('Agriculture', 'Agriculture and Food Security'),
-    ('Nanotech', 'Nanotechnology'),
-    ('Computational', 'Computational/Mathematical modeling'),
-    ('Aquaculture', 'Aquaculture and the Blue Economy '),
-)
-
 STATUS_CHOICES = (
     ('Pending', 'Pending'),
     ('Verified', 'Verified'),
@@ -38,11 +22,6 @@ class Event(models.Model):
 
     def __str__(self):
         return self.description
-
-
-class CoAuthor(models.Model):
-    name = models.CharField(max_length=200, blank=True)
-    institution = models.CharField(max_length = 300, blank=True)
 
 
 
@@ -73,16 +52,15 @@ class EventPaymentLog(models.Model):
         return self.user
 
 class Abstract(models.Model):
-    author = models.ForeignKey(User('username'), on_delete=models.CASCADE)
-    author_email = models.EmailField(max_length=140, blank=True)
-    keywords = models.CharField(max_length=100,  choices=TOPIC_CHOICES)
-    co_authors = models.ManyToManyField(CoAuthor)
-    abstract = models.FileField(upload_to='uploads/', blank=True, editable=False)
-    author = models.CharField(max_length=250, blank=True)
-    topic = models.CharField(max_length=100,  choices=TOPIC_CHOICES)
-    submitted = models.DateField(auto_now_add=True)
-    phone = models.CharField(max_length=30, blank=True)
-    email = models.EmailField(max_length=140, blank=True)
+    title=models.CharField(max_length=200,null=True)
+    coresponding_author = models.ForeignKey(User, on_delete=models.CASCADE)
+    coresponding_author_email = models.EmailField(max_length=140, blank=True)
+    co_authors = models.TextField()
+    abstract_document_file = models.FileField(upload_to='uploads/', blank=True, editable=False)
+    abstract_text=models.TextField(blank=True)
+    research_area = models.CharField(max_length=999,default=None)
+    keywords= models.CharField(max_length=200)
+    coresponding_author_phone = models.CharField(max_length=30,default=000)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     

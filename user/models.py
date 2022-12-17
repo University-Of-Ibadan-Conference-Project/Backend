@@ -43,28 +43,19 @@ GENDER_CHOICES = (
 )
 
 class User(AbstractUser):
-    USERNAME_FIELD = "username"
-    REQUIRED_FIELDS = ["email"]
-    username = models.CharField(max_length=255, unique=True, db_index=True)
-    first_name= models.CharField(max_length=200,null=False,blank=False)
-    last_name= models.CharField(max_length=200,null=False,blank=False)
-    email = models.EmailField(verbose_name="email address", unique=True)
-    phone_1 = models.CharField(max_length=20, null=False, blank=False)
-    phone_2 = models.CharField(max_length=20, null=True, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    address = models.CharField(max_length=300, blank=True)
-    gender = models.CharField(max_length=7, blank=True, choices=GENDER_CHOICES)
-    institution = models.CharField(max_length=300, blank=True)
-
+    
     USERNAME_FIELD = "email"
     EMAIL_FIELD = "email"
     REQUIRED_FIELDS = []
-
+    
     email = models.EmailField(verbose_name="email address", unique=True)
-    phone = models.CharField(max_length=20)
+    other_names= models.CharField(max_length=200,)
+    phone= models.CharField(max_length=20)
     created_datetime = models.DateTimeField(auto_now_add=True)
     updated_datetime = models.DateTimeField(auto_now=True)
+    address = models.CharField(max_length=300, blank=True)
+    gender = models.CharField(max_length=7, blank=True, choices=GENDER_CHOICES)
+    institution = models.CharField(max_length=300, blank=True)
 
     objects = UserManager()
 
