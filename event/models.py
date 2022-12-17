@@ -51,15 +51,16 @@ class EventPaymentLog(models.Model):
     def __str__(self):
         return self.user
 
+
 class Abstract(models.Model):
-    title=models.CharField(max_length=200,null=True)
+    title = models.CharField(max_length=200,null=True)
     coresponding_author = models.ForeignKey(User, on_delete=models.CASCADE)
     coresponding_author_email = models.EmailField(max_length=140, blank=True)
-    co_authors = models.TextField()
+    co_authors = models.JSONField(default=list)
     abstract_document_file = models.FileField(upload_to='uploads/', blank=True, editable=False)
     abstract_text=models.TextField(blank=True)
     research_area = models.CharField(max_length=999,default=None)
-    keywords= models.CharField(max_length=200)
+    keywords= models.JSONField(default=list)
     coresponding_author_phone = models.CharField(max_length=30,default=000)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
