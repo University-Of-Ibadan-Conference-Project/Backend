@@ -20,8 +20,7 @@ class Event(models.Model):
     event_datetime = models.DateField(auto_now_add=True)
     location = models.CharField(max_length=500, blank=True)
 
-    def __str__(self):
-        return self.description
+    
 
 
 
@@ -29,11 +28,10 @@ class UserEvent(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True, blank=True, editable=False)
-    date_updated = models.DateField(auto_now_add=True, blank=True)
-    submitted = models.DateField(auto_now_add=True)
+    # date_updated = models.DateField(auto_now_add=True, blank=True)
+    #submitted = models.DateField(auto_now_add=True)
     status = models.CharField(max_length=200, blank=True)
     
-
     def __str__(self):
         return self.user
 

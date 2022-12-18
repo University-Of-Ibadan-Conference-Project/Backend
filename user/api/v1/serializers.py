@@ -48,6 +48,7 @@ class UserLoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField()
 
+
     def validate(self, attrs: dict[str, Any]) -> User:
         """Validate serializer values."""
 
