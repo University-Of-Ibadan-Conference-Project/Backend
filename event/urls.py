@@ -3,5 +3,5 @@ from event.views import *
 
 
 urlpatterns = [
-    path('user-event', UserEvent.as_view(), name = "user-event")
+    path('user-event/', UserEvent.as_view(), name = "user-event")
 ]

@@ -41,6 +41,6 @@ urlpatterns = [
 
     path('', schema_view.with_ui('swagger', cache_timeout = 0), name = 'schema-swagger-ui'),
 
-    path('event/', include('event.urls'), name = 'event')
+    path('events/', include('event.urls'), name = 'event')
 ]
 
