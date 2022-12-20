@@ -39,6 +39,15 @@ class AbstarctSerializer(serializers.ModelSerializer):
 
 
 class EventPaymentLogSerializer(serializers.ModelSerializer):
+    user = serializers.ReadOnlyField()
+
     class Meta:
         model = EventPaymentLog
         fields = ['user','status','receipt']
+
+    def update(self, instance, validated_data):
+
+        if 'user' in validated_data:
+            raise serializers.ValidationError("The user field is read-only and cannot be changed.")
+
+        return super().update(instance, validated_data)
