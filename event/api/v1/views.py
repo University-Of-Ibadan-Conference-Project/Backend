@@ -3,9 +3,10 @@ from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
 from event.models import Abstract
+from event.models import EventPaymentLog
 
 from event.api.v1.serializers import (
-    AbstarctSerializer,
+    AbstarctSerializer,EventPaymentLogSerializer
 )
 
 
@@ -28,3 +29,8 @@ class AbstarctDetailView(generics.RetrieveUpdateDestroyAPIView):
     def get_object(self) -> Abstract:
         return self.request.user.abstract_set.get(id=self.kwargs['id'])
 
+class EventPaymentLogView(generics.ListAPIView):
+    serializer_class= EventPaymentLogSerializer
+    
+    def get_queryset(self) -> QuerySet:
+     return EventPaymentLog.objects.all()

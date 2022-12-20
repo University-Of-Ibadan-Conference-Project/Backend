@@ -2,6 +2,8 @@ from typing import Any
 from rest_framework import serializers
 from event.models import Abstract
 
+from event.models import EventPaymentLog
+
 
 class CoAuthorSerializer(serializers.Serializer):
     email = serializers.EmailField()
@@ -33,3 +35,10 @@ class AbstarctSerializer(serializers.ModelSerializer):
 
         attrs['coresponding_author'] = request.user
         return attrs
+
+
+
+class EventPaymentLogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EventPaymentLog
+        fields = ['user','status','receipt']
