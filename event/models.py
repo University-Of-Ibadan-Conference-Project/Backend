@@ -5,7 +5,6 @@ from django.db import models
 from user.models import User
 
 
-
 STATUS_CHOICES = (
     ('Pending', 'Pending'),
     ('Verified', 'Verified'),
@@ -24,7 +23,6 @@ class Event(models.Model):
         return self.description
 
 
-
 class UserEvent(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
@@ -36,7 +34,6 @@ class UserEvent(models.Model):
 
     def __str__(self):
         return self.user
-
 
 
 class EventPaymentLog(models.Model):
@@ -64,7 +61,7 @@ class Abstract(models.Model):
     coresponding_author_phone = models.CharField(max_length=30,default=000)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
-    
+
 
     def __str__(self):
         return self.author

@@ -24,3 +24,5 @@ uritemplate==4.1.1
 urllib3==1.26.13
 celery[redis]==5.2.7
 python-dotenv==0.21.0
+daphne==4.0.0
+psycopg2_binary==2.9.3
