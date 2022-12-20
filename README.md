@@ -62,6 +62,36 @@ Run celery worker
  python -m celery -A conference worker
  ```
 
+USING DOCKER
+first you need to install docker https://docs.docker.com/engine/install/
+
+Setup docker locally
+```
+docker compose build
+```
+
+Run project on docker locally
+```
+docker compose up
+```
+user ctrl+c to close docker
+
+Setup docker on production
+
+first it is essential that you have you environment variables setup properly check env_template.txt for enviroment variable keys
+
+Setup docker on production
+```
+docker compose -f docker-compose.production.yml build
+```
+
+Run project on docker locally
+```
+docker compose -f docker-compose.production.yml up
+```
+user ctrl+c to close docker
+
+ 
 ## To contribute :
 
 ### NOTE :
