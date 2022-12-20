@@ -42,11 +42,13 @@ class UserEvent(models.Model):
 class EventPaymentLog(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     user_event = models.OneToOneField(Event, on_delete=models.CASCADE, primary_key=True)
+    payment_datetime = models.DateField(auto_now_add=True)
+    status = models.CharField(max_length=100,  choices=STATUS_CHOICES) #put a default 
+    receipt = models.FileField(upload_to='uploads/', blank=True)
+
+
     date_created = models.DateTimeField(auto_now_add=True, blank=True, editable=False)
     date_updated = models.DateField(auto_now_add=True, blank=True)
-    payment_datetime = models.DateField(auto_now_add=True)
-    status = models.CharField(max_length=100,  choices=STATUS_CHOICES)
-    receipt = models.FileField(upload_to='uploads/', blank=True)
 
     def __str__(self):
         return self.status
