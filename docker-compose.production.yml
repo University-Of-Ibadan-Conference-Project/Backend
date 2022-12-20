@@ -5,6 +5,9 @@ services:
     build:
       context: .
     container_name: backend
+    volumes:
+      - .:/backend
+      - /static:/static
     command: >
       sh -c "
         python ./manage.py migrate  &&
@@ -60,6 +63,11 @@ services:
       - 80:80
     depends_on:
       - backend
+    volumes:
+      - .:/backend
+      - ./nginx:/etc/nginx/conf.d
+      - /static:/static
+
 
 volumes:
   pgdata: {}
