@@ -29,7 +29,7 @@ class AbstarctDetailView(generics.RetrieveUpdateDestroyAPIView):
     def get_object(self) -> Abstract:
         return self.request.user.abstract_set.get(id=self.kwargs['id'])
 
-class EventPaymentLogView(generics.ListAPIView):
+class EventPaymentLogView(generics.ListCreateAPIView, generics.DestroyAPIView):
     serializer_class= EventPaymentLogSerializer
     
     def get_queryset(self) -> QuerySet:
