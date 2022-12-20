@@ -49,7 +49,7 @@ class EventPaymentLog(models.Model):
     receipt = models.FileField(upload_to='uploads/', blank=True)
 
     def __str__(self):
-        return self.user
+        return self.status
 
 
 class Abstract(models.Model):
