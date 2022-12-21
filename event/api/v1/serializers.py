@@ -1,7 +1,6 @@
 from typing import Any
 from rest_framework import serializers
-from event.models import Abstract
-
+from event.models import Abstract, UserEvent
 
 class CoAuthorSerializer(serializers.Serializer):
 
@@ -74,4 +73,11 @@ class AbstarctSerializer(serializers.ModelSerializer):
 
         attrs['coresponding_author'] = request.user
         return attrs
+
+class UserEventSerializer(serializers.ModelSerializer):
+    class  Meta:
+        model = UserEvent
+        fields = ('user', 'event', 'status')
+
+
 

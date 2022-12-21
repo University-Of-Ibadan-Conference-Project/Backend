@@ -8,6 +8,7 @@ from event.models import Abstract
 
 from event.api.v1.serializers import (
     AbstarctSerializer,
+    UserEventSerializer
 )
 
 
@@ -29,4 +30,19 @@ class AbstarctDetailView(generics.RetrieveUpdateDestroyAPIView):
 
     def get_object(self) -> Abstract:
         return self.request.user.abstract_set.get(id=self.kwargs['id'])
+    
+class UserEventView(generics.CreateAPIView):
+    serializer_class = UserEventSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request):
+        serializer = UserEventSerializer(data = request.data)
+        if serializer.is_valid():
+            serializer.save(user = self.request.user)
+        return Response(serializer.data , status = status.HTTP_201_CREATED)
+       
+
+
+
+
 
