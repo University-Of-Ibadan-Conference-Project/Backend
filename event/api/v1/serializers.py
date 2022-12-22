@@ -45,8 +45,8 @@ class AbstarctSerializer(serializers.ModelSerializer):
     class Meta:
         model = Abstract
         fields = [
-            'title', 'coresponding_author', 'coresponding_author_email', 'co_authors', 'keywords',
-            'abstract_document_file', 'abstract_text', 'research_area', 'coresponding_author_phone'
+            'title', 'coresponding_author', 'coresponding_author_email', 'keywords',
+            'abstract_document_file', 'abstract_text', 'research_area', 'coresponding_author_phone',
         ]
 
         read_only_fields = ['coresponding_author']
@@ -56,22 +56,12 @@ class AbstarctSerializer(serializers.ModelSerializer):
         return value
 
     def validate(self, attrs: dict[str, Any]) -> dict[str, Any]:
-        co_authors_data = attrs.pop('co_authors', None)
-
-        attrs = super().validate(attrs)
-
-        if co_authors_data:
-            
-            # we do co_author validation here since we want a text-input
-            co_authors_serializer = CoAuthorSerializer(data={'co_authors': co_authors_data})
-            co_authors_serializer.is_valid(raise_exception=True)
-            attrs['co_authors'] = co_authors_serializer.validated_data
-
+        data = super().validate(attrs)
         request = self.context.get('request')
- 
+
         if not request:
             raise ValueError('request object needs to be passed to the context.')
 
-        attrs['coresponding_author'] = request.user
-        return attrs
+        data['coresponding_author'] = request.user
+        return data
 
