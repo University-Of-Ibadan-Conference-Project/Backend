@@ -23,12 +23,12 @@ class Abstract(models.Model):
         ('virtual', 'Live Virtual'),
         ('poster', 'Poster'),
     )
+    
 
     title = models.CharField(max_length=200,null=True)
-    coresponding_author = models.ForeignKey(User, on_delete=models.CASCADE)
+    coresponding_author_fullname = models.CharField(max_length=200)
     coresponding_author_email = models.EmailField(max_length=140, blank=True)
-    coresponding_author_phone = models.EmailField(max_length=140, blank=True)
-    coresponding_author_phone = models.EmailField(max_length=140, blank=True)
+    coresponding_author_phone = models.CharField(max_length=140, blank=True)
     abstract_document_file = models.FileField(upload_to='uploads/', blank=True, editable=False)
     presentation_type = models.CharField(choices=PRESENTATION_TYPE_CHOICES, max_length=100)
     research_area = models.CharField(choices=RESEARCH_AREA_CHOICES, max_length=200)
