@@ -45,7 +45,7 @@ class AbstarctSerializer(serializers.ModelSerializer):
     class Meta:
         model = Abstract
         fields = [
-            'title', 'coresponding_author', 'coresponding_author_email', 'keywords', 'presentation_type',
+            'title', 'coresponding_author_email', 'keywords', 'presentation_type',
             'abstract_document_file', 'research_area', 'coresponding_author_phone',
         ]
 
