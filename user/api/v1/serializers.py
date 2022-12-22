@@ -12,15 +12,17 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = [
-            "email", "first_name", "last_name", "password", 
-            'phone','other_names','username', 
+            "email", "first_name", "last_name", "password", 'phone','other_names',
             'affiliate_institution', 'department', 'country', 
-            'state', 'city', 'address', 'participant_type'
+            'state', 'city', 'address', 'participant_type',
         ]
         extra_kwargs = {"password": {"write_only": True, "min_length": 6}}
     
     def create(self, validated_data: dict[str, Any]) -> User:
         """Create a new user."""
+        # NOTE: it's important to remove this field from validated data
+        # TODO JOSEPH:  remove this when you have time
+        validated_data.pop('participant_type')
         # NOTE: it's important to remove this field from validated data
         # TODO JOSEPH:  remove this when you have time
         validated_data.pop('participant_type')

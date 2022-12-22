@@ -47,7 +47,8 @@ class User(AbstractUser):
     USERNAME_FIELD = "email"
     EMAIL_FIELD = "email"
     REQUIRED_FIELDS = []
-    
+
+    username = None
     email = models.EmailField(verbose_name="email address", unique=True)
     other_names= models.CharField(max_length=200,)
     phone= models.CharField(max_length=20)
@@ -104,8 +105,8 @@ class EventPaymentLog(models.Model):
     user_event = models.OneToOneField(UserEvent, on_delete=models.CASCADE, primary_key=True)
     payment_datetime = models.DateField(auto_now_add=True)
     status = models.CharField(
-        max_length=100,  
-        choices=STATUS_CHOICES, 
+        max_length=100,
+        choices=STATUS_CHOICES,
         default=STATUS_AVWAITING_VERIFICATION
     )
     receipt = models.FileField(upload_to='uploads/')

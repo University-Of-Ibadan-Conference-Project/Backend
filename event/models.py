@@ -18,12 +18,19 @@ class Abstract(models.Model):
         ('Health', 'Climatic change and human health'),
     )
 
+    PRESENTATION_TYPE_CHOICES = (
+        ('oral', 'Live oral'),
+        ('virtual', 'Live Virtual'),
+        ('poster', 'Poster'),
+    )
+
     title = models.CharField(max_length=200,null=True)
     coresponding_author = models.ForeignKey(User, on_delete=models.CASCADE)
     coresponding_author_email = models.EmailField(max_length=140, blank=True)
     coresponding_author_phone = models.EmailField(max_length=140, blank=True)
+    coresponding_author_phone = models.EmailField(max_length=140, blank=True)
     abstract_document_file = models.FileField(upload_to='uploads/', blank=True, editable=False)
-    abstract_text=models.TextField(blank=True)
+    presentation_type = models.CharField(choices=PRESENTATION_TYPE_CHOICES, max_length=100)
     research_area = models.CharField(choices=RESEARCH_AREA_CHOICES, max_length=200)
     keywords= models.JSONField(default=list)
     created_at=models.DateTimeField(auto_now_add=True)
