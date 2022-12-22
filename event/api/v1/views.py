@@ -6,9 +6,7 @@ from rest_framework.authentication import TokenAuthentication
 from event.models import Abstract
 from rest_framework import permissions
 
-from event.api.v1.serializers import (
-    AbstarctSerializer,
-)
+from event.api.v1.serializers import AbstarctSerializer
 
 
 class AbstractListView(generics.CreateAPIView):
