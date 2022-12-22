@@ -46,7 +46,7 @@ class AbstarctSerializer(serializers.ModelSerializer):
         model = Abstract
         fields = [
             'title', 'coresponding_author', 'coresponding_author_email', 'keywords', 'presentation_type',
-            'abstract_document_file', 'abstract_text', 'research_area', 'coresponding_author_phone',
+            'abstract_document_file', 'research_area', 'coresponding_author_phone',
         ]
 
         read_only_fields = ['coresponding_author']
