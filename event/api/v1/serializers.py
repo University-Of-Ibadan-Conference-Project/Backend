@@ -51,17 +51,4 @@ class AbstarctSerializer(serializers.ModelSerializer):
 
         read_only_fields = ['coresponding_author']
 
-    def validate_co_authors(self, value: Any) -> Any:
-        """Overide this validator since we already do validation on CoAuthorSerializer."""
-        return value
-
-    def validate(self, attrs: dict[str, Any]) -> dict[str, Any]:
-        data = super().validate(attrs)
-        request = self.context.get('request')
-
-        if not request:
-            raise ValueError('request object needs to be passed to the context.')
-
-        data['coresponding_author'] = request.user
-        return data
-
+ 
