@@ -1,6 +1,6 @@
 from typing import Any
 from rest_framework import serializers
-from event.models import Abstract
+from event.models import Abstract, ClearanceFile
 
 
 class CoAuthorSerializer(serializers.Serializer):
@@ -50,5 +50,14 @@ class AbstarctSerializer(serializers.ModelSerializer):
         ]
 
         read_only_fields = ['coresponding_author']
+
+ 
+class ClearanceFileSerializer(serializers.ModelSerializer):   
+    class Meta:
+        model = ClearanceFile
+        fields = [
+            'email', 'submission_type', 'evidence_of_payment_file', 'submission_file'
+
+        ]
 
  

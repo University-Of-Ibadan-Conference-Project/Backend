@@ -38,3 +38,18 @@ class Abstract(models.Model):
 
     def __str__(self):
         return self.author
+
+
+class ClearanceFile(models.Model):
+    SUBMISSION_TYPE = (
+    ('Manuscript', 'Manuscript'),
+    ('Exhibition', 'Exhibition'),
+    ('Advert', 'Advert')
+)
+    email = models.EmailField(verbose_name="email address", unique=True)
+    submission_type = models.CharField(max_length = 20, choices = SUBMISSION_TYPE)
+    evidence_of_payment_file = models.FileField(upload_to='uploads/')
+    submission_file = models.FileField(upload_to='uploads/')
+    
+    def __str__(self):
+        return self.email
