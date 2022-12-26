@@ -11,7 +11,8 @@ class EmailManager:
 
     def __init__(self) -> None:
         pass
-
+    
+    @classmethod
     def send_mail(
         self,
         subject: str,
