@@ -7,7 +7,7 @@ from rest_framework import generics, authentication, permissions
 from user.api.v1.serializers import UserLoginSerializer, UserSerializer, UserEventSerializer, EventPaymentLogSerializer
 from user.models import User
 from django.db import transaction
-
+from lib.mail import EmailManager
 
 
 class UserSignupView(generics.CreateAPIView):
@@ -23,6 +23,14 @@ class UserSignupView(generics.CreateAPIView):
         user_event_serializer  = UserEventSerializer(data=request.data, context={'user': user})
         user_event_serializer.is_valid(raise_exception=True)
         user_event_serializer.save()
+
+        # send an email notification to user of their successful registrattion
+        EmailManager.send_mail(
+            subject='Finish Registration for UISC-2023.',
+            recipients=[user.email],
+            context={'user': user, 'link': ''},
+            template_name='user_registration_notification.html',
+        )
 
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
@@ -67,3 +75,14 @@ class ReceiptUploadView(generics.CreateAPIView):
     authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated]
 
+
+    def perform_create(self, serializer):
+        super().perform_create(serializer)
+
+        # send email notification to user of successful receipt upload
+        EmailManager.send_mail(
+            subject='Thank you for uploading your participation reciept for UISC-2023.',
+            recipients=[self.request.user.email],
+            context={'user': self.request.user},
+            template_name='user_registration_notification.html',
+        )

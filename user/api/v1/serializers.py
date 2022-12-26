@@ -23,9 +23,6 @@ class UserSerializer(serializers.ModelSerializer):
         # NOTE: it's important to remove this field from validated data
         # TODO JOSEPH:  remove this when you have time
         validated_data.pop('participant_type')
-        # NOTE: it's important to remove this field from validated data
-        # TODO JOSEPH:  remove this when you have time
-        validated_data.pop('participant_type')
         password = validated_data.pop("password")
         user = User.objects.create(**validated_data)
         user.set_password(password)
