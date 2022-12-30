@@ -11,9 +11,15 @@ User Registration
 <div class="card w-100">
     <div class="card-body">
       <p class="card-text">
-        Hi, {{user.first_name|title}} {{user.last_name|title}} thank you for registering for THE 5th INTERNATIONAL CONFERENCE ON
-        SCIENTIFIC RESEARCH IN NIGERIA. To complete the registration process <a href="{{link}}">click here</a>.
-      </p>
+        Hi, {{user.first_name|title}} {{user.last_name|title}} Thank you for signing up for THE 5th INTERNATIONAL CONFERENCE ON
+        SCIENTIFIC RESEARCH IN NIGERIA. We are excited to have you join us and are looking forward to an exciting and informative event.
+       </p>
+       <p class="card-text">
+        We noticed that your registration has not been verified. In order to finalize your registration and secure your spot at the event, we need to verify your information. Please click the link to verify your registration <a href="{{link}}"> here</a>. 
+        We look forward to your participation at the event!
+        Best regards, 
+        Computer Science Department, University of Ibadan.
+       </p>
     </div>
   </div>
 {% endblock content %}
