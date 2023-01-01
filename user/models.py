@@ -1,6 +1,7 @@
 from typing import Any
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
+from lib.storage import GoogleDriveStorageInstance
 
 
 class UserManager(BaseUserManager):
@@ -109,7 +110,7 @@ class EventPaymentLog(models.Model):
         choices=STATUS_CHOICES,
         default=STATUS_AVWAITING_VERIFICATION
     )
-    receipt = models.FileField(upload_to='uploads/')
+    receipt = models.FileField(upload_to='uploads/', storage=GoogleDriveStorageInstance)
     failure_reason = models.CharField(max_length=200, blank=True)
     date_created = models.DateTimeField(auto_now_add=True, blank=True, editable=False)
     date_updated = models.DateField(auto_now_add=True, blank=True)
