@@ -48,8 +48,8 @@ class ClearanceFile(models.Model):
 )
     email = models.EmailField(verbose_name="email address")
     submission_type = models.CharField(max_length = 20, choices = SUBMISSION_TYPE)
-    evidence_of_payment_file = models.FileField(upload_to='uploads/')
-    submission_file = models.FileField(upload_to='uploads/')
+    evidence_of_payment_file = models.FileField(upload_to='uploads/', blank = False)
+    submission_file = models.FileField(upload_to='uploads/', blank = True)
     created_at=models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
