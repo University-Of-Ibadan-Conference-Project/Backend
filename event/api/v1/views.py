@@ -19,9 +19,7 @@ class AbstractListView(generics.CreateAPIView):
 
     def perform_create(self, serializer):
         corresponding_author_email = serializer.validated_data.get('coresponding_author_email')
-        abstract_title = serializer.validated_data.get('title')
-        abstract_file = serializer.validated_data.get('abstract_document_file')
-        
+        abstract_title = serializer.validated_data.get('title')    
         serializer.save()
     
         # send email notification to corresponding email  after uploading abstract
