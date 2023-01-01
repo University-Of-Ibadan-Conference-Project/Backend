@@ -1,4 +1,5 @@
 from django.db import models
+from lib.storage import GoogleDriveStorageInstance
 from user.models import User
 
 
@@ -23,13 +24,12 @@ class Abstract(models.Model):
         ('virtual', 'Live Virtual'),
         ('poster', 'Poster'),
     )
-    
 
     title = models.CharField(max_length=200,null=True)
     coresponding_author_fullname = models.CharField(max_length=200)
     coresponding_author_email = models.EmailField(max_length=140, blank=True)
     coresponding_author_phone = models.CharField(max_length=140, blank=True)
-    abstract_document_file = models.FileField(upload_to='uploads/', blank=True, editable=False)
+    abstract_document_file = models.FileField(upload_to='uploads/', blank=True, editable=False, storage=GoogleDriveStorageInstance)
     presentation_type = models.CharField(choices=PRESENTATION_TYPE_CHOICES, max_length=100)
     research_area = models.CharField(choices=RESEARCH_AREA_CHOICES, max_length=200)
     keywords= models.JSONField(default=list)
@@ -47,10 +47,10 @@ class ClearanceFile(models.Model):
     ('Advert', 'Advert')
 )
     email = models.EmailField(verbose_name="email address")
-    submission_type = models.CharField(max_length = 20, choices = SUBMISSION_TYPE)
-    evidence_of_payment_file = models.FileField(upload_to='uploads/', blank = False)
-    submission_file = models.FileField(upload_to='uploads/', blank = True)
+    submission_type = models.CharField(max_length = 20, choices=SUBMISSION_TYPE)
+    evidence_of_payment_file = models.FileField(upload_to='uploads/', blank=False, storage=GoogleDriveStorageInstance)
+    submission_file = models.FileField(upload_to='uploads/', blank=True, storage=GoogleDriveStorageInstance)
     created_at=models.DateTimeField(auto_now_add=True)
-    
+
     def __str__(self):
         return self.email

@@ -26,3 +26,4 @@ celery[redis]==5.2.7
 python-dotenv==0.21.0
 daphne==4.0.0
 psycopg2_binary==2.9.3
+django-googledrive-storage==1.6.0
