@@ -60,4 +60,8 @@ class ClearanceFileSerializer(serializers.ModelSerializer):
 
         ]
 
+        extra_kwargs = {
+            "evidence_of_payment_file" :{"write_only": True},
+            "submission_file" :{"write_only": True} 
+        }
  
