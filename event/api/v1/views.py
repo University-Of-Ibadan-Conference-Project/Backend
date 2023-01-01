@@ -17,6 +17,22 @@ class AbstractListView(generics.CreateAPIView):
     permission_classes = (permissions.AllowAny, )
 
 
+    def perform_create(self, serializer):
+        corresponding_author_email = serializer.validated_data.get('coresponding_author_email')
+        abstract_title = serializer.validated_data.get('title')
+        serializer.save()
+
+        # send email notification to corresponding email  after uploading abstract
+        EmailManager.send_mail(
+            subject='Thank you for uploading your abstract for UISC-2023.',
+            recipients=[corresponding_author_email],
+            context={
+                'abstract_title': abstract_title
+                },
+            template_name='abstract_upload_notification.html',
+        )
+
+
 class ClearanceFileView(generics.CreateAPIView):
     permissions_classes = (permissions.AllowAny,)
     serializer_class = ClearanceFileSerializer
