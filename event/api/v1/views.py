@@ -20,8 +20,10 @@ class AbstractListView(generics.CreateAPIView):
     def perform_create(self, serializer):
         corresponding_author_email = serializer.validated_data.get('coresponding_author_email')
         abstract_title = serializer.validated_data.get('title')
+        abstract_file = serializer.validated_data.get('abstract_document_file')
+        
         serializer.save()
-
+    
         # send email notification to corresponding email  after uploading abstract
         EmailManager.send_mail(
             subject='Thank you for uploading your abstract for UISC-2023.',
@@ -52,5 +54,4 @@ class ClearanceFileView(generics.CreateAPIView):
                 },
             template_name='clearance_upload_notification.html',
         )
-
 
