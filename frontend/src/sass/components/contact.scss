@@ -1,0 +1,121 @@
+.contactPage {
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  justify-content: space-between;
+  margin-top: 50px;
+  .body {
+    width: 30%;
+    background-color: #205ef1;
+    text-align: center;
+    padding: 20px 10px 10px 10px;
+    color: white;
+    border-radius: 5px;
+    .mail {
+      margin-top: 80px;
+      font-weight: 400;
+    }
+    .feedback {
+      text-align: center;
+      margin-top: 200px;
+    }
+  }
+  .form {
+    width: 60%;
+    label {
+      font-size: 20px;
+    }
+    .head {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      .section-1,
+      .section-2 {
+        width: 45%;
+      }
+      input {
+        display: block;
+        width: 100%;
+        padding: 10px 0 10px 5px;
+        border-radius: 5px;
+        border: 1px solid #c4c4c4;
+        margin-top: 10px;
+        &:hover {
+          border: 1px solid #205ef1;
+        }
+        &:focus {
+          outline: 0;
+        }
+      }
+    }
+    .mes {
+      width: 100%;
+      textarea {
+        width: 100%;
+        display: block;
+        height: 300px;
+        padding: 10px 0 10px 5px;
+        border-radius: 5px;
+        margin-top: 10px;
+        border: 1px solid #c4c4c4;
+        &:hover {
+          border: 1px solid #205ef1;
+        }
+        &:focus {
+          outline: 0;
+        }
+      }
+    }
+    button {
+      width: 100%;
+      padding: 17px 0 17px 0px;
+      color: white;
+      border: 0;
+      background-color: #205ef1;
+      margin-top: 20px;
+      border-radius: 5px;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  section {
+    flex-direction: column;
+    .body {
+      width: 90%;
+      margin: 0 auto;
+    }
+    .form {
+      width: 90%;
+      margin: 0 auto;
+      margin-top: 30px;
+      .head {
+        width: 100%;
+        flex-direction: column;
+
+        .section-1,
+        .section-2 {
+          width: 100%;
+        }
+        .section-2 {
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+  .contactPage {
+    .body {
+      width: 100%;
+    }
+
+    .form {
+      width: 100%;
+      .head {
+        .section-1,
+        .section-2 {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

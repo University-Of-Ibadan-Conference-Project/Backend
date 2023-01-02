@@ -1,0 +1,236 @@
+// @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap");
+
+.Home {
+  text-align: center;
+  color: #ffffff;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+
+  .Hero {
+    background-image: url("https://pbs.twimg.com/media/D_5zisFX4AA1rc8.jpg:large");
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(50, 50, 50, 0.458);
+    background-blend-mode: multiply;
+    min-height: 90vh;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    // margin-bottom: 5em;
+
+    &_date {
+      font-weight: 300;
+    }
+
+    .title {
+      align-items: center;
+      padding-top: 13%;
+
+      h2 {
+        // font-family: poppins, sans-serif;
+        color: #cfc547;
+        // text-shadow: 10px 10px 25px rgb(81, 67, 21),
+        //   -10px 10px 25px rgb(81, 67, 21), -10px -10px 25px rgb(81, 67, 21),
+        //   10px -10px 25px rgb(81, 67, 21);
+        font-size: 65px;
+      }
+
+      h3 {
+        // font-family: poppins, sans-serif;s
+        font-size: 38px;
+
+        @media screen and (max-width: 768px) {
+          font-size: 29px;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        h3 {
+          font-size: 30px;
+        }
+        h2 {
+          font-size: 55px;
+        }
+
+        @media (max-width: 425px) {
+          h2 {
+            font-size: 43px;
+          }
+
+          h3 {
+            font-size: 25px;
+          }
+        }
+
+        @media (max-width: 320px) {
+          h2 {
+            font-size: 36px;
+          }
+
+          h3 {
+            font-size: 21px;
+          }
+        }
+      }
+    }
+
+    &_year {
+      // font-family: poppins, sans-serif;
+      font-size: 47px;
+      // text-shadow: 4px 4px #000000;s
+      font-weight: 700;
+
+      @media (max-width: 425px) {
+        font-size: 35px;
+        font-weight: 600;
+      }
+
+      @media (max-width: 375px) {
+        font-size: 30px;
+        font-weight: 600;
+      }
+
+      @media (max-width: 320px) {
+        font-size: 28px;
+        font-weight: 600;
+      }
+    }
+
+    &_line {
+      width: 370px;
+      height: 4px;
+      background: #ffffff;
+      margin-left: auto;
+      margin-right: auto;
+
+      @media screen and (max-width: 425px) {
+        width: 300px;
+      }
+
+      @media screen and (max-width: 320px) {
+        width: 260px;
+      }
+    }
+
+    &_theme {
+      // font-family: poppins, sans-serif;
+      font-size: 25px;
+      font-weight: 700;
+      line-height: 1.4em;
+      padding-top: 20px;
+      text-transform: uppercase;
+      margin-left: auto;
+      margin-right: auto;
+      width: 85%;
+      letter-spacing: 0.6px;
+
+      @media screen and (max-width: 768px) {
+        width: 95%;
+      }
+
+      @media screen and (max-width: 450px) {
+        width: 100%;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.4em;
+      }
+    }
+
+    &_remarks {
+      display: none;
+      font-size: 0.9em;
+      margin: 0 auto;
+      width: 70%;
+      text-align: center;
+    }
+  }
+
+  &Info {
+    width: 80%;
+    margin: 3em auto;
+    line-height: 32px;
+
+    &:nth-last-of-type(2) {
+      margin-top: 0;
+    }
+
+    h2 {
+      font-weight: 600;
+      font-size: 2em;
+      color: #223645;
+    }
+    p {
+      text-align: justify;
+    }
+    span {
+      color: #e6141f;
+    }
+  }
+}
+
+.Speakers {
+  margin-top: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1.5em;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media screen and (max-width: 425px) {
+    grid-template-columns: 1fr;
+  }
+
+  .Speaker {
+    border-radius: 7px;
+    background-color: #0e2431;
+    padding: 0.5em;
+    padding-bottom: 1em;
+    text-align: center;
+
+    a {
+      text-decoration: none;
+    }
+
+    h5 {
+      font-weight: 400;
+      // font-family: poppins, sans-serif;
+      font-size: 16px;
+      color: #ffffff;
+      margin-top: 0.5em;
+    }
+
+    h3,
+    span {
+      color: #ffffff;
+    }
+
+    h6,
+    strong {
+      font-size: 14px;
+      font-weight: 700;
+      // font-family: poppins, sans-serif;
+    }
+  }
+}
+
+.Main {
+  margin-left: auto;
+  margin-right: auto;
+  height: 70px;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: "Josefin Sans", sans-serif;
+  box-shadow: 5px 5px 0 0;
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 20px;
+}

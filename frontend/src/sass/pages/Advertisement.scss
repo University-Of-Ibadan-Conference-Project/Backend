@@ -1,0 +1,38 @@
+.app__adverts {
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.app__adverts-section {
+  margin: 5em auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.app__adverts-section h1 {
+  color: #004777;
+  margin-bottom: 1rem;
+}
+
+.details {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.details,
+.rates-list {
+  max-width: 40rem;
+}
+
+.rates-list {
+  width: 100%;
+}
+
+.rate {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}

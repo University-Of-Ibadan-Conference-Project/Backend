@@ -2,11 +2,11 @@ version: '3.9'
 
 services:
   backend:
-    build:
-      context: .
     container_name: backend
+    build:
+      context: ./backend/
     volumes:
-      - .:/backend
+      - ./backend:/backend
       - /static:/static
     command: >
       sh -c "
@@ -14,18 +14,28 @@ services:
         python ./manage.py collectstatic --noinput &&
         daphne -b 0.0.0.0 -p 8000 conference.asgi:application
       "
-    healthcheck:
-      test: curl http://0.0.0.0:8000/ || exit 1
-      interval: 1m30s
-      timeout: 40s
-      retries: 3
-      start_period: 30s
     depends_on:
       - db
     env_file:
       - ./.env
     ports:
-      - "8000:8000"
+      - 8000
+  
+  frontend:
+    build:
+      context: ./frontend/
+    restart: on-failure
+    ports:
+      - 3000
+    volumes:
+      - ./frontend:/frontend
+      - /frontend/node_modules
+    command: >
+      sh -c "npm start"
+    env_file:
+      - ./.env
+    depends_on:
+      - backend
 
   db:
     image: postgres:14
@@ -44,11 +54,12 @@ services:
 
   celery:
     restart: always
+    container_name: celery
     build:
-      context: .
+      context: ./backend/
     command: celery -A conference worker -l info
     volumes:
-      - .:/backend
+      - ./backend:/backend
     env_file:
       - ./.env
     depends_on:
@@ -61,13 +72,14 @@ services:
       context: ./nginx/
     ports:
       - 80:80
+      - 8080:8080
     depends_on:
       - backend
+      - frontend
     volumes:
-      - .:/backend
+      - ./backend:/backend
       - ./nginx:/etc/nginx/conf.d
       - /static:/static
-
 
 volumes:
   pgdata: {}

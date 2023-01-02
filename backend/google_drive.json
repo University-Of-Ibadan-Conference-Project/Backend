@@ -1,0 +1,12 @@
+{
+    "type": "service_account",
+    "project_id": "focal-psyche-373509",
+    "private_key_id": "0bb61d6d1fd4d1716d55acd58e21dbb1b0451a11",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCwIk7+WO8hmEjT\nnonCI/4CGJKNXHpt7yNF+3plIgHf78UWHI9BEPs0QGxNr2dEoqBXyT7KSFgOKUKt\nzrDoBM5JMKNzXf0gRnjYk3wmhqDiK1mtAnwBc+Tqtrf29XjG3eeTqCPWdgi9BCaw\nmvr503sq/gBTKvytoa+63PDbgywpqflgGIaEu/jda176N4hL6qqfcmUzlbwOXxL0\nOZ8wmfC2ut4UYWEwHz0hs2+jm0JsSbdkCyDkV8kL7gLiIy7hwK+vtupREIcdZ+I1\nvThOUMMGNHmB7tOFMLZ6TKGXEDoeFhJdBwxLoeVAbx1mi5Tp3nUa4pr69Jo4L3EJ\n9NoE43p/AgMBAAECggEAGNhzcCmMwfPArNP7oWkrrDwEdZsKoiCjnHxBjavjESW6\nFXO95B3IcbHMv+tIPpmk01KjYCwdpRG+QtTvMNYiC0JTLDOhQJZFobdcQfWnvX+u\nogXBsarEKzUkdNpiSRswTtc0XEzreqOamZBNwEP2vIp2nUS+aU0aLtp6bLHviYjL\nW8O2fZwz96KJp/qlR0r/0LB7Y0FXtKnSqAuWIErZpsJPKfMJ3LDqFM1AJCspxPUq\nSXhiAC7ELPTCXNo23TVgB/uZo5TafhB1NF1LsKnHnbAB6Sxrk820YnVVpbd/3hKe\nTd7pJQB8rs7LKHlxiHJqbPHCOq65OnOnMGUT1TXHUQKBgQD1loRXYkwgNFUrVZno\nSYw6TEmNj6QHryOGRHFvSzON08Q/WamPBUzL8nwSUypoZTUllfZaXDyHgIsy8D1L\nccvP8Jn1NL6vPbQ97IqUK1RRrZrY/oRIYj5mMryWcdYW3oYdT0n/z3sdqzU7NIvG\nhONgkSd5QFEeWZZhhMolxSVhtQKBgQC3mfmVdvN3mLdZjD0cztYXY04FVsGt2uXo\nrpNF2YVY2sSJh2P+jiPCpISijzWX4NJQrNUnnxG9GAPiv8KZQhexuOufFgw5c8Uz\nNRkp0Ij6th2wufWlQLUN8b6sX7xIDZfZIH+LktT4AecRa6xq0X8bt/iOZbWrprXQ\ngtoPSojb4wKBgQDPQL3grNDHoMJ7dpsS//Z6QGUWNTFdVr0pE1uTa6hPOXZ1a+p/\nCx77QmDYahzwyvBmDr8/FHX0eFOAomNn5tn0WvzihSei5fTVCWkNj99xqotyMqBa\nIaa9QnYKlHjzBcmytHYjjuo8aH7cvwRyfTUSCo2AcvnCHiKdm52o8E4SvQKBgG4/\nRjBq6g2BpW9fF39J8CLBHaN1Ef3MeMu8sHB8CmdtjiCrLO84+N4zHfXjGqJlfMS2\n05PkH6m1Vvf8f+S5XDL6wHmZqqOBEgQKuV5zex1Y6AEr2QZvEYkbBYzKO+vkRa86\npXvxInL96Xt7dV/7BmFlmhoflvRIudpICJqv/fhTAoGARhaQQgV+V3D9Z0SIEkaF\nEQLG6iJH5uvrCUcsSi9z5GlSylgXdvLwNa6JI8dIpfQ5mY3BRdyGZcONcGxz2L7c\ncmpzD3c6abIAtJ4sb84FJonkrXpGkRh6vznSte4h2OioDHOvWmSC/g1q29X0yMJ5\nos0XTzyyGIEPbsrc3fs95aM=\n-----END PRIVATE KEY-----\n",
+    "client_email": "uics2023-107@focal-psyche-373509.iam.gserviceaccount.com",
+    "client_id": "111369058987347119954",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/uics2023-107%40focal-psyche-373509.iam.gserviceaccount.com"
+  }

@@ -1,0 +1,54 @@
+.fileInput {
+  margin: 1em 0;
+  border: 1px solid #dedede;
+  color: #000000;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 2em 0;
+  margin-top: 0;
+}
+
+.SubmissionForm {
+  width: 80%;
+  margin: auto;
+  padding: 4em 0;
+
+  label {
+    margin-top: 2em;
+    display: block;
+  }
+
+  div {
+    margin-top: 0.5em;
+    input,
+    select {
+      display: block;
+      padding: 13px 0 13px 8px;
+      width: 100%;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: 1px solid #dedede;
+    }
+  }
+
+  button {
+    background-color: #004777;
+    border: 0;
+    color: white;
+    padding: 15px 0;
+    font-size: 20px;
+    margin-top: 30px;
+    transition: all linear 0.2s;
+    cursor: pointer;
+    width: 12em;
+    display: block;
+    margin: auto;
+    border-radius: 12px;
+
+    div {
+      margin: 0;
+    }
+  }
+}

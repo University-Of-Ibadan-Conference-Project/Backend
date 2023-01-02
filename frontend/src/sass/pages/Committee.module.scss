@@ -1,0 +1,98 @@
+.Committee {
+  width: 80%;
+  margin: auto;
+
+  &Card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 3em auto;
+
+    @media screen and (max-width: 768px) {
+      display: block;
+    }
+
+    &:nth-of-type(1) {
+      .Speaker {
+        img {
+          width: 15em;
+        }
+      }
+    }
+
+    &:nth-of-type(2) {
+      .Speaker {
+        img {
+          width: 15em;
+        }
+      }
+    }
+  }
+
+  &List {
+    margin-bottom: 7em;
+
+    div {
+      display: flex;
+
+      @media screen and (max-width: 768px) {
+        flex-direction: column;
+        margin: 1em 0;
+      }
+
+      p {
+        padding: 0.25em 0;
+
+        &:nth-of-type(1) {
+          flex: 2;
+        }
+
+        &:nth-of-type(2) {
+          flex: 5;
+        }
+      }
+    }
+  }
+}
+
+.Speaker {
+  border-radius: 7px;
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 0.5em;
+  padding-bottom: 1em;
+  text-align: center;
+  // width: 30%;
+  width: fit-content;
+  margin: auto;
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+    margin-bottom: 2em;
+  }
+
+  h5 {
+    font-weight: 400;
+    font-family: poppins, sans-serif;
+    font-size: 16px;
+    color: #000000;
+    font-weight: bold;
+    margin-top: 0.5em;
+  }
+
+  h3,
+  span {
+    color: #ffffff;
+  }
+
+  h6,
+  strong {
+    font-size: 14px;
+    font-weight: 700;
+    font-family: poppins, sans-serif;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
