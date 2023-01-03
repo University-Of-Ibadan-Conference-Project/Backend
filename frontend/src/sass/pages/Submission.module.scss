@@ -42,10 +42,15 @@
     margin-top: 30px;
     transition: all linear 0.2s;
     cursor: pointer;
-    width: 12em;
+    width: 100%;
     display: block;
     margin: auto;
     border-radius: 12px;
+
+    &:disabled {
+      background-color: rgba(179, 179, 179, 0.913);
+      cursor: not-allowed;
+    }
 
     div {
       margin: 0;

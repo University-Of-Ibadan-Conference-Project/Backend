@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import CommonHero from "../components/CommonHero/CommonHero";
 import styles from "./../sass/pages/Submission.module.scss";
 import { useDropzone } from "react-dropzone";
@@ -29,7 +29,7 @@ function Submission() {
     const requestBody = new FormData();
 
     for (const value in data) {
-      requestBody.append(value, data[value]);
+      data[value] && requestBody.append(value, data[value]);
     }
 
     try {
@@ -40,7 +40,7 @@ function Submission() {
       if (response.status === 201) {
         Swal.fire(
           "Submission Successful!",
-          "Kindly check your mail for the more information!",
+          "Kindly check your mail for more information!",
           "success"
         );
         setEmail("");
@@ -73,6 +73,7 @@ function Submission() {
           <input
             type="email"
             required={true}
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
@@ -80,6 +81,7 @@ function Submission() {
           <label htmlFor="pre">Submission Type</label>
           <select
             required={true}
+            value={submission_type}
             onChange={(e) => setSubmission_type(e.target.value)}
           >
             <option value="" hidden>
@@ -89,6 +91,7 @@ function Submission() {
             <option value="Manuscript">Manuscript</option>
             <option value="Advert">Advert</option>
             <option value="Exhibition">Exhibition</option>
+            <option value="Registration">Registration</option>
           </select>
         </div>
         <div>
@@ -96,15 +99,19 @@ function Submission() {
           <FileUploader
             setRequiredUpload={(file) => setEvidence_of_payment_file(file)}
             requiredUpload={evidence_of_payment_file}
+            fileName={"Evidence of Payment"}
           />
         </div>
-        <div>
-          <label>Submission</label>
-          <FileUploader
-            setRequiredUpload={(file) => setSubmission_file(file)}
-            requiredUpload={submission_file}
-          />
-        </div>
+        {!(submission_type === "Registration") && (
+          <div>
+            <label>Submission</label>
+            <FileUploader
+              setRequiredUpload={(file) => setSubmission_file(file)}
+              requiredUpload={submission_file}
+              fileName={"Submission"}
+            />
+          </div>
+        )}
         <button type="submit" disabled={submitting}>
           {submitting ? <Spinner /> : "Submit"}
         </button>
@@ -113,7 +120,7 @@ function Submission() {
   );
 }
 
-const FileUploader = ({ setRequiredUpload, requiredUpload }) => {
+const FileUploader = ({ setRequiredUpload, requiredUpload, fileName }) => {
   // const [requiredUpload, setRequiredUpload] = useState(null);
   const onDrop = useCallback(async (acceptedFiles) => {
     setRequiredUpload(acceptedFiles[0]);
@@ -125,12 +132,12 @@ const FileUploader = ({ setRequiredUpload, requiredUpload }) => {
     <div className={styles.fileInput} {...getRootProps()}>
       <input {...getInputProps()} directory="" webkitdirectory="" type="file" />
       {isDragActive ? (
-        <p>Drop the files here ...</p>
+        <p>Drop the file here ...</p>
       ) : (
         <p>
           {requiredUpload
             ? "File Ready"
-            : "Drag and drop some files here, or click to select files"}
+            : `Drag and drop your ${fileName} file here, or click to select file`}
         </p>
       )}
     </div>
@@ -140,6 +147,7 @@ const FileUploader = ({ setRequiredUpload, requiredUpload }) => {
 FileUploader.propTypes = {
   setRequiredUpload: PropTypes.func,
   requiredUpload: PropTypes.object,
+  fileName: PropTypes.string,
 };
 
 export default Submission;
