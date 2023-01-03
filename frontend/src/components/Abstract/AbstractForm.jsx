@@ -49,7 +49,7 @@ const AbstractForm = () => {
         if (response.status === 201) {
           Swal.fire(
             "Submission Successful!",
-            "Kindly check your mail for the more information!",
+            "Kindly check your mail for more information!",
             "success"
           );
           formik.resetForm();
@@ -235,7 +235,7 @@ const AbstractForm = () => {
               name="abstract_document_file"
               accept=".pdf,.doc,.docx"
               onChange={(e) => {
-                console.log(e.target.files[0]);
+                // console.log(e.target.files[0]);
                 setAbstract_document_file(e.target.files[0]);
               }}
               // value={formik.values.abstract_document_file}

@@ -49,7 +49,7 @@ const RegisterForm = () => {
         if (response.status === 201) {
           Swal.fire(
             "Registration Successful!",
-            "Kindly check your mail for the more information!",
+            "Kindly check your mail for more information!",
             "success"
           );
           formik.resetForm();
