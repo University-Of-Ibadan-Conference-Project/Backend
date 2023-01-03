@@ -1,0 +1,73 @@
+.Subscribe {
+  background-color: #205ef1;
+  padding: 4em 6em;
+  margin-top: 5em;
+
+  &Content {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    width: 90%;
+    max-width: 1440px;
+  }
+
+  &Header {
+    flex: 2;
+
+    h2 {
+      margin: 0;
+      margin-bottom: 0.25em;
+      font-size: 1.75em;
+    }
+  }
+
+  &Form {
+    flex: 1;
+
+    input {
+      display: block;
+      outline: 3px white;
+      border: none;
+      background-color: rgba($color: #ffffff, $alpha: 0.15);
+      border-radius: 5px;
+      width: 90%;
+      font-size: 1.1em;
+      color: white;
+      padding: 0.75em;
+      margin: 0.5em 0 0.75em;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 3em 0;
+
+    &Content {
+      flex-direction: column;
+      width: 90%;
+      max-width: 90%;
+    }
+
+    &Header {
+      h2 {
+        font-size: 1.5em;
+      }
+    }
+
+    &Form {
+      width: 100%;
+      margin-top: 2em;
+    }
+  }
+}
+
+.Button {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: black;
+  height: 45px;
+  padding: 0 3em;
+}

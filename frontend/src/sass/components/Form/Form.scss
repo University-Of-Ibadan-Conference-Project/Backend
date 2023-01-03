@@ -1,0 +1,129 @@
+.form-container {
+  #co-author {
+    padding-bottom: 80px;
+  }
+  h1 {
+    font-size: 30px;
+    text-align: center;
+    font-weight: 500;
+    margin: 1rem 0 1.5rem 0;
+  }
+  width: 80%;
+  margin: 2rem auto;
+  box-shadow: 0 3px 10px rgb(0 0 0/0.2);
+  padding: 30px 40px;
+
+  form {
+    .section {
+      display: flex;
+      justify-content: space-between;
+
+      &-1,
+      &-2 {
+        width: 45%;
+        margin-bottom: 30px;
+
+        @media only screen and (max-width: 600px) {
+          margin: 1em auto !important;
+        }
+
+        .btn {
+          width: 100%;
+          display: block;
+          padding: 13px 0 13px 8px;
+
+          margin-top: 10px;
+          border-radius: 6px;
+          transition: all ease-in-out 300ms;
+          &:hover {
+            border: 1px solid #00afb5;
+          }
+          &:focus {
+            outline: 0;
+          }
+        }
+      }
+    }
+    .sections {
+      width: 100%;
+      textarea {
+        height: 300px;
+        margin-bottom: 30px;
+      }
+    }
+
+    .required {
+      &::after {
+        content: "*";
+        color: #f00;
+      }
+    }
+
+    input,
+    select,
+    .submit,
+    textarea {
+      display: block;
+      padding: 13px 0 13px 8px;
+      width: 100%;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: 1px solid #004777;
+      transition: all ease-in-out 300ms;
+      &:hover {
+        border: 1px solid #00afb5;
+      }
+      &:focus {
+        outline: 0;
+      }
+    }
+
+    button,
+    .downloadBtn {
+      background-color: #004777;
+      outline: none;
+      border: none !important;
+      color: white;
+      padding: 15px 0;
+      font-size: 20px;
+      margin-top: 30px;
+      transition: all linear 0.2s;
+      cursor: pointer;
+
+      &:hover {
+        border: 0;
+        background-color: #00afb5;
+      }
+
+      &:disabled {
+        background-color: rgba(179, 179, 179, 0.913);
+        cursor: not-allowed;
+      }
+    }
+
+    .downloadBtn {
+      display: block;
+      text-decoration: none;
+      text-align: center;
+      border-radius: 7px;
+      font-size: 0.9em;
+      margin-top: 1em;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .form-container {
+    padding: 20px 20px;
+    width: 90%;
+    form {
+      .section {
+        flex-direction: column;
+        &-1,
+        &-2 {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

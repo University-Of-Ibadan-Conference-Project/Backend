@@ -1,0 +1,87 @@
+.committee {
+  & .layout {
+    display: flex;
+    align-items: center;
+    margin: 30px auto;
+    max-width: 70%;
+
+    & .img-container {
+      padding: 20px;
+      background-color: red;
+      border-radius: 20px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+
+      & img {
+        border-radius: 20px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+
+    & .info {
+      padding: 30px;
+
+      & h4 {
+        margin: 10px 0;
+      }
+    }
+  }
+
+  & .bg {
+    background-image: linear-gradient(
+        45deg,
+        transparent,
+        rgba(0, 0, 0, 0.842),
+        transparent
+      ),
+      url(../../assets/img/conference-bg.jpg);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 50px 0;
+
+    & .cards {
+      padding: 30px 0;
+      max-width: 70%;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+
+      & .card {
+        background-color: white;
+        padding: 20px;
+        border-radius: 20px;
+        text-align: center;
+
+        & span {
+          color: red;
+        }
+      }
+    }
+  }
+
+  & .reviewers {
+    & .heading {
+      max-width: 50%;
+      margin: 30px auto;
+      text-align: center;
+    }
+    & .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      width: 70%;
+      margin: 20px auto;
+
+      & .layout {
+        margin: 0;
+        max-width: 100%;
+
+        & .img-container {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}
