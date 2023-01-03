@@ -44,11 +44,12 @@ class ClearanceFile(models.Model):
     SUBMISSION_TYPE = (
     ('Manuscript', 'Manuscript'),
     ('Exhibition', 'Exhibition'),
-    ('Advert', 'Advert')
+    ('Advert', 'Advert'),
+    ('Registration', 'Registration')
 )
     email = models.EmailField(verbose_name="email address")
     submission_type = models.CharField(max_length = 20, choices=SUBMISSION_TYPE)
-    evidence_of_payment_file = models.FileField(upload_to='uploads/', blank=False, storage=GoogleDriveStorageInstance)
+    evidence_of_payment_file = models.FileField(upload_to='uploads/', storage=GoogleDriveStorageInstance)
     submission_file = models.FileField(upload_to='uploads/', blank=True, storage=GoogleDriveStorageInstance)
     created_at=models.DateTimeField(auto_now_add=True)
 
