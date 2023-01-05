@@ -123,6 +123,7 @@ function Submission() {
 const FileUploader = ({ setRequiredUpload, requiredUpload, fileName }) => {
   // const [requiredUpload, setRequiredUpload] = useState(null);
   const onDrop = useCallback(async (acceptedFiles) => {
+    if (acceptedFiles.length > 1) return;
     setRequiredUpload(acceptedFiles[0]);
     console.log(acceptedFiles);
   }, []);
@@ -130,13 +131,13 @@ const FileUploader = ({ setRequiredUpload, requiredUpload, fileName }) => {
 
   return (
     <div className={styles.fileInput} {...getRootProps()}>
-      <input {...getInputProps()} directory="" webkitdirectory="" type="file" />
+      <input {...getInputProps()} type="file" />
       {isDragActive ? (
         <p>Drop the file here ...</p>
       ) : (
         <p>
           {requiredUpload
-            ? "File Ready"
+            ? "File prepared for submission"
             : `Drag and drop your ${fileName} file here, or click to select file`}
         </p>
       )}
