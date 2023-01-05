@@ -104,11 +104,11 @@ function Navbar({ navVisibility, setNavVisibility }) {
         {/* <Link className="link" to={"/submit-abstract"}>
             Call For Papers
           </Link> */}
-        <li>
+        {/* <li>
           <Link className="link" to={"/contact-us"}>
             Contact Us
           </Link>{" "}
-        </li>
+        </li> */}
         <li>
           <Link className="link" to={"/register"}>
             <p style={{ color: activeNav === "/register" ? color : "" }}>
