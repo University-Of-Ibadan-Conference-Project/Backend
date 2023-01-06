@@ -14,7 +14,7 @@ const Contact = () => {
           <p>Any feedback is appreciated</p>
         </div>
       </div>
-      <div className="form">
+      {/* <div className="form">
         <div className="head">
           <div className="section-1">
             <label htmlFor="fname">First Name</label>
@@ -40,7 +40,7 @@ const Contact = () => {
           <textarea placeholder="Message"></textarea>
         </div>
         <button>Submit</button>
-      </div>
+      </div> */}
     </section>
   );
 };
