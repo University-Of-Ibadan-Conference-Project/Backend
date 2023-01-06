@@ -179,3 +179,5 @@ GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.getenv(
     "GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE", 
     os.path.join(BASE_DIR, "google_drive.json")
 )
+
+CSRF_TRUSTED_ORIGINS = ['http://*.uisc2023.org','http://*52.6.64.184','https://*.uisc2023.org','http://*uisc2023.org:8000','https://*uisc2023.org:8000']
