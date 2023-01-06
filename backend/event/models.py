@@ -38,7 +38,7 @@ class Abstract(models.Model):
     updated_at=models.DateTimeField(auto_now=True)
      
      def __str__(self):
-         return f"{coresponding_author_fullname} Abstract"
+        return f"{coresponding_author_fullname} Abstract"
 
 
 
@@ -57,3 +57,5 @@ class ClearanceFile(models.Model):
 
     def __str__(self):
         return self.email
+
+#i fixed indentation issues here
