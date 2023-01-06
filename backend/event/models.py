@@ -1,5 +1,4 @@
 from django.db import models
-from lib.storage import GoogleDriveStorageInstance
 from user.models import User
 
 
@@ -29,7 +28,7 @@ class Abstract(models.Model):
     coresponding_author_fullname = models.CharField(max_length=200)
     coresponding_author_email = models.EmailField(max_length=140, blank=True)
     coresponding_author_phone = models.CharField(max_length=140, blank=True)
-    abstract_document_file = models.FileField(upload_to='uploads/', blank=True, editable=False, storage=GoogleDriveStorageInstance)
+    abstract_document_file = models.FileField(upload_to='uploads/')
     presentation_type = models.CharField(choices=PRESENTATION_TYPE_CHOICES, max_length=100)
     research_area = models.CharField(choices=RESEARCH_AREA_CHOICES, max_length=200)
     keywords= models.JSONField(default=list)
@@ -48,8 +47,8 @@ class ClearanceFile(models.Model):
 )
     email = models.EmailField(verbose_name="email address")
     submission_type = models.CharField(max_length = 20, choices=SUBMISSION_TYPE)
-    evidence_of_payment_file = models.FileField(upload_to='uploads/', storage=GoogleDriveStorageInstance)
-    submission_file = models.FileField(upload_to='uploads/', storage=GoogleDriveStorageInstance, null=True)
+    evidence_of_payment_file = models.FileField(upload_to='uploads/')
+    submission_file = models.FileField(upload_to='uploads/', null=True)
     created_at=models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

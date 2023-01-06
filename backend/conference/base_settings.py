@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'drf_yasg',
-    'gdstorage',
 
     # custom apps
     'user',
@@ -172,12 +171,3 @@ EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "info@example.com")
 # REDIS / CELERY SETTINGS
 REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379")
 
-
-# GOOGLE DRIVE STORAGE SETTINGS
-GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = 'uploads'
-GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.getenv(
-    "GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE", 
-    os.path.join(BASE_DIR, "google_drive.json")
-)
-
-CSRF_TRUSTED_ORIGINS = ['http://*.uisc2023.org','http://*52.6.64.184','https://*.uisc2023.org','http://*uisc2023.org:8000','https://*uisc2023.org:8000']
