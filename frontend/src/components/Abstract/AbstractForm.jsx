@@ -153,7 +153,9 @@ const AbstractForm = () => {
               onChange={formik.handleChange}
               value={formik.values.presentation_type}
             >
-              <option value=""></option>
+              <option hidden value={""}>
+                Select Presentation type
+              </option>
               <option value="oral">Live Oral Presentation</option>
               <option value="poster">Poster Presentation</option>
               <option value="virtual">Live Virtual Presentation</option>
@@ -172,6 +174,9 @@ const AbstractForm = () => {
               onChange={formik.handleChange}
               value={formik.values.research_area}
             >
+              <option hidden value={""}>
+                Choose Research area
+              </option>
               <option value="Medicine">
                 Medicinal plants / Drug development
               </option>
