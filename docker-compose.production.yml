@@ -8,6 +8,8 @@ services:
     volumes:
       - ./backend:/backend
       - /static:/static
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - /tmp/acme_challenge:/tmp/acme_challenge
     command: >
       sh -c "
         python ./manage.py migrate  &&
@@ -68,11 +70,13 @@ services:
       - backend
 
   nginx:
-    build: 
+    build:
       context: ./nginx/
+      dockerfile: Dockerfile
     ports:
       - 80:80
       - 8000:8000
+      - 443:443
     depends_on:
       - backend
       - frontend
@@ -80,6 +84,8 @@ services:
       - ./backend:/backend
       - ./nginx:/etc/nginx/conf.d
       - /static:/static
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - /tmp/acme_challenge:/tmp/acme_challenge
 
 volumes:
   pgdata: {}
