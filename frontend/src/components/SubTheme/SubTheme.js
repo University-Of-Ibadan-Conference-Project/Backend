@@ -10,6 +10,7 @@ import security from "./../../assets/conference pictures/science-security.jpg";
 import math from "./../../assets/conference pictures/math-modelling.jpg";
 import medicine from "./../../assets/conference pictures/medicine.jpeg";
 import climate from "./../../assets/conference pictures/climate-change.jpg";
+import informationTechnology from "./../../assets/conference pictures/information-technology.webp";
 
 import "./SubTheme.css";
 const SubTheme = () => {
@@ -31,8 +32,8 @@ const SubTheme = () => {
     },
     {
       id: 4,
-      title: "Energy and Mineral Resources",
-      backgroundImage: minerals,
+      title: "Information technology",
+      backgroundImage: informationTechnology,
     },
     {
       id: 5,
@@ -71,8 +72,8 @@ const SubTheme = () => {
     },
     {
       id: 12,
-      title: "Aquaculture and the Blue Economy",
-      backgroundImage: aquaculture,
+      title: "Energy and Mineral Resources",
+      backgroundImage: minerals,
     },
   ];
   return (
