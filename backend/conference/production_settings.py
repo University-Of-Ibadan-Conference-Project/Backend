@@ -16,6 +16,18 @@ CSRF_TRUSTED_ORIGINS = [
     'https://*uisc2023.org:8000'
 ]
 
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+# Extra lookup directories for collectstatic to find static files
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "staticfiles"),
+)
+
+# STATIC FILE STORAGE
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+
 # AWS SETTINGS
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
