@@ -57,5 +57,3 @@ class ClearanceFile(models.Model):
 
     def __str__(self):
         return self.email
-
-#i fixed indentation issues here

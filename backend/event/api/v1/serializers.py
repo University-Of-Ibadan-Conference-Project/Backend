@@ -50,6 +50,7 @@ class AbstarctSerializer(serializers.ModelSerializer):
         ]
 
         read_only_fields = ['coresponding_author']
+        required_fields = fields
 
  
 class ClearanceFileSerializer(serializers.ModelSerializer):   
@@ -58,7 +59,6 @@ class ClearanceFileSerializer(serializers.ModelSerializer):
         fields = [
             'email', 'submission_type', 'evidence_of_payment_file', 'submission_file'
         ]
-
         extra_kwargs = {
             'submission_type': {'required': False}
         }
