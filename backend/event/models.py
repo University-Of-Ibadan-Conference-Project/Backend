@@ -24,10 +24,10 @@ class Abstract(models.Model):
         ('poster', 'Poster'),
     )
 
-    title = models.CharField(max_length=200,null=True)
+    title = models.CharField(max_length=200)
     coresponding_author_fullname = models.CharField(max_length=200)
-    coresponding_author_email = models.EmailField(max_length=140, blank=True)
-    coresponding_author_phone = models.CharField(max_length=140, blank=True)
+    coresponding_author_email = models.EmailField(max_length=140)
+    coresponding_author_phone = models.CharField(max_length=140)
 
     abstract_document_file = models.FileField(upload_to='uploads/')
 
