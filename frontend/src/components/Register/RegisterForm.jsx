@@ -75,54 +75,58 @@ const RegisterForm = () => {
       <form onSubmit={formik.handleSubmit}>
         <div className="section">
           <div className="section-1">
-            <label className="required" htmlFor="name">
+            <label className="required" htmlFor="first_name">
               First Name
             </label>
             <input
               type="text"
               placeholder="First Name"
-              id="name"
+              id="first_name"
               name="first_name"
               onChange={formik.handleChange}
               value={formik.values.first_name}
+              required
             />
           </div>
           <div className="section-2">
-            <label className="required" htmlFor="name">
+            <label className="required" htmlFor="last_name">
               Last Name
             </label>
             <input
               type="text"
               placeholder="Last Name"
-              id="name"
+              id="last_name"
               name="last_name"
               onChange={formik.handleChange}
               value={formik.values.last_name}
+              required
             />
           </div>
         </div>
         <div className="section">
           <div className="section-1">
-            <label className="" htmlFor="name">
+            <label className="" htmlFor="other_names">
               Other Name
             </label>
             <input
               type="text"
               placeholder="Other Name"
-              id="name"
+              id="other_names"
               name="other_names"
               onChange={formik.handleChange}
               value={formik.values.other_names}
             />
           </div>
           <div className="section-2">
-            <label className="required" htmlFor="part">
+            <label className="required" htmlFor="participant_type">
               Participant Type
             </label>
             <select
+              id="participant_type"
               name="participant_type"
               onChange={formik.handleChange}
               value={formik.values.participant_type}
+              required
             >
               <option value="" hidden>
                 Participant Type
@@ -144,6 +148,7 @@ const RegisterForm = () => {
               name="email"
               onChange={formik.handleChange}
               value={formik.values.email}
+              required
             />
           </div>
           <div className="section-2">
@@ -156,47 +161,54 @@ const RegisterForm = () => {
               placeholder="Enter your phone number"
               onChange={formik.handleChange}
               value={formik.values.phone}
+              required
             />
           </div>
         </div>
         <div className="section">
           <div className="section-1">
-            <label className="required" htmlFor="name">
+            <label className="required" htmlFor="affiliate_institution">
               Institution / Organisation
             </label>
             <input
               type="text"
               placeholder="Institution"
+              id="affiliate_institution"
               name="affiliate_institution"
               onChange={formik.handleChange}
               value={formik.values.affiliate_institution}
+              required
             />
           </div>
           <div className="section-2">
-            <label className="required" htmlFor="name">
+            <label className="required" htmlFor="department">
               Department
             </label>
             <input
               type="text"
+              id="department"
               name="department"
               placeholder="Enter your department"
               onChange={formik.handleChange}
               value={formik.values.department}
+              required
             />
           </div>
         </div>
 
         <div className="section">
           <div className="section-1">
-            <label className="required" htmlFor="part">
+            <label className="required" htmlFor="country">
               Country
             </label>
             <select
+              id="country"
               name="country"
               onChange={formik.handleChange}
               value={formik.values.country}
+              required
             >
-              <option hidden={true} defaultValue="">
+              <option hidden value="">
                 Choose country
               </option>
               {countries.map((country) => (
@@ -207,30 +219,34 @@ const RegisterForm = () => {
             </select>
           </div>
           <div className="section-2">
-            <label className="required" htmlFor="name">
+            <label className="required" htmlFor="state">
               State / Province
             </label>
             <input
               type="text"
               placeholder="State / Province"
               className="address"
+              id="state"
               name="state"
               onChange={formik.handleChange}
               value={formik.values.state}
+              required
             />
           </div>
         </div>
         <div className="section">
           <div className="section-1">
-            <label className="required" htmlFor="name">
+            <label className="required" htmlFor="city">
               City
             </label>
             <input
               type="text"
               placeholder="City"
+              className="city"
               name="city"
               onChange={formik.handleChange}
               value={formik.values.city}
+              required
             />
           </div>
         </div>

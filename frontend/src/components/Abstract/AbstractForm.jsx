@@ -86,6 +86,7 @@ const AbstractForm = () => {
               name="title"
               onChange={formik.handleChange}
               value={formik.values.title}
+              required
             />
           </div>
           <div className="section-2">
@@ -99,6 +100,7 @@ const AbstractForm = () => {
               name="coresponding_author_name"
               onChange={formik.handleChange}
               value={formik.values.coresponding_author_name}
+              required
             />
           </div>
         </div>
@@ -114,6 +116,7 @@ const AbstractForm = () => {
               name="coresponding_author_email"
               onChange={formik.handleChange}
               value={formik.values.coresponding_author_email}
+              required
             />
           </div>
           <div className="section-2">
@@ -126,6 +129,7 @@ const AbstractForm = () => {
               placeholder="Enter your phone number"
               onChange={formik.handleChange}
               value={formik.values.coresponding_author_phone}
+              required
             />
           </div>
         </div>
@@ -141,6 +145,7 @@ const AbstractForm = () => {
               placeholder="Institution"
               onChange={formik.handleChange}
               value={formik.values.coresponding_author_institution}
+              required
             />
           </div>
           <div className="section-2">
@@ -152,6 +157,7 @@ const AbstractForm = () => {
               name="presentation_type"
               onChange={formik.handleChange}
               value={formik.values.presentation_type}
+              required
             >
               <option hidden value={""}>
                 Select Presentation type
@@ -165,7 +171,7 @@ const AbstractForm = () => {
 
         <div className="section">
           <div className="section-1">
-            <label className="required" htmlFor="rese">
+            <label className="required" htmlFor="research_area">
               Research Area
             </label>
             <select
@@ -173,6 +179,7 @@ const AbstractForm = () => {
               name="research_area"
               onChange={formik.handleChange}
               value={formik.values.research_area}
+              required
             >
               <option hidden value={""}>
                 Choose Research area
@@ -214,6 +221,7 @@ const AbstractForm = () => {
               name="keywords"
               onChange={formik.handleChange}
               value={formik.values.keywords}
+              required
             />
           </div>
         </div>
@@ -244,6 +252,7 @@ const AbstractForm = () => {
                 setAbstract_document_file(e.target.files[0]);
               }}
               // value={formik.values.abstract_document_file}
+              required
             />
           </div>
         </div>
