@@ -16,7 +16,11 @@ class UserSerializer(serializers.ModelSerializer):
             'affiliate_institution', 'department', 'country', 
             'state', 'city', 'address', 'participant_type',
         ]
-        extra_kwargs = {"password": {"write_only": True, "min_length": 6}}
+
+        extra_kwargs = {
+            "password": {"write_only": True, "min_length": 6},
+            "other_names": {'required': False},
+        }
     
     def create(self, validated_data: dict[str, Any]) -> User:
         """Create a new user."""

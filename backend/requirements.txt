@@ -30,3 +30,4 @@ django-googledrive-storage==1.6.0
 django-storages==1.13.2
 boto3==1.24.56
 Twisted[http2,tls]
+sentry-sdk==1.16.0
