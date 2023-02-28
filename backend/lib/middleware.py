@@ -40,9 +40,9 @@ class RequestLogMiddleware(MiddlewareMixin):
         }
         if request.method in ['PUT', 'POST', 'PATCH']:
             try:
-                log_data['request_body'] = json.loads(str(request.req_body, 'utf-8'))
-            except json.JSONDecodeError:
-                log_data['request_body'] = str(request.req_body, 'utf-8')
+                log_data['request_body'] = json.loads(str(request.req_body))
+            except:
+                log_data['request_body'] = str(request.req_body)
             if response:
                 if response['content-type'] == 'application/json':
                     response_body = response.content
