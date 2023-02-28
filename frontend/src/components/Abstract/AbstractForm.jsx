@@ -1,11 +1,12 @@
 import { useFormik } from "formik";
 import "./../../sass/components/Form/Form.scss";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Spinner from "./../Spinner/Spinner";
 import axios from "axios";
 import Swal from "sweetalert2";
 
 const AbstractForm = () => {
+  const ref = useRef();
   const [abstract_document_file, setAbstract_document_file] = useState({});
   const [submitting, setSubmitting] = useState(false);
 
@@ -53,6 +54,7 @@ const AbstractForm = () => {
             "success"
           );
           formik.resetForm();
+          ref.current.value = "";
           setAbstract_document_file({});
           setSubmitting(false);
         } else {
@@ -247,6 +249,7 @@ const AbstractForm = () => {
               type="file"
               name="abstract_document_file"
               accept=".pdf,.doc,.docx"
+              ref={ref}
               onChange={(e) => {
                 // console.log(e.target.files[0]);
                 setAbstract_document_file(e.target.files[0]);
