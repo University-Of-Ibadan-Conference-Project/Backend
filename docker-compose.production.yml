@@ -12,7 +12,7 @@ services:
       - /tmp/acme_challenge:/tmp/acme_challenge
     command: >
       sh -c "
-        python ./manage.py migrate  &&
+        python ./manage.py migrate --noinput &&
         python ./manage.py collectstatic --noinput &&
         daphne -b 0.0.0.0 -p 8000 conference.asgi:application
       "
@@ -22,7 +22,7 @@ services:
       - ./.env
     ports:
       - 8000
-  
+
   frontend:
     build:
       context: ./frontend/

@@ -3,20 +3,21 @@ from user.models import User
 
 
 class Abstract(models.Model):
-    RESEARCH_AREA_CHOICES = (
-        ('Bio', 'Biotechnology, Bioinformatics and Cheminformatics'),
-        ('Medicine', 'Medicinal plants and drug development'),
-        ('Conservation', 'Conservation and utilization of our natural heritage/ resources'),
-        ('Energy', 'Energy and Mineral Resources'),
-        ('Environmental', 'Environmental Pollution and Remediation'),
-        ('Science', 'Science and security'),
-        ('IT', 'Information technology'),
-        ('Agriculture', 'Agriculture and Food Security'),
-        ('Nanotech', 'Nanotechnology'),
-        ('Computational', 'Computational/Mathematical modeling'),
-        ('Aquaculture', 'Aquaculture and the Blue Economy '),
-        ('Health', 'Climatic change and human health'),
-    )
+    # RESEARCH_AREA_CHOICES = (
+    #     ('Bio', 'Biotechnology, Bioinformatics and Cheminformatics'),
+    #     ('Medicine', 'Medicinal plants and drug development'),
+    #     ('Conservation', 'Conservation and utilization of our natural heritage/ resources'),
+    #     ('Energy', 'Energy and Mineral Resources'),
+    #     ('Environmental', 'Environmental Pollution and Remediation'),
+    #     ('Science', 'Science and security'),
+    #     ('IT', 'Information technology'),
+    #     ('Agriculture', 'Agriculture and Food Security'),
+    #     ('Nanotech', 'Nanotechnology'),
+    #     ('Computational', 'Computational/Mathematical modeling'),
+    #     ('Aquaculture', 'Aquaculture and the Blue Economy '),
+    #     ('Health', 'Climatic change and human health'),
+    #     ('Nanotechnology', 'Nanotechnology'),
+    # )
 
     PRESENTATION_TYPE_CHOICES = (
         ('oral', 'Live oral'),
@@ -32,7 +33,7 @@ class Abstract(models.Model):
     abstract_document_file = models.FileField(upload_to='uploads/')
 
     presentation_type = models.CharField(choices=PRESENTATION_TYPE_CHOICES, max_length=100)
-    research_area = models.CharField(choices=RESEARCH_AREA_CHOICES, max_length=200)
+    research_area = models.CharField(max_length=200)
     keywords= models.JSONField(default=list)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
