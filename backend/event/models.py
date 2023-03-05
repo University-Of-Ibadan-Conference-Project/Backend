@@ -30,7 +30,7 @@ class Abstract(models.Model):
     coresponding_author_email = models.EmailField(max_length=140)
     coresponding_author_phone = models.CharField(max_length=140)
 
-    abstract_document_file = models.FileField(upload_to='uploads/')
+    abstract_document_file = models.FileField(upload_to='uploads/', max_length=500)
 
     presentation_type = models.CharField(choices=PRESENTATION_TYPE_CHOICES, max_length=100)
     research_area = models.CharField(max_length=200)
@@ -52,8 +52,8 @@ class ClearanceFile(models.Model):
     )
     email = models.EmailField(verbose_name="email address")
     submission_type = models.CharField(max_length = 20, choices=SUBMISSION_TYPE)
-    evidence_of_payment_file = models.FileField(upload_to='uploads/')
-    submission_file = models.FileField(upload_to='uploads/', null=True)
+    evidence_of_payment_file = models.FileField(upload_to='uploads/', max_length=500)
+    submission_file = models.FileField(upload_to='uploads/', null=True, max_length=500)
     created_at=models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
