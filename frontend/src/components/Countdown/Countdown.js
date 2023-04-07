@@ -4,7 +4,7 @@ import styles from "./../../sass/components/Countdown.module.scss";
 
 const CountDownTimer = () => {
   const [state, setState] = useState({
-    days: 0,
+    days: "0",
     hours: "00",
     minutes: "00",
     seconds: "00",
@@ -42,10 +42,10 @@ const CountDownTimer = () => {
 
   return (
     <div className={styles.CountDownTimer}>
-      <TimeCard value={days} name={dayString} />
-      <TimeCard value={hours} name={"hours"} />
-      <TimeCard value={minutes} name={"minutes"} />
-      <TimeCard value={seconds} name={"seconds"} />
+      <TimeCard value={days.toString()} name={dayString} />
+      <TimeCard value={hours.toString()} name={"hours"} />
+      <TimeCard value={minutes.toString()} name={"minutes"} />
+      <TimeCard value={seconds.toString()} name={"seconds"} />
     </div>
   );
 };
@@ -60,7 +60,7 @@ const TimeCard = ({ value, name }) => {
 };
 
 TimeCard.propTypes = {
-  value: PropTypes.number,
+  value: PropTypes.string,
   name: PropTypes.string,
 };
 

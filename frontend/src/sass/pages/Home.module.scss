@@ -176,7 +176,7 @@
 .Speakers {
   margin-top: 1em;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 1.5em;
 
   @media screen and (max-width: 768px) {
@@ -193,13 +193,25 @@
     padding: 0.5em;
     padding-bottom: 1em;
     text-align: center;
+    position: relative;
+
+    img {
+      height: 350px;
+      width: 100%;
+      object-fit: cover;
+      object-position: 50% 10%;
+
+      @media screen and (max-width: 425px) {
+        height: 300px;
+      }
+    }
 
     a {
       text-decoration: none;
     }
 
     h5 {
-      font-weight: 400;
+      font-weight: 500;
       // font-family: poppins, sans-serif;
       font-size: 16px;
       color: #ffffff;
@@ -216,6 +228,18 @@
       font-size: 14px;
       font-weight: 700;
       // font-family: poppins, sans-serif;
+    }
+
+    h6 {
+      position: absolute;
+      top: 325px;
+      right: 0;
+      background-color: #0e2431;
+      padding: 0.15em 0.5em 0;
+
+      @media screen and (max-width: 425px) {
+        top: 280px;
+      }
     }
   }
 }
