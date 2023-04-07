@@ -3,6 +3,14 @@ import styles from "./../sass/pages/Home.module.scss";
 import PropTypes from "prop-types";
 import SubTheme from "../components/SubTheme/SubTheme";
 
+import speaker1 from "./../assets/speakers/_3.JPG";
+import speaker2 from "./../assets/speakers/_2.PNG";
+import speaker3 from "./../assets/speakers/_1.PNG";
+import speaker4 from "./../assets/speakers/_4.JPG";
+import speaker5 from "./../assets/speakers/_5.JPG";
+import speaker6 from "./../assets/speakers/_6.JPG";
+import speaker7 from "./../assets/speakers/_7.JPG";
+
 const Home = () => {
   return (
     <>
@@ -59,19 +67,49 @@ const Home = () => {
         </p>
       </div>
 
-      {/* <div className={styles.HomeInfo}>
+      <div className={styles.HomeInfo}>
         <h2>SPEAKERS</h2>
         <div className={styles.Speakers}>
-          <KeynoteSpeaker name="Full Name" isKeyNoteSpeaker={true} />
-          <KeynoteSpeaker name="Full Name" isKeyNoteSpeaker={true} />
-          <KeynoteSpeaker isKeyNoteSpeaker={false} name="Full Name" />
-          <KeynoteSpeaker isKeyNoteSpeaker={false} name="Full Name" />
-          <KeynoteSpeaker isKeyNoteSpeaker={false} name="Full Name" />
-          <KeynoteSpeaker isKeyNoteSpeaker={false} name="Full Name" />
-          <KeynoteSpeaker isKeyNoteSpeaker={false} name="Full Name" />
-          <KeynoteSpeaker isKeyNoteSpeaker={false} name="Full Name" />
+          <KeynoteSpeaker
+            name="Prof. Ekanem Ikpi Braide"
+            dp={speaker1}
+            status={"FAS"}
+            isKeyNoteSpeaker={true}
+          />
+          <KeynoteSpeaker
+            name="Prof. Dahud Kehinde Sangodoyin"
+            dp={speaker2}
+            isKeyNoteSpeaker={true}
+          />
+          <br />
+          <KeynoteSpeaker
+            isKeyNoteSpeaker={false}
+            dp={speaker4}
+            name="Prof. Dr. Axel Klein"
+          />
+          <KeynoteSpeaker
+            isKeyNoteSpeaker={false}
+            dp={speaker5}
+            name="Prof. Oluwatoyin A. Odeku"
+          />
+          <KeynoteSpeaker
+            isKeyNoteSpeaker={false}
+            dp={speaker6}
+            name="Dr. Omololu Akin-Ojo"
+          />
+          <KeynoteSpeaker
+            isKeyNoteSpeaker={false}
+            dp={speaker3}
+            name="Prof. Ebenezer Olatunde Farombi"
+            status={"PhD (Ibadan), FRSC, ATS, FAS, FAAS, FNSBMB, FAMedS"}
+          />
+          <KeynoteSpeaker
+            isKeyNoteSpeaker={false}
+            dp={speaker7}
+            name="Prof. Johnson Olaleru"
+          />
         </div>
-      </div> */}
+      </div>
 
       {/* Event subtheme */}
 
@@ -80,16 +118,17 @@ const Home = () => {
   );
 };
 
-const KeynoteSpeaker = ({ name, isKeyNoteSpeaker }) => {
+const KeynoteSpeaker = ({ dp, name, isKeyNoteSpeaker, status }) => {
   return (
     <div className={styles.Speaker}>
+      <img src={dp} alt={name} />
       <a href="https://www.google.com" target={"_blank"} rel="noreferrer">
         <h5>{name}</h5>
+        <span style={{ fontWeight: "300" }}>
+          <i>{status}</i>
+        </span>
         <h6>
-          <span>
-            {isKeyNoteSpeaker ? "KEYNOTE" : "PLENARY"} SPEAKER
-            {/* <strong></strong> */}
-          </span>
+          <span>{isKeyNoteSpeaker ? "KEYNOTE" : "PLENARY"} SPEAKER</span>
         </h6>
       </a>
     </div>
