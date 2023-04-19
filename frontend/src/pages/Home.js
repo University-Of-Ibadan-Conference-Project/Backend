@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 import SubTheme from "../components/SubTheme/SubTheme";
 
 import speaker1 from "./../assets/speakers/_3.JPG";
-import speaker2 from "./../assets/speakers/_2.PNG";
+import speaker2 from "./../assets/speakers/_2.jpeg";
 import speaker3 from "./../assets/speakers/_1.PNG";
 import speaker4 from "./../assets/speakers/_4.JPG";
 import speaker5 from "./../assets/speakers/_5.JPG";
 import speaker6 from "./../assets/speakers/_6.JPG";
-import speaker7 from "./../assets/speakers/_7.JPG";
+import speaker7 from "./../assets/speakers/_7.jpeg";
 
 const Home = () => {
   return (
