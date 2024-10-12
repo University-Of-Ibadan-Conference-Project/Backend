@@ -11,6 +11,7 @@ import speaker5 from "./../assets/speakers/_5.JPG";
 import speaker6 from "./../assets/speakers/_6.JPG";
 import speaker7 from "./../assets/speakers/_7.jpeg";
 
+
 const Home = () => {
   return (
     <>
