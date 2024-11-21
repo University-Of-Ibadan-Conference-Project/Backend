@@ -1,12 +1,10 @@
 import logging
 from django.core.mail import send_mail
-from conference.celery import CELERY_APP
 from django.conf import settings
 
 Logger = logging.getLogger()
 
 
-@CELERY_APP.task(name='send_mail_task')
 def send_mail_task(
         subject: str, 
         recipients: list[str], 

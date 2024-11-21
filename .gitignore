@@ -131,3 +131,4 @@ staticfiles/*
 static/*
 uploads/*
 **static**
+**node_modules**
