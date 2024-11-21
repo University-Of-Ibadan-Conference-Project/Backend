@@ -41,7 +41,7 @@ class EmailManager:
             except TemplateDoesNotExist as error:
                 raise EmailManagerError from error
 
-        send_mail_task.delay(
+        send_mail_task(
             subject=subject, 
             recipients=recipients,
             html_message=html_message,
