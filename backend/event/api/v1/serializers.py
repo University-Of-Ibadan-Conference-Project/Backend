@@ -1,6 +1,6 @@
 from typing import Any
 from rest_framework import serializers
-from event.models import Abstract, ClearanceFile, PaymentReceipt, UserEvent
+from event.models import Abstract, ClearanceFile, PaymentReceipt, UserContactRequest, UserEvent
 
 
 class PyamentReceiptSerializer(serializers.ModelSerializer):
@@ -107,3 +107,11 @@ class UserEventSerializer(serializers.ModelSerializer):
         receipt_data = validated_data.pop('receipt')
         validated_data['receipt'] = PaymentReceipt.objects.create(**receipt_data)
         return super().create(validated_data)
+
+
+
+class ContactUsSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = UserContactRequest
+        fields =  ['full_name', 'email', 'message', 'attachment']
