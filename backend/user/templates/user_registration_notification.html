@@ -1,28 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
 {% block title %}
 User Registration
 {% endblock title %}
 
-
-
 {% block content %}
 <div class="card w-100">
     <div class="card-body">
-      <p class="card-text">
-            Hi, {{user.first_name|title}} {{user.last_name|title}} Thank you for signing up for the <i>THE 5th INTERNATIONAL CONFERENCE ON SCIENTIFIC RESEARCH IN NIGERIA</i>. We are excited to have you join us and are looking forward to an exciting and informative event.
-        We noticed that your registration has not been verified.
-       </p>
-       <p class="card-text"> 
-         In order to finalize your registration and seure your spot at the event, we need to verify your information. Please click the link to verify your registration <a href="{{link}}">here</a>. 
-        We look forward to your participation at the event!
-           
-        Best regards, 
-        UI NACOS Team.
-
-      </p>
+        <p class="card-text">
+            Hi <strong>{{ user.first_name|title }} {{ user.last_name|title }}</strong>,  
+            thank you for signing up for the 
+            <i>6th International Conference on Scientific Research in Nigeria</i>. 
+            We are thrilled to have you join us and look forward to an exciting and informative event.
+        </p>
+        <p class="card-text">
+            We are currently verifying your payment. You will receive an email notification once the verification is complete.
+        </p>
     </div>
-  </div>
+</div>
 {% endblock content %}

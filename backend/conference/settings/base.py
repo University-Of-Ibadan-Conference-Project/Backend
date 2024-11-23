@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-    'drf_yasg',
 
     # custom apps
     'user',
@@ -60,7 +59,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'lib.middleware.RequestLogMiddleware',
 ]
 
 ROOT_URLCONF = 'conference.urls'
@@ -126,7 +124,8 @@ REST_FRAMEWORK = {
     ],
 }
 
-
+# SHOW_API_DOCS
+SHOW_API_DOCS = os.getenv('SHOW_API_DOCS', 'False').lower() == 'true'
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
         'Token': {
@@ -136,6 +135,9 @@ SWAGGER_SETTINGS = {
         }
     }
 }
+
+if SHOW_API_DOCS:
+    INSTALLED_APPS += ['drf_yasg']
 
 AUTH_USER_MODEL = "user.User" 
 

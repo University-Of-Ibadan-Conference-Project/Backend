@@ -1,20 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
 {% block title %}
 Abstract Submission
 {% endblock title %}
-
-
 
 {% block content %}
 <div class="card w-100">
     <div class="card-body">
       <p class="card-text">
-        Your abstract titled {{abstract_title}} has been successfully uploaded for the
-        <i>THE 5th INTERNATIONAL CONFERENCE ON SCIENTIFIC RESEARCH IN NIGERIA</i> 
-      </p>
+          Hi <strong>{{ user.first_name|title }} {{ user.last_name|title }}</strong>,  
+          Your abstract titled <strong>{{ abstract_title }}</strong> has been successfully uploaded for the
+          <i>6th International Conference on Scientific Research in Nigeria.</i> 
+        </p>
+        <p class="card-text">
+            We are currently verifying your payment. You will receive an email notification as soon as the verification is complete.
+        </p>
     </div>
-  </div>
+</div>
 {% endblock content %}
