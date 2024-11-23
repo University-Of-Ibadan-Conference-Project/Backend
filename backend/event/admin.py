@@ -3,7 +3,6 @@ from event.models import *
 from user.models import *
 
 admin.site.register(UserEvent)
-admin.site.register(EventPaymentLog)
 
 
 @admin.register(Abstract)
@@ -14,7 +13,7 @@ class AbstractAdmin(admin.ModelAdmin):
 
 @admin.register(ClearanceFile)
 class ClearanceFileAdmin(admin.ModelAdmin):
-    list_display = ('email', 'submission_type', 'created_at')
+    list_display = ('submission_type', 'created_at')
     date_hierarchy = 'created_at'
 
 @admin.register(User)

@@ -1,30 +1,39 @@
 from django.db import models
+from event.bank_choices import BANK_CHOICES
 from user.models import User
 
 
-class Abstract(models.Model):
-    # RESEARCH_AREA_CHOICES = (
-    #     ('Bio', 'Biotechnology, Bioinformatics and Cheminformatics'),
-    #     ('Medicine', 'Medicinal plants and drug development'),
-    #     ('Conservation', 'Conservation and utilization of our natural heritage/ resources'),
-    #     ('Energy', 'Energy and Mineral Resources'),
-    #     ('Environmental', 'Environmental Pollution and Remediation'),
-    #     ('Science', 'Science and security'),
-    #     ('IT', 'Information technology'),
-    #     ('Agriculture', 'Agriculture and Food Security'),
-    #     ('Nanotech', 'Nanotechnology'),
-    #     ('Computational', 'Computational/Mathematical modeling'),
-    #     ('Aquaculture', 'Aquaculture and the Blue Economy '),
-    #     ('Health', 'Climatic change and human health'),
-    #     ('Nanotechnology', 'Nanotechnology'),
-    # )
+class UserEvent(models.Model):
 
+    PARTICIPANT_TYPE_CHOICE = (
+        ('Physical', 'Physical'),
+        ('Virtual', 'Virtual'),
+    )
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    affiliate_institution =  models.CharField(blank=True, max_length=300)
+    department = models.CharField(blank=True, max_length=300)
+    country = models.CharField(blank=True, max_length=300)
+    state =  models.CharField(blank=True, max_length=300)
+    city =  models.CharField(blank=True, max_length=300)
+    address =  models.CharField(blank=True, max_length=300)
+    participant_type =  models.CharField(choices=PARTICIPANT_TYPE_CHOICE, max_length=300)
+    receipt = models.OneToOneField(to='event.paymentreceipt', on_delete=models.CASCADE)
+    date_created = models.DateTimeField(auto_now_add=True, editable=False)
+    date_updated = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user
+
+
+class Abstract(models.Model):
     PRESENTATION_TYPE_CHOICES = (
         ('oral', 'Live oral'),
         ('virtual', 'Live Virtual'),
         ('poster', 'Poster'),
     )
 
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     coresponding_author_fullname = models.CharField(max_length=200)
     coresponding_author_email = models.EmailField(max_length=140)
@@ -37,6 +46,7 @@ class Abstract(models.Model):
     keywords= models.JSONField(default=list)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
+    receipt = models.OneToOneField(to='event.paymentreceipt', on_delete=models.CASCADE)
      
     def __str__(self):
         return f"{self.coresponding_author_fullname} Abstract"
@@ -48,13 +58,54 @@ class ClearanceFile(models.Model):
         ('Manuscript', 'Manuscript'),
         ('Exhibition', 'Exhibition'),
         ('Advert', 'Advert'),
-        ('Registration', 'Registration'),
     )
-    email = models.EmailField(verbose_name="email address")
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     submission_type = models.CharField(max_length = 20, choices=SUBMISSION_TYPE)
-    evidence_of_payment_file = models.FileField(upload_to='uploads/', max_length=500)
     submission_file = models.FileField(upload_to='uploads/', null=True, max_length=500)
+    receipt = models.OneToOneField(to='event.paymentreceipt', on_delete=models.CASCADE)
     created_at=models.DateTimeField(auto_now_add=True)
 
+
+class PaymentReceipt(models.Model):
+    STATUS_AWAITING_VERIFICATION = 0
+    STATUS_VERIFIED = 1
+    STATUS_FAILED_VERIFICATION = 2
+
+    STATUS_CHOICES = (
+        (STATUS_AWAITING_VERIFICATION, 'Pending verification'),
+        (STATUS_VERIFIED, 'Verified'),
+        (STATUS_FAILED_VERIFICATION, 'Failed verification'),
+    )
+
+    status = models.IntegerField(
+        choices=STATUS_CHOICES,
+        default=STATUS_AWAITING_VERIFICATION
+    )
+    payment_proff = models.FileField(upload_to='uploads/receipts/')
+    failure_reason = models.CharField(max_length=200, blank=True)
+    date_created = models.DateTimeField(auto_now_add=True, editable=False)
+    date_updated = models.DateTimeField(auto_now=True, editable=False)
+
     def __str__(self):
-        return self.email
+        return f"Receipt #{self.id} - Status: {self.get_status_display()}"
+
+
+class ReceiptVerificationLogs(models.Model):
+    verified_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="verification_logs")
+    transaction_id = models.CharField(max_length=200)
+    payment_bank = models.CharField(max_length=200, choices=BANK_CHOICES)
+    receipt = models.OneToOneField(PaymentReceipt, on_delete=models.CASCADE, related_name="verification_log")
+    date_created = models.DateTimeField(auto_now_add=True, editable=False)
+
+    class Meta:
+        ordering = ['-date_created']
+        constraints = [
+            models.UniqueConstraint(
+                fields=['transaction_id', 'payment_bank'],
+                name='transaction_id_unique_with_payment_bank',
+            )
+        ]
+
+    def __str__(self):
+        return f"Log for Receipt #{self.receipt.id} by {self.verified_by.username}"
