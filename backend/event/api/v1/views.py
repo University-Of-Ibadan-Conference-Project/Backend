@@ -1,7 +1,8 @@
 from rest_framework import generics
 from rest_framework.parsers import FormParser, MultiPartParser
+from event.models import UserContactRequest
 from user.models import User
-from event.api.v1.serializers import AbstarctSerializer, ClearanceFileSerializer, UserEventSerializer
+from event.api.v1.serializers import AbstarctSerializer, ClearanceFileSerializer, ContactUsSerializer, UserEventSerializer
 from lib.mail import EmailManager
 from django.utils import timezone
 from rest_framework import generics, authentication, permissions
@@ -91,4 +92,37 @@ class ClearanceFileView(generics.ListCreateAPIView):
                 'event_type': f'{record.get_submission_type_display()} Submission'
             },
             template_name='admin_verification_request.html',
+        )
+
+
+class ContactUsView(generics.CreateAPIView):
+    permission_classes = [permissions.AllowAny]
+    serializer_class = ContactUsSerializer
+    parser_classes = (FormParser, MultiPartParser)
+
+    def perform_create(self, serializer: ContactUsSerializer):
+        user_contact_request: UserContactRequest = serializer.save()
+
+        EmailManager.send_mail(
+            subject=f'Contact us request received.',
+            recipients=[user_contact_request.email],
+            context={
+                'user_full_name': user_contact_request.full_name,
+                'user_email': user_contact_request.email,
+                'timestamp': user_contact_request.date_created,
+            },
+            template_name='contact_us_email_recieved.html',
+        )
+
+        admin_emails = list(User.objects.filter(is_staff=True, is_active=True).values_list('email', flat=True))
+        EmailManager.send_mail(
+            subject=f'Action needed to resolve user inquiry',
+            recipients=admin_emails,
+            context={
+                'user_full_name': user_contact_request.full_name,
+                'user_email': user_contact_request.email,
+                # TODO (Joseph Miracle) # please update the link field when you work on the admin
+                'admin_dashboard_contact_us_link': ''
+            },
+            template_name='admin_contact_us_notification.html',
         )

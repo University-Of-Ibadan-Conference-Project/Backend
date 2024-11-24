@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Inquiry Confirmation
+{% endblock title %}
+
+{% block style %}
+<style>
+    .card {
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin: 20px auto;
+        max-width: 600px;
+    }
+    .card-body {
+        padding: 2rem;
+    }
+    .card-text {
+        color: #333333;
+        line-height: 1.6;
+        margin-bottom: 1.2rem;
+    }
+    .highlight {
+        color: #007bff;
+        font-weight: 500;
+    }
+    .timestamp {
+        color: #666666;
+        font-size: 0.9rem;
+        font-style: italic;
+        margin-top: 1.5rem;
+        border-top: 1px solid #eee;
+        padding-top: 1rem;
+    }
+    .conference-name {
+        font-style: italic;
+        color: #555555;
+    }
+    .contact-info {
+        background-color: #f8f9fa;
+        padding: 1rem;
+        border-radius: 6px;
+        margin-top: 1.5rem;
+    }
+</style>
+{% endblock style %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <p class="card-text">
+            Dear <span class="highlight">{{ user_full_name }}</span>,
+        </p>
+        
+        <p class="card-text">
+            Thank you for contacting the organizing committee of the 
+            <span class="conference-name">6th International Conference on Scientific Research in Nigeria</span>. 
+            We have successfully received your inquiry.
+        </p>
+        
+        <p class="card-text">
+            Our team will review your message and respond to you shortly at your provided email address: 
+            <span class="highlight">{{ user_email }}</span>.
+        </p>
+        
+        <p class="card-text">
+            If your inquiry requires immediate attention or if you need to provide additional information, 
+            please don't hesitate to send another message through our contact form.
+        </p>
+
+        <div class="contact-info">
+            <p class="card-text" style="margin-bottom: 0;">
+                <strong>Important Note:</strong> Please keep this confirmation for your records. 
+                If you need to follow up on your inquiry, you may reference the timestamp of your submission.
+            </p>
+        </div>
+
+        <p class="timestamp">
+            Inquiry received on: {{ timestamp }}
+        </p>
+    </div>
+</div>
+{% endblock content %}

@@ -52,7 +52,6 @@ class Abstract(models.Model):
         return f"{self.coresponding_author_fullname} Abstract"
 
 
-
 class ClearanceFile(models.Model):
     SUBMISSION_TYPE = (
         ('Manuscript', 'Manuscript'),
@@ -109,3 +108,17 @@ class ReceiptVerificationLogs(models.Model):
 
     def __str__(self):
         return f"Log for Receipt #{self.receipt.id} by {self.verified_by.username}"
+
+
+
+class UserContactRequest(models.Model):
+    """Model represent data collected from contact us page."""
+
+    full_name = models.TextField()
+    email = models.EmailField()
+    message = models.TextField()
+    attachment = models.FileField(upload_to='uploads/contactus/', null=True)
+    resolved = models.BooleanField(default=False)
+    resolved_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    date_created = models.DateTimeField(auto_now_add=True, editable=False)
+    resolution_date = models.DateTimeField(null=True)
