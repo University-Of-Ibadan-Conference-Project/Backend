@@ -14,4 +14,16 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+JAZZMIN_SETTINGS = {
+    
+    "site_title": "Fassa 2025",
+    "site_header": "Fassa 2025 header",
+    "site_brand": "Fassa 2025 Conference",
+    "hide_apps": ["authtoken"],
+    "hide_models": ["auth.Group"],
+    "welcome_sign": "Fassa 2025 Conference Admin Dashboard",
+    "login_logo": "icons/uisc.png",
+    "copyright": "Fassa 2025 Conference",
+}
+
 

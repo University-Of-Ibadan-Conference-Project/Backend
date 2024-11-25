@@ -32,6 +32,7 @@ loaded = load_dotenv(
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -160,6 +161,11 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / "staticfiles"
 REACT_APP_BUILD_PATH = FRONTEND_PROJECT_DIR / 'build/static'
 STATICFILES_DIRS = [REACT_APP_BUILD_PATH]
+
+# Media
+
+MEDIA_URL = '/backend/'
+MEDIA_ROOT = BASE_DIR
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
