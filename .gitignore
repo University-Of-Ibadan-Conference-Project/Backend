@@ -15,6 +15,9 @@ downloads/
 eggs/
 .eggs/
 lib64/
+lib64
+bin/
+lib/
 parts/
 sdist/
 var/
@@ -132,3 +135,6 @@ static/*
 uploads/*
 **static**
 **node_modules**
+pyvenv.cfg
+backend/uploads/
+
