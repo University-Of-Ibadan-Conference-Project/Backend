@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import CommonHero from "../components/CommonHero/CommonHero";
 
 const RegistrationGuide = () => {
@@ -23,18 +23,10 @@ const RegistrationGuide = () => {
           Registration Guideline
         </h2>
         <p>
-          The registration fee covering the cost of conference materials, lunch
-          and tea breaks is N25, 000.00. The registration for international
-          paticipant is $100. The registration fee for students who are not
-          academic staff and with identity cards is N15,000.00.
+        The registration fee covering the cost of conference materials, and tea breaks is N40, 000.00, and for international participants is €100. The registration fee for students who are not academic staff and with identity cards is N20, 000.00. 
         </p>
         <p>
-          The registration fee for international student is $50. Please pay the
-          registration fee to the conference account ( Name of account:
-          University of Ibadan, Faculty of Science Alumni Association, Bank:
-          Union Bank, Account Number: 0109363898) and upload the receipt of your
-          payment <Link to="/register">here</Link>. Only registered participants
-          and invited guests will be allowed into the conference venue.
+        Only registered participants and guests will be allowed into the conference venue. Besides, only one presentation is allowed per registration. 
         </p>
       </div>
     </>

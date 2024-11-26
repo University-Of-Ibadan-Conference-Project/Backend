@@ -7,19 +7,9 @@ import {
 import { Link } from "react-router-dom";
 import styles from "./../../sass/components/Footer.module.scss";
 import logo from "./../../assets/img/v2-logo.png";
-import { useEffect, useState } from "react";
-import countapi from "countapi-js";
-// import Subscribe from "../Subscribe/Subscribe";
 
 export default function Footer() {
-  const [visitorsCount, setVisitorsCount] = useState(0);
-
-  useEffect(() => {
-    countapi.visits().then((result) => {
-      setVisitorsCount(result.value);
-    });
-  }, []);
-
+  
   return (
     <>
       {/* <Subscribe /> */}
@@ -103,7 +93,6 @@ export default function Footer() {
                 />
               </a>
             </div>
-            <span>Visits: {visitorsCount}</span>
           </div>
         </div>
         <span className={styles.FooterCopyRight}>

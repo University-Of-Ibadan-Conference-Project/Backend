@@ -25,24 +25,25 @@ export default function OrderOfProgram() {
         </h2>
 
         <Dropdown
-          date={"Tuesday 2nd May, 2023"}
+          date={"Tuesday 6th May, 2025"}
           title="Arrival and Registration of participants"
         ></Dropdown>
-        <Dropdown date={"Wednesday 3rd May, 2023."}>
+        <Dropdown date={"Wednesday 7th May, 2025."}>
           <ul>
             <li>Opening ceremony</li>
             <li>Plenary and Technical Sessions</li>
             <li>Conference Cocktail</li>
           </ul>
         </Dropdown>
-        <Dropdown date={"Thursday 4th May, 2023."}>
+        <Dropdown date={"Thursday 8th May, 2025."}>
           <ul>
             <li>Plenary and Technical Sessions</li>
+            <li>Dinner</li>
           </ul>
         </Dropdown>
-        <Dropdown date={"Friday 5th May, 2023"}>
+        <Dropdown date={"Friday 9th May, 2025"}>
           <ul>
-            <li>Plenary and Technical Sessions</li>
+            <li>Technical and Plenary Sessions</li>
             <li>Awards and Closing</li>
             <li>Departure</li>
           </ul>

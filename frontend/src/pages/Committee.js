@@ -3,8 +3,9 @@ import conferenceBg from "../assets/img/conference-bg.jpg";
 import PropTypes from "prop-types";
 
 import VCPic from "./../assets/profileImages/profile-3.jpeg";
-import ChairmanPic from "./../assets/profileImages/profile-1.jpeg";
-import DeanPic from "./../assets/profileImages/profile-2.jpeg";
+import ChairmanPic from "./../assets/profileImages/avatar.jpg";
+import DeanPic from "./../assets/profileImages/profile-1.jpeg";
+// import avatar from "./../assets/profileImages/avatar.jpg";
 
 import styles from "./../sass/pages/Committee.module.scss";
 
@@ -23,51 +24,35 @@ export default function Committee() {
         </h2>
         <div className={styles.CommitteeList}>
           <div>
-            <p>Professor A. A. Bakare, FAS</p>
+            <p>Professor O. O. Sonibare</p>
             <p>Dean, Faculty of Science</p>
           </div>
           <div>
-            <p>Professor O. O. Sonibare</p>
+            <p>Professor S. T. Ogunbanwo</p>
             <p>Chairman</p>
           </div>
           <div>
-            <p>Professor S. T. Ogunbanwo</p>
+            <p>Professor. O. C. Adeigbe</p>
             <p>Co-Chairman</p>
           </div>
           <div>
-            <p>Professor G. A. Adewuyi</p>
-            <p>Managing Editor (Journal of Science Research)</p>
+            <p>Dr. B. O. Onasanya</p>
+            <p>Conference Secretary</p>
           </div>
           <div>
-            <p>Professor A. S. Olatunji</p>
-            <p>Secretary, LOC</p>
+            <p>Professor. F.C. Ukpokolo</p>
+            <p>Member</p>
           </div>
           <div>
             <p>Dr. A. O. Adeyi</p>
             <p>Member</p>
           </div>
           <div>
-            <p>Dr. H.P. Adeyemo</p>
+            <p>Dr. Olutoyin A. Fashae</p>
             <p>Member</p>
           </div>
           <div>
-            <p>Dr. Temitope E. Olalekan</p>
-            <p>Member</p>
-          </div>
-          <div>
-            <p>Dr. Seun Otekunrin</p>
-            <p>Member</p>
-          </div>
-          <div>
-            <p>Dr. B.O. Ololajulo</p>
-            <p>Member</p>
-          </div>
-          <div>
-            <p>Dr. Aderonke B. Sakpere</p>
-            <p>Member</p>
-          </div>
-          <div>
-            <p>Dr. I. A. Otunla</p>
+            <p>Dr. Oluwayemisi Alaba</p>
             <p>Member</p>
           </div>
           <div>
@@ -75,23 +60,43 @@ export default function Committee() {
             <p>Member</p>
           </div>
           <div>
+            <p>Dr. Felicia F. Ajayi </p>
+            <p>Member</p>
+          </div>
+          <div>
+            <p>Dr. Nancy C. Wood</p>
+            <p>Member</p>
+          </div>
+          <div>
+            <p>Dr. N.D. Ojo</p>
+            <p>Member</p>
+          </div>
+          <div>
+            <p>Dr. T. T. Ogunseye</p>
+            <p>Member</p>
+          </div>
+          <div>
             <p>Dr. B. I. Ayinla</p>
             <p>Member</p>
           </div>
           <div>
-            <p>Mr. A. M. Adejumo</p>
+            <p>Dr. O. O. Popoola</p>
             <p>Member</p>
           </div>
           <div>
-            <p>Mr. S.O. Alao</p>
+            <p>M. A. Adejumo</p>
             <p>Member</p>
           </div>
           <div>
-            <p>Mr. I. O.I. Akinwale</p>
+            <p>I. O. Akinwale</p>
             <p>Member</p>
           </div>
           <div>
-            <p>Mr. O. Olomiloro</p>
+            <p>S.O. Alao</p>
+            <p>Member</p>
+          </div>
+          <div>
+            <p>Olaitan Odedele</p>
             <p>Faculty Officer</p>
           </div>
         </div>
@@ -108,12 +113,12 @@ export default function Committee() {
         <div className={styles.CommitteeCard}>
           <Speaker
             image={DeanPic}
-            name={"Prof. A.A. Bakare, FAS "}
+            name={"Prof. O.O. Sonibare "}
             title={"(Dean, Faculty of Science, University of Ibadan)"}
           />
           <Speaker
             image={ChairmanPic}
-            name={"Prof. O.O. Sonibare "}
+            name={"Prof S.T Ogunbanwo"}
             title="(Chairman, Conference Organizing Committee)"
           />
         </div>

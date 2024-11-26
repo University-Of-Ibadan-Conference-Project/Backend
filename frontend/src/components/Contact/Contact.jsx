@@ -7,8 +7,14 @@ const Contact = () => {
       <div className="body">
         <h2>Get in touch</h2>
         <div className="mail">
-          <h2>Mail</h2>
-          <h3>uisc2023@gmail.com</h3>
+          <h2>All inquiries about the conference should be directed to the Secretary of the Local Organising Committee</h2>
+          <br />
+
+          <h2>Telephones: +2348035566361</h2>
+
+          <br />
+        
+          <h2>E-mails: faculty_science@ui.edu.ng</h2>
         </div>
         <div className="feedback">
           <p>Any feedback is appreciated</p>
