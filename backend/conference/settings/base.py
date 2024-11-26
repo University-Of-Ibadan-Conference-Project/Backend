@@ -32,6 +32,7 @@ loaded = load_dotenv(
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -161,6 +162,11 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 REACT_APP_BUILD_PATH = FRONTEND_PROJECT_DIR / 'build/static'
 STATICFILES_DIRS = [REACT_APP_BUILD_PATH]
 
+# Media
+
+MEDIA_URL = '/backend/'
+MEDIA_ROOT = BASE_DIR
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -173,3 +179,14 @@ EMAIL_PORT = os.getenv("EMAIL_PORT", 587)
 EMAIL_HOST = os.getenv("EMAIL_HOST", "smtp.gmail.com")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "111111")
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "info@example.com")
+
+JAZZMIN_SETTINGS = {    
+    "site_title": "Fassa 2025",
+    "site_header": "Fassa 2025 header",
+    "site_brand": "Fassa 2025 Conference",
+    "hide_apps": ["authtoken"],
+    "hide_models": ["auth.Group"],
+    "welcome_sign": "Fassa 2025 Conference Admin Dashboard",
+    "login_logo": "icons/uisc.png",
+    "copyright": "Fassa 2025 Conference",
+}

@@ -9,6 +9,7 @@ from user.api.v1.serializers import SignUpSerializer, UserLoginSerializer, UserS
 from user.models import User
 from django.db import transaction
 from lib.mail import EmailManager
+from lib.utils import get_full_url
 from django.utils import timezone
 from rest_framework.parsers import FormParser, MultiPartParser
 
@@ -29,7 +30,7 @@ class UserSignupView(generics.CreateAPIView):
 
         user_event_serializer  = UserEventSerializer(data=request.data)
         user_event_serializer.is_valid(raise_exception=True)
-        user_event_serializer.save(user=user)
+        user_event = user_event_serializer.save(user=user)
 
         # # send an email notification to user of their successful registrattion
         EmailManager.send_mail(
@@ -49,7 +50,7 @@ class UserSignupView(generics.CreateAPIView):
             context={
                 'user': user,
                 # TODO (Joseph Miracle) # please update the link field once youre done with work on the admin
-                'event_verification_link': '',
+                'event_verification_link': get_full_url(self.request, f"admin/event/paymentreceipt/{user_event.receipt.id}"),
                 'event_type': 'User registration'
             },
             template_name='admin_verification_request.html',
