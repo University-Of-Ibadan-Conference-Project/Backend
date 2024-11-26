@@ -13,7 +13,7 @@ const CountDownTimer = () => {
 
   useEffect(() => {
     let countdown = () => {
-      let date = +new Date("05/02/2023");
+      let date = +new Date("05/06/2025");
       let difference = date - +new Date();
       if (difference < 1) {
         setState((prevState) => ({ ...prevState, timeUp: true }));
@@ -63,5 +63,7 @@ TimeCard.propTypes = {
   value: PropTypes.string,
   name: PropTypes.string,
 };
+
+
 
 export default CountDownTimer;
