@@ -6,7 +6,9 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const AbstractForm = () => {
-  const ref = useRef();
+  const receiptRef = useRef();
+  const abstractDocRef = useRef();
+  const [receipt_file, set_receipt_file] = useState({});
   const [abstract_document_file, setAbstract_document_file] = useState({});
   const [submitting, setSubmitting] = useState(false);
 
@@ -23,12 +25,9 @@ const AbstractForm = () => {
     },
 
     onSubmit: async (values) => {
-      console.log(
-        JSON.stringify({ ...values }, null, 2),
-        abstract_document_file,
-      );
       const requestBody = new FormData();
 
+      requestBody.append("receipt_file", receipt_file);
       requestBody.append("abstract_document_file", abstract_document_file);
       for (const data in values) {
         if (data === "keywords") {
@@ -45,7 +44,12 @@ const AbstractForm = () => {
       try {
         setSubmitting(true);
 
-        let response = await axios.post("/events/abstact/", requestBody);
+        let response = await axios.post("/events/abstact/", requestBody, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Token ${JSON.parse(localStorage.getItem("user"))?.token}`,
+          },
+        });
 
         if (response.status === 201) {
           Swal.fire(
@@ -54,7 +58,8 @@ const AbstractForm = () => {
             "success",
           );
           formik.resetForm();
-          ref.current.value = "";
+          receiptRef.current.value = "";
+          abstractDocRef.current.value = "";
           setAbstract_document_file({});
           setSubmitting(false);
         } else {
@@ -235,27 +240,46 @@ const AbstractForm = () => {
         </div>
         <div className="section">
           <div className="section-1">
-            <label htmlFor="body">Download Abstract template</label>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              className="downloadBtn"
-              href="https://docs.google.com/file/d/1b9z1xpUtixASBguaJtEgTHdhsKUbljNT/edit?usp=docslist_api&filetype=msword"
-            >
-              Click to download template
-            </a>
+            <label className="required" htmlFor="file">
+              Attach the the receipt of your payment
+            </label>
+            <input
+              type="file"
+              name="receipt_file"
+              // Accepts pdf and image files
+              accept=".pdf, .jpg, .jpeg, .png"
+              ref={receiptRef}
+              onChange={(e) => {
+                // console.log(e.target.files[0]);
+                set_receipt_file(e.target.files[0]);
+              }}
+              // value={formik.values.receipt_file}
+              required
+            />
           </div>
           <div className="section-2">
             <label className="required" htmlFor="file">
-              Attach the file of your abstract according to the abstract
-              template (File Size must not be greater than 3MB). The abstract
-              should be in word format ( .docx )
+              <span>
+                {" "}
+                Attach the file of your abstract according to the abstract
+                template (File Size must not be greater than 3MB). The abstract
+                should be in word format ( .docx ){" "}
+              </span>
+
+              <a
+                target="_blank"
+                rel="noreferrer"
+                // className="downloadBtn"
+                href="https://docs.google.com/file/d/1b9z1xpUtixASBguaJtEgTHdhsKUbljNT/edit?usp=docslist_api&filetype=msword"
+              >
+                Click Here to Download Abstract template
+              </a>
             </label>
             <input
               type="file"
               name="abstract_document_file"
               accept=".pdf,.doc,.docx"
-              ref={ref}
+              ref={abstractDocRef}
               onChange={(e) => {
                 // console.log(e.target.files[0]);
                 setAbstract_document_file(e.target.files[0]);

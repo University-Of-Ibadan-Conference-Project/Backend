@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Country } from "country-state-city";
 import Spinner from "./../Spinner/Spinner";
 
@@ -8,6 +8,9 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const RegisterForm = () => {
+  const ref = useRef();
+  const [receipt_file, set_receipt_file] = useState({});
+
   // Country and state initialization state
   const [countries, setCountries] = useState([]);
   const [submitting, setSubmitting] = useState(false);
@@ -26,25 +29,37 @@ const RegisterForm = () => {
       last_name: "",
       other_names: "",
       email: "",
-      password: "",
       phone: "",
-      username: "",
       participant_type: "",
       affiliate_institution: "",
       department: "",
       country: "",
       state: "",
       city: "",
+      password: "uics2025",
     },
 
     onSubmit: async (values) => {
+      console.log(JSON.stringify({ ...values }, null, 2), receipt_file);
+      const requestBody = new FormData();
+
+      requestBody.append("receipt_file", receipt_file);
+      for (const data in values) {
+        if (data === "keywords") {
+          console.log({ ...values[data].split(", ") });
+          requestBody.append(
+            data,
+            JSON.stringify({ ...values[data].split(", ") }),
+          );
+        } else {
+          requestBody.append(data, values[data]);
+        }
+      }
+
       try {
         setSubmitting(true);
 
-        let response = await axios.post("/accounts/signup/", {
-          ...values,
-          password: "uics2023",
-        });
+        let response = await axios.post("/accounts/signup/", requestBody);
 
         if (response.status === 201) {
           Swal.fire(
@@ -52,7 +67,10 @@ const RegisterForm = () => {
             "Kindly check your mail for more information!",
             "success",
           );
+          localStorage.setItem("user", JSON.stringify(response.data));
           formik.resetForm();
+          ref.current.value = "";
+          set_receipt_file({});
           setSubmitting(false);
         } else {
           Swal.fire(
@@ -246,6 +264,24 @@ const RegisterForm = () => {
               name="city"
               onChange={formik.handleChange}
               value={formik.values.city}
+              required
+            />
+          </div>
+          <div className="section-2">
+            <label className="required" htmlFor="file">
+              Attach the the receipt of your payment
+            </label>
+            <input
+              type="file"
+              name="receipt_file"
+              // Accepts pdf and image files
+              accept=".pdf, .jpg, .jpeg, .png"
+              ref={ref}
+              onChange={(e) => {
+                // console.log(e.target.files[0]);
+                set_receipt_file(e.target.files[0]);
+              }}
+              // value={formik.values.receipt_file}
               required
             />
           </div>
