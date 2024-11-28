@@ -20,3 +20,14 @@ class ClearanceFileAdmin(admin.ModelAdmin):
 class UserAdmin(admin.ModelAdmin):
     list_display = ('email', 'first_name', 'last_name', 'created_datetime')
     date_hierarchy = 'created_datetime'
+
+@admin.register(PaymentReceipt)
+class PaymentReceiptAdmin(admin.ModelAdmin):
+    list_display = ('status', 'payment_proff', 'failure_reason', 'date_created')
+    date_hierarchy = 'date_created'
+
+
+@admin.register(UserContactRequest)
+class UserContactRequestAdmin(admin.ModelAdmin):
+    list_display = ('full_name', 'email', 'message', 'attachment', 'resolved', 'resolved_by', 'date_created', 'resolution_date')
+    date_hierarchy ='date_created'

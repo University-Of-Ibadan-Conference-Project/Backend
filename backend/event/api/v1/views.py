@@ -4,6 +4,7 @@ from event.models import UserContactRequest
 from user.models import User
 from event.api.v1.serializers import AbstarctSerializer, ClearanceFileSerializer, ContactUsSerializer, UserEventSerializer
 from lib.mail import EmailManager
+from lib.utils import get_full_url
 from django.utils import timezone
 from rest_framework import generics, authentication, permissions
 
@@ -31,7 +32,7 @@ class AbstractListView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         corresponding_author_email = serializer.validated_data.get('coresponding_author_email')
         abstract_title = serializer.validated_data.get('title')
-        serializer.save(user=self.request.user)
+        abstract = serializer.save(user=self.request.user)
 
         # send email notification to corresponding email  after uploading abstract
         EmailManager.send_mail(
@@ -51,7 +52,7 @@ class AbstractListView(generics.ListCreateAPIView):
             context={
                 'user': self.request.user,
                 # TODO (Joseph Miracle) # please update the link field once youre done with work on the admin
-                'event_verification_link': '',
+                'event_verification_link': get_full_url(self.request, f"admin/event/paymentreceipt/{abstract.receipt.id}/"),
                 'event_type': 'Abstract submission'
             },
             template_name='admin_verification_request.html',
@@ -88,7 +89,7 @@ class ClearanceFileView(generics.ListCreateAPIView):
             context={
                 'user': self.request.user, 
                 # TODO (Joseph Miracle) # please update the link field once youre done with work on the admin
-                'event_verification_link': '',
+                'event_verification_link':  get_full_url(self.request, f"admin/event/paymentreceipt/{record.receipt.id}"),
                 'event_type': f'{record.get_submission_type_display()} Submission'
             },
             template_name='admin_verification_request.html',
@@ -122,7 +123,8 @@ class ContactUsView(generics.CreateAPIView):
                 'user_full_name': user_contact_request.full_name,
                 'user_email': user_contact_request.email,
                 # TODO (Joseph Miracle) # please update the link field when you work on the admin
-                'admin_dashboard_contact_us_link': ''
+                'admin_dashboard_contact_us_link': get_full_url(self.request, f"admin/event/usercontactrequest/{user_contact_request.id}/")
             },
             template_name='admin_contact_us_notification.html',
         )
+

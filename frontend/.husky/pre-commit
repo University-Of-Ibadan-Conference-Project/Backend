@@ -1,0 +1,15 @@
+#!/bin/sh
+
+STAGED_ADDED_FILES=$(git diff --cached --name-only --diff-filter=ACM)
+
+if [ -z "$STAGED_ADDED_FILES" ]; then
+  echo "Error: No added files are staged for commit."
+  exit 1
+fi
+
+STAGED_SCRIPT_FILES=$(echo "$STAGED_ADDED_FILES" | grep -E "\.tsx?$|\.jsx?$|\.ts$|\.js$|\.json$" | xargs)
+if [ -z "$STAGED_SCRIPT_FILES" ]; then
+  exit 0
+fi
+
+npx prettier --check $STAGED_SCRIPT_FILES
