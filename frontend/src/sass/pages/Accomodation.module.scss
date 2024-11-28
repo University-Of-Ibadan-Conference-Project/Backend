@@ -45,24 +45,33 @@
 
     .content {
       font-size: 14px;
-      padding: 0 15px 15px;
+      padding: 15px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
 
-      h3 {
+      h3,
+      h4 {
         font-weight: 400;
         text-align: center;
         margin: 0;
-        padding-top: 1em;
+      }
+
+      h4 {
+        font-weight: 600;
       }
 
       .btn {
         background-color: #a0f8c0;
         border-radius: 100px;
-        box-shadow: rgba(44, 187, 99, 0.2) 0 -25px 18px -14px inset,
-          rgba(44, 187, 99, 0.15) 0 1px 2px, rgba(44, 187, 99, 0.15) 0 2px 4px,
-          rgba(44, 187, 99, 0.15) 0 4px 8px, rgba(44, 187, 99, 0.15) 0 8px 16px,
+        box-shadow:
+          rgba(44, 187, 99, 0.2) 0 -25px 18px -14px inset,
+          rgba(44, 187, 99, 0.15) 0 1px 2px,
+          rgba(44, 187, 99, 0.15) 0 2px 4px,
+          rgba(44, 187, 99, 0.15) 0 4px 8px,
+          rgba(44, 187, 99, 0.15) 0 8px 16px,
           rgba(44, 187, 99, 0.15) 0 16px 32px;
         color: green;
-        margin-top: 5px;
         cursor: pointer;
         display: block;
         // font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto,
@@ -79,9 +88,12 @@
       }
 
       .btn:hover {
-        box-shadow: rgba(44, 187, 99, 0.35) 0 -25px 18px -14px inset,
-          rgba(44, 187, 99, 0.25) 0 1px 2px, rgba(44, 187, 99, 0.25) 0 2px 4px,
-          rgba(44, 187, 99, 0.25) 0 4px 8px, rgba(44, 187, 99, 0.25) 0 8px 16px,
+        box-shadow:
+          rgba(44, 187, 99, 0.35) 0 -25px 18px -14px inset,
+          rgba(44, 187, 99, 0.25) 0 1px 2px,
+          rgba(44, 187, 99, 0.25) 0 2px 4px,
+          rgba(44, 187, 99, 0.25) 0 4px 8px,
+          rgba(44, 187, 99, 0.25) 0 8px 16px,
           rgba(44, 187, 99, 0.25) 0 16px 32px;
         transform: scale(1.05) rotate(-1deg);
       }

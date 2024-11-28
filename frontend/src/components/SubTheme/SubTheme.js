@@ -1,79 +1,58 @@
 import React from "react";
-import aquaculture from "./../../assets/conference pictures/aquaculture.jpg";
-import agriculture from "./../../assets/conference pictures/agriculture.jpg";
-import biotech from "./../../assets/conference pictures/biotech.jpg";
-import minerals from "./../../assets/conference pictures/minerals.jpg";
-import pollution from "./../../assets/conference pictures/pollution.jpg";
-import nanotech from "./../../assets/conference pictures/nanotech.jpg";
-import resources from "./../../assets/conference pictures/natural-resources.jpg";
-import security from "./../../assets/conference pictures/science-security.jpg";
-import math from "./../../assets/conference pictures/math-modelling.jpg";
-import medicine from "./../../assets/conference pictures/medicine.jpeg";
-import climate from "./../../assets/conference pictures/climate-change.jpg";
-import informationTechnology from "./../../assets/conference pictures/information-technology.webp";
+import climate from "./../../assets/conference pictures/climate.jpeg";
+import ai from "./../../assets/conference pictures/ai.jpeg";
+import biodiversity from "./../../assets/conference pictures/biodiversity.jpeg";
+import indigenous from "./../../assets/conference pictures/indigenous.jpeg";
+import mineral from "./../../assets/conference pictures/mineral.jpeg";
+import biomed from "./../../assets/conference pictures/biomed.jpeg";
+import maths from "./../../assets/conference pictures/maths.jpeg";
+import aicult from "./../../assets/conference pictures/aicult.jpeg";
 
 import "./SubTheme.css";
 const SubTheme = () => {
   const events = [
     {
       id: 1,
-      title: "Aquaculture and the Blue Economy",
-      backgroundImage: aquaculture,
-    },
-    {
-      id: 2,
-      title: "Medicinal plants / Drug development",
-      backgroundImage: medicine,
-    },
-    {
-      id: 3,
-      title: "Climatic change and human health",
+      title: "Climate change, Energy transition and Global peace. ",
       backgroundImage: climate,
     },
     {
+      id: 2,
+      title: "Artificial Intelligence, Robotics and Digital technology",
+      backgroundImage: ai,
+    },
+    {
+      id: 3,
+      title:
+        "Biotechnology,Biodiversity, tourism and environmental conservation.",
+      backgroundImage: biodiversity,
+    },
+    {
       id: 4,
-      title: "Information technology",
-      backgroundImage: informationTechnology,
+      title: "Indigenous knowledge and conservation in the era of innovations.",
+      backgroundImage: indigenous,
     },
     {
       id: 5,
-      title: "Environmental Pollution and Remediation",
-      backgroundImage: pollution,
+      title:
+        "Critical Minerals, Exploration and Exploitation for Green and Blue economics.",
+      backgroundImage: mineral,
     },
     {
       id: 6,
-      title: "Conservation and utilization of our natural heritage/ resources",
-      backgroundImage: resources,
+      title: "Frontiers in Chemical,Biomedical and Molecular sciences",
+      backgroundImage: biomed,
     },
     {
       id: 7,
-      title: "Science and security",
-      backgroundImage: security,
+      title:
+        "The place of Mathematical Science in Research innovation and Partnership in the 21st Century",
+      backgroundImage: maths,
     },
     {
       id: 8,
-      title: "Agriculture and Food Security",
-      backgroundImage: agriculture,
-    },
-    {
-      id: 9,
-      title: "Nanotechnology",
-      backgroundImage: nanotech,
-    },
-    {
-      id: 10,
-      title: "Computational/Mathematical modeling",
-      backgroundImage: math,
-    },
-    {
-      id: 11,
-      title: "Biotechnology, Bioinformatics and Cheminformatics",
-      backgroundImage: biotech,
-    },
-    {
-      id: 12,
-      title: "Energy and Mineral Resources",
-      backgroundImage: minerals,
+      title: "Culture change and Artificial Intelligence",
+      backgroundImage: aicult,
     },
   ];
   return (

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import CommonHero from "../components/CommonHero/CommonHero";
 import styles from "./../sass/pages/Submission.module.scss";
 import { useDropzone } from "react-dropzone";
@@ -41,7 +41,7 @@ function Submission() {
         Swal.fire(
           "Submission Successful!",
           "Kindly check your mail for more information!",
-          "success"
+          "success",
         );
         setEmail("");
         setSubmission_type("");

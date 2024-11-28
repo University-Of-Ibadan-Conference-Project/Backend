@@ -25,7 +25,7 @@ const AbstractForm = () => {
     onSubmit: async (values) => {
       console.log(
         JSON.stringify({ ...values }, null, 2),
-        abstract_document_file
+        abstract_document_file,
       );
       const requestBody = new FormData();
 
@@ -35,7 +35,7 @@ const AbstractForm = () => {
           console.log({ ...values[data].split(", ") });
           requestBody.append(
             data,
-            JSON.stringify({ ...values[data].split(", ") })
+            JSON.stringify({ ...values[data].split(", ") }),
           );
         } else {
           requestBody.append(data, values[data]);
@@ -51,7 +51,7 @@ const AbstractForm = () => {
           Swal.fire(
             "Submission Successful!",
             "Kindly check your mail for more information!",
-            "success"
+            "success",
           );
           formik.resetForm();
           ref.current.value = "";
@@ -61,7 +61,7 @@ const AbstractForm = () => {
           Swal.fire(
             "Oops...",
             "Something went wrong! Kindly try again",
-            "error"
+            "error",
           );
           setSubmitting(false);
         }
@@ -186,31 +186,37 @@ const AbstractForm = () => {
               <option hidden value={""}>
                 Choose Research area
               </option>
-              <option value="Medicine">
-                Medicinal plants / Drug development
+              <option value="Energy">
+                Climate change, Energy transition and Global peace.
               </option>
-              <option value="Health">Climatic change and human health</option>
-              <option value="Energy">Energy and Mineral Resources</option>
+              <option value="Energy">
+                Artificial Intelligence, Robotics and Digital technology
+              </option>
               <option value="Environmental">
-                Environmental Pollution and Remediation
+                Biotechnology, Biodiversity, tourism and environmental
+                conservation
               </option>
-              <option value="Aquaculture">
-                Aquaculture and the Blue Economy
+
+              <option value="Science">
+                Indigenous knowledge and conservation in the era of innovations.
               </option>
-              <option value="Science">Science and security</option>
               <option value="Agriculture and Food Security">
-                Agriculture and Food Security
+                Critical Minerals, Exploration and Exploitation for Green and
+                Blue economics.y
               </option>
               <option value="Conservation">
                 Conservation and utilization of our natural heritage/ resources
               </option>
               <option value="Bio">
-                Biotechnology, Bioinformatics and Cheminformatics
+                Frontiers in Chemical,Biomedical and Molecular sciences
               </option>
               <option value="Computational">
-                Computational/Mathematical modeling
+                The place of Mathematical Science in Research innovation and
+                Partnership in the 21st Century
               </option>
-              <option value="Nanotechnology">Nanotechnology</option>
+              <option value="Nanotechnology">
+                Culture change and Artificial Intelligence
+              </option>
             </select>
           </div>
           <div className="section-2">

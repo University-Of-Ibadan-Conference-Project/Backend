@@ -50,7 +50,7 @@ const RegisterForm = () => {
           Swal.fire(
             "Registration Successful!",
             "Kindly check your mail for more information!",
-            "success"
+            "success",
           );
           formik.resetForm();
           setSubmitting(false);
@@ -58,7 +58,7 @@ const RegisterForm = () => {
           Swal.fire(
             "Oops...",
             "Something went wrong! Kindly try again",
-            "error"
+            "error",
           );
           setSubmitting(false);
         }

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import CommonHero from "../components/CommonHero/CommonHero";
 
 const Exhibition = () => {
@@ -20,16 +20,12 @@ const Exhibition = () => {
         }}
       >
         <h2 style={{ textAlign: "center", margin: "2em 0" }}>EXHIBITION</h2>
-        The organising committee invites organizations, industries, NGOs and
+        The organising committee invites organizations, industries, NGOs, and
         individuals to exhibit their products and services at the conference.
         Exhibition stands will be made available at the conference venue.
-        Interested participants should{" "}
-        <a href="mailto:email@example.com">
-          contact the Local Organising Committee (LOC) Secretary
-        </a>{" "}
-        on or before 5 April, 2023 and upload the evidence of the payment of the
-        exhibition fee of N50, 000.00 per stand{" "}
-        <Link to="/submission">here</Link>.
+        Interested participants should contact the Local Organising Committee
+        (LOC) Secretary on or before 7 April 2025 with the payment of the
+        exhibition fee of N50,000 per stand.
       </div>
     </>
   );

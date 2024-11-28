@@ -13,6 +13,7 @@ import Footer from "./components/Footer/Footer";
 import Faq from "./pages/Faq";
 import Blog from "./pages/Blog";
 import Contact from "./components/Contact/Contact";
+import Notfound from "./pages/Notfound";
 import SubmissionGuidlines from "./pages/SubmissionGuidlines";
 import PresentationGuidline from "./pages/PresentationGuideline";
 import POCP from "./pages/POCP";
@@ -22,13 +23,6 @@ import RegistrationGuide from "./pages/RegistrationGuide";
 import Submission from "./pages/Submission";
 
 const App = () => {
-  const location = useLocation();
-  const [navVisibility, setNavVisibility] = useState(false);
-
-  useEffect(() => {
-    if (navVisibility) setNavVisibility(false);
-  }, [location]);
-
   // const [loading, setLoading] = useState(true);
   // const spinner = document.getElementById("spinner");
   // if (spinner) {
@@ -40,11 +34,8 @@ const App = () => {
 
   return (
     // !loading && (
-    <>
-      <Navbar
-        navVisibility={navVisibility}
-        setNavVisibility={setNavVisibility}
-      />
+    <div className="scrollContainer">
+      <Navbar />
       <Routes>
         <Route element={<Home />} path="/" />
         <Route element={<Help />} path="/submit-abstract" />
@@ -67,9 +58,11 @@ const App = () => {
         <Route element={<Faq />} path="/faq" />
         <Route element={<Blog />} path="/blog" />
         <Route element={<Contact />} path="/contact-us" />
+
+        <Route element={<Notfound />} path="*" />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
   // );
 };
