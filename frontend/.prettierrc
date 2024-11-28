@@ -7,6 +7,5 @@
   "printWidth": 80,
   "arrowParens": "always",
   "bracketSpacing": true,
-  "bracketSameLine": false,
-  "organizeImportsSkipDestructiveCodeActions": false
+  "bracketSameLine": false
 }

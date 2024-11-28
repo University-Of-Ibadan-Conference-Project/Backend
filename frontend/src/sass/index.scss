@@ -6,6 +6,16 @@
 @import "pages/Advertisement.scss";
 @import "pages/Conference.scss";
 
+body {
+  overflow-y: hidden;
+}
+
+.scrollContainer {
+  overflow-y: scroll;
+  height: 100dvh;
+  scroll-behavior: smooth;
+}
+
 img {
   max-width: 100%;
 }

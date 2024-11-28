@@ -41,7 +41,7 @@ const App = () => {
 
   return (
     // !loading && (
-    <>
+    <div className="scrollContainer">
       <Navbar
         navVisibility={navVisibility}
         setNavVisibility={setNavVisibility}
@@ -72,7 +72,7 @@ const App = () => {
         <Route element={<Notfound />} path="*" />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
   // );
 };
