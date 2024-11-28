@@ -29,8 +29,8 @@ const SubmissionGuidlines = () => {
         followed by the full name(s) (surname first) and address (s) of
         author(s) including e-mail address and phone number(s) of the
         corresponding author. The deadline for abstract submission is on or
-        before 30, April, 2023. All the accepted abstracts will be published
-        in the Book of Abstract.
+        before 30, April, 2023. All the accepted abstracts will be published in
+        the Book of Abstract.
       </div>
     </>
   );

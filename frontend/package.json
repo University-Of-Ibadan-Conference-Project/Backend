@@ -37,7 +37,7 @@
     "prettier": "npx prettier src test --check",
     "prettier:fix": "npm run prettier -- --write",
     "format": "npm run prettier:fix && npm run lint:fix",
-    "prepare": "husky install"
+    "prepare": "cd .. && husky frontend/.husky"
   },
   "eslintConfig": {
     "extends": [
@@ -60,7 +60,7 @@
   "devDependencies": {
     "eslint": "^8.29.0",
     "eslint-plugin-react": "^7.31.11",
-    "husky": "^8.0.2",
+    "husky": "^9.1.7",
     "lint-staged": "^13.1.0",
     "prettier": "2.8.1"
   },

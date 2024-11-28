@@ -17,21 +17,22 @@ services:
     env_file:
       - ./.env
 
-  frontend:
-    build:
-      context: ./frontend/
-    restart: on-failure
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./frontend:/frontend
-      - /frontend/node_modules
-    command: >
-      sh -c "npm start"
-    env_file:
-      - ./.env
-    depends_on:
-      - backend
+  # IGNORED FOR NOW
+  # frontend:
+  #   build:
+  #     context: ./frontend/
+  #   restart: on-failure
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./frontend:/frontend
+  #     - /frontend/node_modules
+  #   command: >
+  #     sh -c "npm start"
+  #   env_file:
+  #     - ./.env
+  #   depends_on:
+  #     - backend
 
 volumes:
   pgdata: {}
