@@ -50,7 +50,6 @@ const Accomodation = () => {
           mapLink="https://goo.gl/maps/dTN3B4SqvmFtXrDZA"
           name="University of Ibadan Alumni Guest House"
           phone="+234 810 794 5501"
-
         />
         <HotelPrevCard
           mapLink="https://goo.gl/maps/bRjetTF5GiKeuC7a9"
@@ -60,17 +59,17 @@ const Accomodation = () => {
         <HotelPrevCard
           mapLink="https://goo.gl/maps/YT58Pw3AUoHNkmpN8"
           name="Davis Hotel, Old Bodija, Ibadan"
-          phone = "+234 802 338 7433"
+          phone="+234 802 338 7433"
         />
         <HotelPrevCard
           mapLink="https://goo.gl/maps/rXVWVA5u2vbFfULK9"
           name="Pastoral Institute, Bodija Ibadan"
-          phone= "+234 703 850 2703"
+          phone="+234 703 850 2703"
         />
         <HotelPrevCard
           mapLink="https://goo.gl/maps/ifU596szfhMP9cdcA"
           name="LABOD Hotel Old Bodija, Ibadan."
-          phone= "+234 704 228 6331"
+          phone="+234 704 228 6331"
         />
         <HotelPrevCard
           mapLink="https://goo.gl/maps/XMEiSj4vBLDaREwq7"
@@ -92,7 +91,7 @@ const Accomodation = () => {
   );
 };
 
-const HotelPrevCard = ({ mapLink, name, phone}) => (
+const HotelPrevCard = ({ mapLink, name, phone }) => (
   <div
     className={styles.container}
     // data-aos="zoom-in-down"

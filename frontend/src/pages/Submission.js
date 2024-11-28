@@ -41,7 +41,7 @@ function Submission() {
         Swal.fire(
           "Submission Successful!",
           "Kindly check your mail for more information!",
-          "success"
+          "success",
         );
         setEmail("");
         setSubmission_type("");

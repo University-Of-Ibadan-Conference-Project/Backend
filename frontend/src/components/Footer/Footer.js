@@ -9,7 +9,6 @@ import styles from "./../../sass/components/Footer.module.scss";
 import logo from "./../../assets/img/v2-logo.png";
 
 export default function Footer() {
-  
   return (
     <>
       {/* <Subscribe /> */}

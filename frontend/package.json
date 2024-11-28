@@ -32,10 +32,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "npx eslint src test",
+    "lint": "npx eslint src",
     "lint:fix": "npm run lint --fix",
-    "prettier": "npx prettier src test --check",
-    "prettier:fix": "npm run prettier -- --write",
+    "prettier": "npx prettier src --check",
+    "prettier:fix": "npm run prettier --write",
     "format": "npm run prettier:fix && npm run lint:fix",
     "prepare": "cd .. && husky frontend/.husky"
   },
@@ -62,7 +62,7 @@
     "eslint-plugin-react": "^7.31.11",
     "husky": "^9.1.7",
     "lint-staged": "^13.1.0",
-    "prettier": "2.8.1"
+    "prettier": "^3.4.1"
   },
   "lint-staged": {
     "**/*": [

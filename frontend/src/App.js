@@ -13,7 +13,7 @@ import Footer from "./components/Footer/Footer";
 import Faq from "./pages/Faq";
 import Blog from "./pages/Blog";
 import Contact from "./components/Contact/Contact";
-import Notfound from "./pages/Notfound"
+import Notfound from "./pages/Notfound";
 import SubmissionGuidlines from "./pages/SubmissionGuidlines";
 import PresentationGuidline from "./pages/PresentationGuideline";
 import POCP from "./pages/POCP";

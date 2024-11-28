@@ -23,7 +23,8 @@ const SubTheme = () => {
     },
     {
       id: 3,
-      title: "Biotechnology,Biodiversity, tourism and environmental conservation.",
+      title:
+        "Biotechnology,Biodiversity, tourism and environmental conservation.",
       backgroundImage: biodiversity,
     },
     {
@@ -33,7 +34,8 @@ const SubTheme = () => {
     },
     {
       id: 5,
-      title: "Critical Minerals, Exploration and Exploitation for Green and Blue economics.",
+      title:
+        "Critical Minerals, Exploration and Exploitation for Green and Blue economics.",
       backgroundImage: mineral,
     },
     {
@@ -43,7 +45,8 @@ const SubTheme = () => {
     },
     {
       id: 7,
-      title: "The place of Mathematical Science in Research innovation and Partnership in the 21st Century",
+      title:
+        "The place of Mathematical Science in Research innovation and Partnership in the 21st Century",
       backgroundImage: maths,
     },
     {
@@ -68,8 +71,5 @@ const SubTheme = () => {
     </div>
   );
 };
-
-
-
 
 export default SubTheme;

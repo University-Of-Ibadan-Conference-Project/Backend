@@ -19,7 +19,10 @@ const advertisement = () => {
           padding: "2em 0 4em",
         }}
       >
-        Individuals, companies, and organisations wishing to place adverts and/or goodwill messages in the conference programme/Book of Abstracts should send their write-up with the payment fee (cash) to the secretary of the LOC on or before 7 April 2025
+        Individuals, companies, and organisations wishing to place adverts
+        and/or goodwill messages in the conference programme/Book of Abstracts
+        should send their write-up with the payment fee (cash) to the secretary
+        of the LOC on or before 7 April 2025
       </div>
 
       <div className="app__adverts">

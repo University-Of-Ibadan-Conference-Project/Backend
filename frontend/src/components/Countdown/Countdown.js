@@ -64,6 +64,4 @@ TimeCard.propTypes = {
   name: PropTypes.string,
 };
 
-
-
 export default CountDownTimer;
