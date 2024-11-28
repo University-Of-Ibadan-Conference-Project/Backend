@@ -23,7 +23,7 @@ class UserEvent(models.Model):
     date_updated = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return self.user
+        return f'Event registration for {self.user}'
 
 
 class Abstract(models.Model):
@@ -85,29 +85,59 @@ class PaymentReceipt(models.Model):
     failure_reason = models.CharField(max_length=200, blank=True)
     date_created = models.DateTimeField(auto_now_add=True, editable=False)
     date_updated = models.DateTimeField(auto_now=True, editable=False)
+    verification_log = models.OneToOneField(
+        'event.ReceiptVerificationLogs', 
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE, 
+        related_name="reciept"
+    )
+
+    class Meta:
+        constraints = [
+            models.CheckConstraint(
+                check=~models.Q(status=2, failure_reason=''),
+                name='failure_reason required for `Failed verification` status',
+                violation_error_message='Please add a failure reason when marking a payment reciept status as `Failed verification`'
+            ),
+            models.CheckConstraint(
+                check=~models.Q(status=1, verification_log__isnull=True),
+                name='verification_log requireed for `Verified` status',
+                violation_error_message='Please ensure to add a reciept verification log when marking a payment reciept status as `Verified`'
+            ),
+        ]
 
     def __str__(self):
         return f"Receipt #{self.id} - Status: {self.get_status_display()}"
 
 
 class ReceiptVerificationLogs(models.Model):
-    verified_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="verification_logs")
+    verified_by = models.ForeignKey(
+        User, 
+        blank=True, 
+        on_delete=models.CASCADE, 
+        related_name="verification_logs",
+    )
     transaction_id = models.CharField(max_length=200)
     payment_bank = models.CharField(max_length=200, choices=BANK_CHOICES)
-    receipt = models.OneToOneField(PaymentReceipt, on_delete=models.CASCADE, related_name="verification_log")
     date_created = models.DateTimeField(auto_now_add=True, editable=False)
 
     class Meta:
         ordering = ['-date_created']
+        verbose_name = 'receipt verification log'
+        verbose_name_plural = 'receipt verification logs'
         constraints = [
             models.UniqueConstraint(
                 fields=['transaction_id', 'payment_bank'],
                 name='transaction_id_unique_with_payment_bank',
-            )
+                violation_error_message=(
+                    'A transaction with the specifeid ID already exists in the system. This might be a fraud case.'
+                ),
+            ),
         ]
 
     def __str__(self):
-        return f"Log for Receipt #{self.receipt.id} by {self.verified_by.username}"
+        return f"Transaction id: [{self.transaction_id}] Bank: [{self.payment_bank}]"
 
 
 
