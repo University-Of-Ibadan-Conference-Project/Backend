@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import SubTheme from "../components/SubTheme/SubTheme";
 
 import speaker1 from "./../assets/speakers/_3.JPG";
+import speaker2 from "./../assets/speakers/k-2.jpg";
+import speaker3 from "./../assets/speakers/p-1.JPG";
 import speaker4 from "./../assets/speakers/_4.JPG";
 import speaker5 from "./../assets/speakers/_5.JPG";
 import speaker6 from "./../assets/speakers/_6.JPG";
@@ -67,27 +69,31 @@ const Home = () => {
       <div className={styles.HomeInfo}>
         <h2>SPEAKERS</h2>
         <div className={styles.Speakers}>
-          <KeynoteSpeaker
+          <Speaker
             name="Prof. Christian Happi"
             dp={speaker1}
-            status={"FAS"}
-            isKeyNoteSpeaker={true}
+            speakerType="keynote"
+            isKeyNoteSpeaker
+          />
+          <Speaker
+            name="Austin Avuru"
+            dp={speaker2}
+            speakerType="keynote"
+            isKeyNoteSpeaker
+          />
+          <Speaker
+            name="Prof. M. N. Tijani"
+            dp={speaker3}
+            speakerType="guest"
+            isKeyNoteSpeaker
           />
         </div>
         <div className={styles.Speakers}>
-          <KeynoteSpeaker
-            isKeyNoteSpeaker={false}
-            dp={speaker4}
-            name="Prof. Bamiro"
-          />
-          <KeynoteSpeaker
-            isKeyNoteSpeaker={false}
-            dp={speaker5}
-            name="Prof. Osofisan"
-          />
-          <KeynoteSpeaker
-            isKeyNoteSpeaker={false}
+          <Speaker dp={speaker4} speakerType="plenary" name="Prof. Bamiro" />
+          <Speaker dp={speaker5} speakerType="plenary" name="Prof. Osofisan" />
+          <Speaker
             dp={speaker6}
+            speakerType="plenary"
             name=" Prof. Abel Idowu"
           />
         </div>
@@ -100,7 +106,7 @@ const Home = () => {
   );
 };
 
-const KeynoteSpeaker = ({ dp, name, isKeyNoteSpeaker, status }) => {
+const Speaker = ({ dp, name, speakerType, status }) => {
   return (
     <div className={styles.Speaker}>
       <img src={dp} alt={name} />
@@ -110,17 +116,23 @@ const KeynoteSpeaker = ({ dp, name, isKeyNoteSpeaker, status }) => {
           <i>{status}</i>
         </span>
         <h6>
-          <span>{isKeyNoteSpeaker ? "KEYNOTE" : "PLENARY"} SPEAKER</span>
+          <span>
+            {speakerType === "keynote"
+              ? "KEYNOTE SPEAKER"
+              : speakerType === "plenary"
+                ? "PLENARY SPEAKER"
+                : "GUEST SPEAKER"}
+          </span>
         </h6>
       </a>
     </div>
   );
 };
 
-KeynoteSpeaker.propTypes = {
+Speaker.propTypes = {
   dp: PropTypes.string,
   status: PropTypes.string,
-  isKeyNoteSpeaker: PropTypes.bool,
+  speakerType: "keynote" || "plenary" || "guest",
   name: PropTypes.string,
 };
 

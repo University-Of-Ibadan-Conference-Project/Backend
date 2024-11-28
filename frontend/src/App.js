@@ -23,13 +23,6 @@ import RegistrationGuide from "./pages/RegistrationGuide";
 import Submission from "./pages/Submission";
 
 const App = () => {
-  const location = useLocation();
-  const [navVisibility, setNavVisibility] = useState(false);
-
-  useEffect(() => {
-    if (navVisibility) setNavVisibility(false);
-  }, [location]);
-
   // const [loading, setLoading] = useState(true);
   // const spinner = document.getElementById("spinner");
   // if (spinner) {
@@ -42,10 +35,7 @@ const App = () => {
   return (
     // !loading && (
     <div className="scrollContainer">
-      <Navbar
-        navVisibility={navVisibility}
-        setNavVisibility={setNavVisibility}
-      />
+      <Navbar />
       <Routes>
         <Route element={<Home />} path="/" />
         <Route element={<Help />} path="/submit-abstract" />

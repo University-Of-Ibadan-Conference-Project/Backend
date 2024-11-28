@@ -7,7 +7,14 @@ import uiLogo from "./../../assets/img/v2-logo.png";
 
 import styles from "../../sass/components/navbar.module.scss";
 
-function Navbar({ navVisibility, setNavVisibility }) {
+function Navbar() {
+  const location = useLocation();
+  const [navVisibility, setNavVisibility] = useState(false);
+
+  useEffect(() => {
+    if (navVisibility) setNavVisibility(false);
+  }, [location]);
+
   const [activeNav, setActiveNav] = useState("/");
   const { pathname } = useLocation();
   useEffect(() => {
@@ -151,10 +158,5 @@ function Navbar({ navVisibility, setNavVisibility }) {
     </div>
   );
 }
-
-Navbar.propTypes = {
-  navVisibility: PropTypes.bool,
-  setNavVisibility: PropTypes.func,
-};
 
 export default Navbar;
