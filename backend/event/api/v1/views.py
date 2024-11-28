@@ -51,8 +51,10 @@ class AbstractListView(generics.ListCreateAPIView):
             recipients=admin_emails,
             context={
                 'user': self.request.user,
-                # TODO (Joseph Miracle) # please update the link field once youre done with work on the admin
-                'event_verification_link': get_full_url(self.request, f"admin/event/paymentreceipt/{abstract.receipt.id}/"),
+                'event_verification_link': get_full_url(
+                    request=self.request, 
+                    path=f'admin/event/paymentreceipt/{abstract.receipt.id}/'
+                ),
                 'event_type': 'Abstract submission'
             },
             template_name='admin_verification_request.html',
@@ -88,8 +90,10 @@ class ClearanceFileView(generics.ListCreateAPIView):
             recipients=admin_emails,
             context={
                 'user': self.request.user, 
-                # TODO (Joseph Miracle) # please update the link field once youre done with work on the admin
-                'event_verification_link':  get_full_url(self.request, f"admin/event/paymentreceipt/{record.receipt.id}"),
+                'event_verification_link': get_full_url(
+                    request=self.request, 
+                    path=f"admin/event/paymentreceipt/{record.receipt.id}"
+                ),
                 'event_type': f'{record.get_submission_type_display()} Submission'
             },
             template_name='admin_verification_request.html',
@@ -122,8 +126,10 @@ class ContactUsView(generics.CreateAPIView):
             context={
                 'user_full_name': user_contact_request.full_name,
                 'user_email': user_contact_request.email,
-                # TODO (Joseph Miracle) # please update the link field when you work on the admin
-                'admin_dashboard_contact_us_link': get_full_url(self.request, f"admin/event/usercontactrequest/{user_contact_request.id}/")
+                'admin_dashboard_contact_us_link': get_full_url(
+                    request=self.request, 
+                    path=f"admin/event/usercontactrequest/{user_contact_request.id}/"
+                )
             },
             template_name='admin_contact_us_notification.html',
         )

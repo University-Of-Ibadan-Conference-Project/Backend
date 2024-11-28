@@ -49,8 +49,10 @@ class UserSignupView(generics.CreateAPIView):
             recipients=admin_emails,
             context={
                 'user': user,
-                # TODO (Joseph Miracle) # please update the link field once youre done with work on the admin
-                'event_verification_link': get_full_url(self.request, f"admin/event/paymentreceipt/{user_event.receipt.id}"),
+                'event_verification_link': get_full_url(
+                    request=self.request, 
+                    path=f"admin/event/paymentreceipt/{user_event.receipt.id}"
+                ),
                 'event_type': 'User registration'
             },
             template_name='admin_verification_request.html',
