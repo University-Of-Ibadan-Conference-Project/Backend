@@ -7,23 +7,21 @@ import PropTypes from "prop-types";
 import Spinner from "./../components/Spinner/Spinner";
 import axios from "axios";
 import Swal from "sweetalert2";
+import withAuth from "../components/hoc";
 
 function Submission() {
   const [submitting, setSubmitting] = useState(false);
-  const [email, setEmail] = useState("");
   const [submission_type, setSubmission_type] = useState("");
   const [submission_file, setSubmission_file] = useState(null);
-  const [evidence_of_payment_file, setEvidence_of_payment_file] =
-    useState(null);
+  const [receipt_file, set_receipt_file] = useState(null);
 
   const formSubmitHandler = async (e) => {
     e.preventDefault();
 
     let data = {
-      email,
       submission_file,
       submission_type,
-      evidence_of_payment_file,
+      receipt_file,
     };
 
     const requestBody = new FormData();
@@ -35,7 +33,12 @@ function Submission() {
     try {
       setSubmitting(true);
 
-      let response = await axios.post("/events/clearance/", requestBody);
+      let response = await axios.post("/events/clearance/", requestBody, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Token ${JSON.parse(localStorage.getItem("user"))?.token}`,
+        },
+      });
 
       if (response.status === 201) {
         Swal.fire(
@@ -43,10 +46,9 @@ function Submission() {
           "Kindly check your mail for more information!",
           "success",
         );
-        setEmail("");
         setSubmission_type("");
         setSubmission_file(null);
-        setEvidence_of_payment_file(null);
+        set_receipt_file(null);
         setSubmitting(false);
       } else {
         Swal.fire("Oops...", "Something went wrong! Kindly try again", "error");
@@ -69,15 +71,6 @@ function Submission() {
       />
       <form onSubmit={formSubmitHandler} className={styles.SubmissionForm}>
         <div>
-          <label>Email: </label>
-          <input
-            type="email"
-            required={true}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div>
           <label htmlFor="pre">Submission Type</label>
           <select
             required={true}
@@ -91,14 +84,13 @@ function Submission() {
             <option value="Manuscript">Manuscript</option>
             <option value="Advert">Advert</option>
             <option value="Exhibition">Exhibition</option>
-            <option value="Registration">Registration</option>
           </select>
         </div>
         <div>
           <label>Evidence of Payment</label>
           <FileUploader
-            setRequiredUpload={(file) => setEvidence_of_payment_file(file)}
-            requiredUpload={evidence_of_payment_file}
+            setRequiredUpload={(file) => set_receipt_file(file)}
+            requiredUpload={receipt_file}
             fileName={"Evidence of Payment"}
           />
         </div>
@@ -151,4 +143,4 @@ FileUploader.propTypes = {
   fileName: PropTypes.string,
 };
 
-export default Submission;
+export default withAuth(Submission);
