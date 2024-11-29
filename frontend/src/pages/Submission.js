@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import Spinner from "./../components/Spinner/Spinner";
 import axios from "axios";
 import Swal from "sweetalert2";
+import withAuth from "../components/hoc";
 
 function Submission() {
   const [submitting, setSubmitting] = useState(false);
@@ -142,4 +143,4 @@ FileUploader.propTypes = {
   fileName: PropTypes.string,
 };
 
-export default Submission;
+export default withAuth(Submission);

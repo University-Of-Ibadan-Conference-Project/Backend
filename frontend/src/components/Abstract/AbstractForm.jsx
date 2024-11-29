@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import Spinner from "./../Spinner/Spinner";
 import axios from "axios";
 import Swal from "sweetalert2";
+import withAuth from "../hoc";
 
 const AbstractForm = () => {
   const receiptRef = useRef();
@@ -302,4 +303,4 @@ const AbstractForm = () => {
   );
 };
 
-export default AbstractForm;
+export default withAuth(AbstractForm);
