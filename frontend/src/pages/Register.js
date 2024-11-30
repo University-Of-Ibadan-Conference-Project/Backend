@@ -54,11 +54,7 @@ export default function Register() {
           account: University of Ibadan, Faculty of Science Alumni Association,
           Bank: Union Bank, Account Number: 0109363898) and upload the receipt
           of your payment. Only registered participants and invited guests will
-          be allowed into the conference venue. Submit your registration fee
-          receipt{" "}
-          <Link to="/submission" style={{ color: "red" }}>
-            here
-          </Link>
+          be allowed into the conference venue.
         </p>
       </div>
       <RegisterForm />

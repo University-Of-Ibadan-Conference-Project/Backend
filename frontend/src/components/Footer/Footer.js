@@ -95,7 +95,7 @@ export default function Footer() {
           </div>
         </div>
         <span className={styles.FooterCopyRight}>
-          Copyright &copy; {new Date().getFullYear()} - Department Of Computer
+          Copyright &copy; {new Date().getFullYear()} - Faculty of Science
           Science - University of Ibadan
         </span>
       </div>

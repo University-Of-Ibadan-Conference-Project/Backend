@@ -5,10 +5,12 @@ import SubTheme from "../components/SubTheme/SubTheme";
 
 import speaker1 from "./../assets/speakers/_3.JPG";
 import speaker2 from "./../assets/speakers/k-2.jpg";
-import speaker3 from "./../assets/speakers/p-1.JPG";
+import speaker3 from "./../assets/speakers/_2.JPG";
 import speaker4 from "./../assets/speakers/_4.JPG";
 import speaker5 from "./../assets/speakers/_5.JPG";
 import speaker6 from "./../assets/speakers/_6.JPG";
+import speaker7 from "./../assets/speakers/_7.JPG";
+
 
 const Home = () => {
   return (
@@ -95,6 +97,11 @@ const Home = () => {
             dp={speaker6}
             speakerType="plenary"
             name=" Prof. Abel Idowu"
+          />
+          <Speaker 
+            dp={speaker7} 
+            speakerType="plenary" 
+            name="Prof. Odunayo Clement Adebooye" 
           />
         </div>
       </div>
