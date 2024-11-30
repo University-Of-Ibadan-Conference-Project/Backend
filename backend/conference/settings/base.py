@@ -179,6 +179,7 @@ EMAIL_PORT = os.getenv("EMAIL_PORT", 587)
 EMAIL_HOST = os.getenv("EMAIL_HOST", "smtp.gmail.com")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "111111")
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "info@example.com")
+EMAIL_HOST_DOMAIN = os.getenv('EMAIL_HOST_DOMAIN', 'example.com')
 
 JAZZMIN_SETTINGS = {    
     "site_title": "Fassa 2025",

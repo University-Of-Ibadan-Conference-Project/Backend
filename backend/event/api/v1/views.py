@@ -36,7 +36,7 @@ class AbstractListView(generics.ListCreateAPIView):
 
         # send email notification to corresponding email  after uploading abstract
         EmailManager.send_mail(
-            subject=f'Thank you for uploading your abstract for UISC-{timezone.now().year}',
+            subject=f'Thank you for uploading your abstract for UI Science Conference-{timezone.now().year}',
             recipients=[corresponding_author_email],
             context={'abstract_title': abstract_title},
             template_name='abstract_upload_notification.html',

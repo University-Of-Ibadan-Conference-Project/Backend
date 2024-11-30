@@ -6,16 +6,17 @@ Logger = logging.getLogger()
 
 
 def send_mail_task(
-        subject: str, 
-        recipients: list[str], 
-        html_message: str | None, 
-        text_message: str | None,
-    ) -> None:
+    subject: str,
+    recipients: list[str], 
+    _from: str = 'noreply',
+    html_message: str | None = None, 
+    text_message: str | None = None,
+) -> None:
     """Send emails asynchronously."""
 
     try:
         send_mail(
-            from_email=settings.EMAIL_HOST_USER,
+            from_email=f'{_from}@{settings.EMAIL_HOST_DOMAIN}',
             subject=subject,
             recipient_list=recipients,
             fail_silently=False,
