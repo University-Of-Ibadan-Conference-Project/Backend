@@ -84,15 +84,15 @@ const Home = () => {
             isKeyNoteSpeaker
           />
           <Speaker
-            name="Prof. M. N. Tijani"
+            name="Prof. Moshood  Niyi Tijani"
             dp={speaker3}
             speakerType="guest"
             isKeyNoteSpeaker
           />
         </div>
         <div className={styles.Speakers}>
-          <Speaker dp={speaker4} speakerType="plenary" name="Prof. Bamiro" />
-          <Speaker dp={speaker5} speakerType="plenary" name="Prof. Osofisan" />
+          <Speaker dp={speaker4} speakerType="plenary" name="Prof. Olufemi Adebisi Bamiro" />
+          <Speaker dp={speaker5} speakerType="plenary" name="Prof. Adenike Osofisan" />
           <Speaker
             dp={speaker6}
             speakerType="plenary"
@@ -117,7 +117,11 @@ const Speaker = ({ dp, name, speakerType, status }) => {
   return (
     <div className={styles.Speaker}>
       <img src={dp} alt={name} />
-      <a href="https://www.google.com" target={"_blank"} rel="noreferrer">
+      <a 
+        href={`https://www.google.com/search?q=${encodeURIComponent(name)}`} 
+        target={"_blank"} 
+        rel="noreferrer"
+      >
         <h5>{name}</h5>
         <span style={{ fontWeight: "300" }}>
           <i>{status}</i>
