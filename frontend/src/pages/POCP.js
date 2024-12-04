@@ -37,7 +37,7 @@ const POCP = () => {
             color: "red",
           }}
         >
-          N15, 000.00
+          N40,000.00
         </b>
         . Submit your full manuscript <Link to="/submission">here</Link>
       </div>

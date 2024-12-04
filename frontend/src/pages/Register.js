@@ -20,7 +20,7 @@ export default function Register() {
               color: "red",
             }}
           >
-            N25, 000.00
+            N40,000.00
           </b>
           . The registration for international paticipant is{" "}
           <b
