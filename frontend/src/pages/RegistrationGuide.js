@@ -24,9 +24,9 @@ const RegistrationGuide = () => {
         </h2>
         <p>
           The registration fee covering the cost of conference materials, and
-          tea breaks is N40, 000.00, and for international participants is €100.
+          tea breaks is N40,000.00, and for international participants is €100.
           The registration fee for students who are not academic staff and with
-          identity cards is N20, 000.00.
+          identity cards is N20,000.00.
         </p>
         <p>
           Only registered participants and guests will be allowed into the
