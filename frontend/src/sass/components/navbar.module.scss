@@ -8,7 +8,7 @@
   background: black;
   border-bottom: 1px solid #363535;
   top: 0;
-  padding: 1em 0;
+  padding: 1em 1em 1em 0;
 
   .active {
     a {
@@ -35,9 +35,14 @@
       // display: block;
     }
 
-    @media screen and (max-width: 880px) {
+    @media screen and (max-width: 1024px) {
       flex: 0;
       margin-left: 1em;
+
+      img {
+        line-height: 0px;
+        min-width: 75px;
+      }
     }
   }
 
@@ -45,7 +50,7 @@
     list-style-type: none;
     padding-inline-start: 0;
     margin: 0;
-    width: 60%;
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -94,7 +99,7 @@
         display: none;
       }
 
-      @media screen and (max-width: 880px) {
+      @media screen and (max-width: 1024px) {
         display: block;
         font-size: 20px;
         font-weight: 700;
@@ -120,7 +125,7 @@
       &.hidden {
         display: none;
 
-        @media screen and (max-width: 880px) {
+        @media screen and (max-width: 1024px) {
           display: block;
         }
       }
@@ -128,8 +133,6 @@
   }
 
   .connect {
-    flex: 2;
-    padding: 0 4em;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -167,14 +170,13 @@
     }
 
     @media screen and (max-width: 950px) {
-      flex: 3;
       display: flex;
       align-items: center;
       padding: 0;
       justify-content: space-around;
     }
 
-    @media screen and (max-width: 880px) {
+    @media screen and (max-width: 1024px) {
       display: none;
     }
   }
@@ -186,7 +188,7 @@
     left: 0px;
     z-index: 2000;
 
-    @media screen and (max-width: 880px) {
+    @media screen and (max-width: 1024px) {
       display: block;
     }
 
@@ -237,7 +239,7 @@
 
       &_checked + .Checkbox {
         & .hamburger_bars {
-          background-color: black;
+          background-color: white;
         }
         & .hamburger_bars:nth-of-type(1) {
           transform: rotate(45deg);
