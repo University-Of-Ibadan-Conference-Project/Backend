@@ -28,7 +28,7 @@ export default function Register() {
               color: "red",
             }}
           >
-            $100
+            €100
           </b>
           . The registration fee for students who are not academic staff and
           with identity cards is{" "}
@@ -37,7 +37,7 @@ export default function Register() {
               color: "red",
             }}
           >
-            N15,000.00
+            N20,000.00
           </b>
           .
         </p>
