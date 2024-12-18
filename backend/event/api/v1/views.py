@@ -1,6 +1,7 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from rest_framework.parsers import FormParser, MultiPartParser
-from event.models import UserContactRequest
+from event.models import UserContactRequest, UserEvent
 from user.models import User
 from event.api.v1.serializers import AbstarctSerializer, ClearanceFileSerializer, ContactUsSerializer, UserEventSerializer
 from lib.mail import EmailManager
@@ -8,16 +9,6 @@ from lib.utils import get_full_url
 from django.utils import timezone
 from rest_framework import generics, authentication, permissions
 
-
-class EventDetailView(generics.RetrieveAPIView):
-    serializer_class = UserEventSerializer
-    authentication_classes = [authentication.TokenAuthentication]
-    permission_classes = [permissions.IsAuthenticated]
-    lookup_field = None
-
-    def get_object(self) -> User:
-        """Retrieve and return the authenticated user."""
-        return self.request.user.userevent
 
 
 class AbstractListView(generics.ListCreateAPIView):
@@ -132,5 +123,47 @@ class ContactUsView(generics.CreateAPIView):
                 )
             },
             template_name='admin_contact_us_notification.html',
+        )
+
+
+class EventRegistrationView(generics.CreateAPIView, generics.RetrieveAPIView):
+    serializer_class = UserEventSerializer
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+    parser_classes = (FormParser, MultiPartParser)
+    lookup_field = None
+
+    def get_object(self) -> User:
+        """Retrieve and return the authenticated user."""
+        return get_object_or_404(UserEvent, user=self.request.user)
+
+    def perform_create(self, serializer: UserEventSerializer) -> None:
+        """Create event records."""
+        user_event = serializer.save(user=self.request.user)
+
+        # # send an email notification to user of their successful registrattion
+        EmailManager.send_mail(
+            subject=f'Finish Registration for UISC-{timezone.now().year}.',
+            recipients=[self.request.user.email],
+            context={'user': self.request.user},
+            template_name='event_verification_notification.html',
+        )
+
+        # send email notitification to all admins
+        # notifying them of the submitted reciept
+        # that will need verification
+        admin_emails = list(User.objects.filter(is_staff=True, is_active=True).values_list('email', flat=True))
+        EmailManager.send_mail(
+            subject=f'Reciept Verification action needed',
+            recipients=admin_emails,
+            context={
+                'user': self.request.user,
+                'event_verification_link': get_full_url(
+                    request=self.request, 
+                    path=f"admin/event/paymentreceipt/{user_event.receipt.id}"
+                ),
+                'event_type': 'User registration'
+            },
+            template_name='admin_verification_request.html',
         )
 

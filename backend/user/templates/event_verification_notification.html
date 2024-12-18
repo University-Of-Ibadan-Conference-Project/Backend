@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Event Registration Confirmation
+{% endblock title %}
+{% block content %}
+<div class="card w-100">
+    <div class="card-body">
+        <p class="card-text">
+            Hi <strong>{{ user.first_name|title }} {{ user.last_name|title }}</strong>,
+        </p>
+        <p class="card-text">
+            Thank you for registering for the 
+            <i>6th International Conference on Scientific Research in Nigeria</i>! 
+            We are thrilled to have you join us for this prestigious event.
+        </p>
+        <p class="card-text">
+            Your payment is currently under verification. Once it has been confirmed, you will receive a follow-up email with additional details.
+        </p>
+        <p class="card-text">
+            If you have any questions or need assistance, please don't hesitate to contact us. We can't wait to welcome you at the conference!
+        </p>
+    </div>
+</div>
+{% endblock content %}

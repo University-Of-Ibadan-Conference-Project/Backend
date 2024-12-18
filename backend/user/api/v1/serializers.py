@@ -9,14 +9,11 @@ from rest_framework.authtoken.models import Token
 class SignUpSerializer(serializers.Serializer):
 
     def get_fields(self):
-        return {
-            **UserSerializer().get_fields(),
-            **UserEventSerializer().get_fields(),
-        }
+        return {**UserSerializer().get_fields()}
 
 
 class UserSerializer(serializers.ModelSerializer):
-    event_reservation = UserEventSerializer(source='userevent', read_only=True)
+    event_reservation = UserEventSerializer(source='userevent', read_only=True, allow_null=True)
 
     class Meta:
         model = User

@@ -191,3 +191,5 @@ JAZZMIN_SETTINGS = {
     "login_logo": "icons/uisc.png",
     "copyright": "Fassa 2025 Conference",
 }
+
+EVENT_REGISTRATION_LINK = ''
