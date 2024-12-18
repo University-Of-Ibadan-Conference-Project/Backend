@@ -4,18 +4,43 @@
 {% block title %}
 User Registration
 {% endblock title %}
+{% block style %}
+<style>
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 5px;
+        margin: 20px 0;
+    }
+    .button:hover {
+        background-color: #0056b3;
+    }
+</style>
+{% endblock style %}
+
 
 {% block content %}
 <div class="card w-100">
     <div class="card-body">
         <p class="card-text">
             Hi <strong>{{ user.first_name|title }} {{ user.last_name|title }}</strong>,  
-            thank you for signing up for the 
+            welcome! We are excited to have you join the 
             <i>6th International Conference on Scientific Research in Nigeria</i>. 
-            We are thrilled to have you join us and look forward to an exciting and informative event.
+            Thank you for registering!
         </p>
         <p class="card-text">
-            We are currently verifying your payment. You will receive an email notification once the verification is complete.
+            To complete your event registration, please click the link below:
+        </p>
+        <p class="card-text">
+            <a class="button" href="{{ registration_link }}">Complete Registration</a>
+        </p>
+        <p>If you're unable to click the button, you can copy and paste this link into your browser:</p>
+        <p style="word-break: break-all; font-size: 12px;">{{ registration_link }}</p>
+        <p class="card-text">
+            If you have any questions, feel free to contact us. We look forward to seeing you at the event!
         </p>
     </div>
 </div>
