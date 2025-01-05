@@ -282,7 +282,7 @@ const RegisterForm = () => {
                 set_receipt_file(e.target.files[0]);
               }}
               // value={formik.values.receipt_file}
-              required
+              // required
             />
           </div>
         </div>
