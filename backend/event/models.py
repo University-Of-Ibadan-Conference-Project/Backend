@@ -1,6 +1,7 @@
 from django.db import models
 from event.bank_choices import BANK_CHOICES
 from user.models import User
+from cloudinary_storage.storage import RawMediaCloudinaryStorage
 
 
 class UserEvent(models.Model):
@@ -39,7 +40,11 @@ class Abstract(models.Model):
     coresponding_author_email = models.EmailField(max_length=140)
     coresponding_author_phone = models.CharField(max_length=140)
 
-    abstract_document_file = models.FileField(upload_to='uploads/', max_length=500)
+    abstract_document_file = models.FileField(
+        upload_to='uploads/', 
+        max_length=500,
+        storage=RawMediaCloudinaryStorage(),
+    )
 
     presentation_type = models.CharField(choices=PRESENTATION_TYPE_CHOICES, max_length=100)
     research_area = models.CharField(max_length=200)
@@ -61,7 +66,12 @@ class ClearanceFile(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     submission_type = models.CharField(max_length = 20, choices=SUBMISSION_TYPE)
-    submission_file = models.FileField(upload_to='uploads/', null=True, max_length=500)
+    submission_file = models.FileField(
+        upload_to='uploads/', 
+        null=True, 
+        max_length=500,
+        storage=RawMediaCloudinaryStorage(),
+    )
     receipt = models.OneToOneField(to='event.paymentreceipt', on_delete=models.CASCADE)
     created_at=models.DateTimeField(auto_now_add=True)
 
@@ -81,7 +91,10 @@ class PaymentReceipt(models.Model):
         choices=STATUS_CHOICES,
         default=STATUS_AWAITING_VERIFICATION
     )
-    payment_proff = models.FileField(upload_to='uploads/receipts/')
+    payment_proff = models.FileField(
+        upload_to='uploads/receipts/',
+        storage=RawMediaCloudinaryStorage(),
+    )
     failure_reason = models.CharField(max_length=200, blank=True)
     date_created = models.DateTimeField(auto_now_add=True, editable=False)
     date_updated = models.DateTimeField(auto_now=True, editable=False)
@@ -147,7 +160,11 @@ class UserContactRequest(models.Model):
     full_name = models.TextField()
     email = models.EmailField()
     message = models.TextField()
-    attachment = models.FileField(upload_to='uploads/contactus/', null=True)
+    attachment = models.FileField(
+        upload_to='uploads/contactus/',
+        storage=RawMediaCloudinaryStorage(), 
+        null=True,
+    )
     resolved = models.BooleanField(default=False)
     resolved_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     date_created = models.DateTimeField(auto_now_add=True, editable=False)
