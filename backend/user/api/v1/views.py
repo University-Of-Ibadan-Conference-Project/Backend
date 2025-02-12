@@ -28,7 +28,12 @@ class UserSignupView(generics.CreateAPIView):
         EmailManager.send_mail(
             subject=f'Finish Registration for UISC-{timezone.now().year}.',
             recipients=[user.email],
-            context={'user': user, 'event_registration_link': settings.EVENT_REGISTRATION_LINK},
+            context={
+                'user': user,
+                'registration_link': f'{settings.FRONTENT_URL}/register',
+                'clearance_submission_link': f'{settings.FRONTENT_URL}/submission',
+                'abstract_submission_link': f'{settings.FRONTENT_URL}/submit-abstract',
+            },
             template_name='user_registration_notification.html',
         )
 

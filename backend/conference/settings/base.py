@@ -192,4 +192,7 @@ JAZZMIN_SETTINGS = {
     "copyright": "Fassa 2025 Conference",
 }
 
-EVENT_REGISTRATION_LINK = ''
+FRONTENT_URL = os.getenv(
+    "FRONTENT_URL", 
+    "http://127.0.0.1:8000",
+)

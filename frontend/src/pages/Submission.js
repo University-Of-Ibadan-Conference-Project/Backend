@@ -81,6 +81,7 @@ function Submission() {
               {" "}
               Choose Clearance Type
             </option>
+            <option value="Event Registration">Event Registration</option>
             <option value="Manuscript">Manuscript</option>
             <option value="Advert">Advert</option>
             <option value="Exhibition">Exhibition</option>
@@ -94,7 +95,7 @@ function Submission() {
             fileName={"Evidence of Payment"}
           />
         </div>
-        {!(submission_type === "Registration") && (
+        {!(submission_type === "Event Registration") && (
           <div>
             <label>Submission</label>
             <FileUploader

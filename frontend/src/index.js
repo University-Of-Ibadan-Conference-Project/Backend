@@ -5,7 +5,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import axios from "axios";
 
-axios.defaults.baseURL = process.env.REACT_APP_API_URI;
+axios.defaults.baseURL = '/api/v1/';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from rest_framework.parsers import FormParser, MultiPartParser
-from event.models import UserContactRequest, UserEvent
+from event.models import ClearanceFile, UserContactRequest, UserEvent
 from user.models import User
 from event.api.v1.serializers import AbstarctSerializer, ClearanceFileSerializer, ContactUsSerializer, UserEventSerializer
 from lib.mail import EmailManager
@@ -61,14 +61,20 @@ class ClearanceFileView(generics.ListCreateAPIView):
     def get_queryset(self):
         return self.request.user.clearancefile_set.all()
 
-    def perform_create(self, serializer):
+    def perform_create(self, serializer: ClearanceFileSerializer):
         record = serializer.save(user=self.request.user)
+
+        if serializer.validated_data['submission_type'] == ClearanceFile.SUBMISSION_TYPE_EVENT:
+            # if the submission type is event attach reciept to users event
+            event = self.request.user.event
+            event.receipt = record.receipt
+            event.save(update_fields=['receipt'])
 
         # send email notification to user of successful receipt upload for Manuscript, Exhibition, and Advertisement
         EmailManager.send_mail(
             subject='Receipt Upload',
             recipients=[self.request.user.email],
-            context={'submission_type': record.get_submission_type_display()},
+            context={'submission_type': serializer.validated_data['submission_type']},
             template_name='clearance_upload_notification.html',
         )
 
@@ -85,7 +91,7 @@ class ClearanceFileView(generics.ListCreateAPIView):
                     request=self.request, 
                     path=f"admin/event/paymentreceipt/{record.receipt.id}"
                 ),
-                'event_type': f'{record.get_submission_type_display()} Submission'
+                'event_type': f'{serializer.validated_data['submission_type']} Submission'
             },
             template_name='admin_verification_request.html',
         )

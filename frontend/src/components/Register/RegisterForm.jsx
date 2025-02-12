@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 
 const RegisterForm = () => {
   const ref = useRef();
-  const [receipt_file, set_receipt_file] = useState({});
+  const [receipt_file, set_receipt_file] = useState(null);
 
   // Country and state initialization state
   const [countries, setCountries] = useState([]);
@@ -42,8 +42,11 @@ const RegisterForm = () => {
     onSubmit: async (values) => {
       console.log(JSON.stringify({ ...values }, null, 2), receipt_file);
       const requestBody = new FormData();
+      
+      if (receipt_file !== null) {
+        requestBody.append("receipt_file", receipt_file);
+      }
 
-      requestBody.append("receipt_file", receipt_file);
       for (const data in values) {
         if (data === "keywords") {
           console.log({ ...values[data].split(", ") });
@@ -70,7 +73,7 @@ const RegisterForm = () => {
           localStorage.setItem("user", JSON.stringify(response.data));
           formik.resetForm();
           ref.current.value = "";
-          set_receipt_file({});
+          set_receipt_file(null);
           setSubmitting(false);
         } else {
           Swal.fire(
@@ -268,7 +271,7 @@ const RegisterForm = () => {
             />
           </div>
           <div className="section-2">
-            <label className="required" htmlFor="file">
+            <label className="" htmlFor="file">
               Attach the the receipt of your payment
             </label>
             <input

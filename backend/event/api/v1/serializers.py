@@ -82,7 +82,7 @@ class ClearanceFileSerializer(serializers.ModelSerializer):
         model = ClearanceFile
         fields = ['submission_type', 'submission_file', 'receipt', 'receipt_file']
 
-    def create(self, validated_data: dict[str, Any]) -> ClearanceFile:
+    def create(self, validated_data: dict[str, Any]) -> ClearanceFile | PaymentReceipt:
         """Attach payment reciept to event."""
         receipt_data = validated_data.pop('receipt')
         validated_data['receipt'] = PaymentReceipt.objects.create(**receipt_data)
