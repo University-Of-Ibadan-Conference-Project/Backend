@@ -89,7 +89,7 @@ class ClearanceFileView(generics.ListCreateAPIView):
                 'user': self.request.user, 
                 'event_verification_link': get_full_url(
                     request=self.request, 
-                    path=f"admin/event/paymentreceipt/{record.receipt.id}"
+                    path=f"admin/event/paymentreceipt/{receipt.id}"
                 ),
                 'event_type': f'{serializer.validated_data['submission_type']} Submission'
             },

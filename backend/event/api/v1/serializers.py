@@ -85,6 +85,12 @@ class ClearanceFileSerializer(serializers.ModelSerializer):
     def create(self, validated_data: dict[str, Any]) -> ClearanceFile | PaymentReceipt:
         """Attach payment reciept to event."""
         receipt_data = validated_data.pop('receipt')
+        submission_type = validated_data.get('submission_type')
+
+        if submission_type == ClearanceFile.SUBMISSION_TYPE_EVENT:
+            # if the submission type is event don't create clearance file 
+            return PaymentReceipt.objects.create(**receipt_data)
+
         validated_data['receipt'] = PaymentReceipt.objects.create(**receipt_data)
         return super().create(validated_data)
 
