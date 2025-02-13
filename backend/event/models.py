@@ -11,7 +11,7 @@ class UserEvent(models.Model):
         ('Virtual', 'Virtual'),
     )
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='event')
     affiliate_institution =  models.CharField(blank=True, max_length=300)
     department = models.CharField(blank=True, max_length=300)
     country = models.CharField(blank=True, max_length=300)
@@ -19,7 +19,11 @@ class UserEvent(models.Model):
     city =  models.CharField(blank=True, max_length=300)
     address =  models.CharField(blank=True, max_length=300)
     participant_type =  models.CharField(choices=PARTICIPANT_TYPE_CHOICE, max_length=300)
-    receipt = models.OneToOneField(to='event.paymentreceipt', on_delete=models.CASCADE)
+    receipt = models.OneToOneField(
+        to='event.paymentreceipt', 
+        on_delete=models.CASCADE, 
+        null=True,
+    )
     date_created = models.DateTimeField(auto_now_add=True, editable=False)
     date_updated = models.DateField(auto_now_add=True)
 
@@ -58,14 +62,20 @@ class Abstract(models.Model):
 
 
 class ClearanceFile(models.Model):
-    SUBMISSION_TYPE = (
-        ('Manuscript', 'Manuscript'),
-        ('Exhibition', 'Exhibition'),
-        ('Advert', 'Advert'),
+
+    SUBMISSION_TYPE_EVENT = 'Event Registration'
+    SUBMISSION_TYPE_MANUSCRIPT = 'Manuscript'
+    SUBMISSION_TYPE_EXHIBITION = 'Exhibition'
+    SUBMISSION_TYPE_ADVERT = 'Advert'
+    SUBMISSION_TYPE_CHOICES = (
+        (SUBMISSION_TYPE_EVENT, 'Event Registration'),
+        (SUBMISSION_TYPE_MANUSCRIPT, 'Manuscript'),
+        (SUBMISSION_TYPE_EXHIBITION, 'Exhibition'),
+        (SUBMISSION_TYPE_ADVERT, 'Advert'),
     )
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    submission_type = models.CharField(max_length = 20, choices=SUBMISSION_TYPE)
+    submission_type = models.CharField(max_length = 20, choices=SUBMISSION_TYPE_CHOICES)
     submission_file = models.FileField(
         upload_to='uploads/', 
         null=True, 
@@ -162,7 +172,7 @@ class UserContactRequest(models.Model):
     message = models.TextField()
     attachment = models.FileField(
         upload_to='uploads/contactus/',
-        storage=RawMediaCloudinaryStorage(), 
+        storage=RawMediaCloudinaryStorage(),
         null=True,
     )
     resolved = models.BooleanField(default=False)
