@@ -30,17 +30,17 @@
         <div class="card-body">
             <p class="card-text">
                 Hi <strong>{{ user.first_name|title }} {{ user.last_name|title }}</strong>,
-                welcome! We are excited to have you join the 
-                <i>6th International Conference on Scientific Research in Nigeria</i>. 
+                welcome! We are excited to have you join the
+                <i>6th International Conference on Scientific Research in Nigeria</i>.
                 Thank you for registering!
             </p>
 
             {% if not user.event.receipt %}
                 <p class="card-text">
-                    To complete the registration process, please submit proof of payment for the registration.
+                    To complete the registration process, please submit receipt of payment for the registration.
                 </p>
                 <a href="{{clearance_submission_link}}">
-                    <button class="button">Upload Payment Proof</button>
+                    <button class="button">Upload Payment Receipt</button>
                 </a>
 
                 <p class="card-text">

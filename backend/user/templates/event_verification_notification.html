@@ -2,25 +2,68 @@
 {% load static %}
 
 {% block title %}
-Event Registration Confirmation
+    Event Registration Confirmation
 {% endblock title %}
+
+{% block style %}
+    <style>
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 0;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+{% endblock style %}
+
 {% block content %}
-<div class="card w-100">
-    <div class="card-body">
-        <p class="card-text">
-            Hi <strong>{{ user.first_name|title }} {{ user.last_name|title }}</strong>,
-        </p>
-        <p class="card-text">
-            Thank you for registering for the 
-            <i>6th International Conference on Scientific Research in Nigeria</i>! 
-            We are thrilled to have you join us for this prestigious event.
-        </p>
-        <p class="card-text">
-            Your payment is currently under verification. Once it has been confirmed, you will receive a follow-up email with additional details.
-        </p>
-        <p class="card-text">
-            If you have any questions or need assistance, please don't hesitate to contact us. We can't wait to welcome you at the conference!
-        </p>
+    <div class="card w-100">
+        <div class="card-body">
+            <p class="card-text">
+                Hi <strong>{{ user.first_name|title }} {{ user.last_name|title }}</strong>,
+            </p>
+            <p class="card-text">
+                Thank you for registering for the 
+                <i>6th International Conference on Scientific Research in Nigeria</i>!
+            </p>
+
+            {% if not user.event.receipt %}
+                <p class="card-text">
+                    Your payment is currently under verification. To complete your registration, please submit your payment receipt.
+                </p>
+                <a href="{{ clearance_submission_link }}">
+                    <button class="button">Upload Payment Receipt</button>
+                </a>
+                <p class="card-text">
+                    For additional details about the registration fee, please visit our registration page.
+                </p>
+                <a href="{{ registration_link }}">
+                    <button class="button">Registration Page</button>
+                </a>
+            {% else %}
+                <p class="card-text">
+                    Your payment has been verified. You can now proceed to submit your abstract for the conference.
+                </p>
+                <a href="{{ abstract_submission_link }}">
+                    <button class="button">Submit Abstract</button>
+                </a>
+            {% endif %}
+
+            <p class="card-text">
+                If you have any questions or need further assistance, please don't hesitate to contact us.
+            </p>
+            <p class="card-text">
+                We look forward to seeing you at the conference!
+            </p>
+        </div>
     </div>
-</div>
 {% endblock content %}
