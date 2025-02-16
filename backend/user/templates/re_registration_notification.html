@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Re-Registration Required
+{% endblock title %}
+
+{% block style %}
+    <style>
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #dc3545; /* Red to signal attention */
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 0;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #a71d2a;
+        }
+    </style>
+{% endblock style %}
+
+{% block content %}
+    <div class="card w-100">
+        <div class="card-body">
+            <p class="card-text">
+                Hi <strong>{{ user.first_name|title }} {{ user.last_name|title }}</strong>,
+            </p>
+            <p class="card-text">
+                We are writing to inform you that, due to a technical issue in our system, your registration for the 
+                <i>6th International Conference on Scientific Research in Nigeria</i> 
+                was not properly recorded.
+            </p>
+            <p class="card-text">
+                To ensure your participation, we kindly request that you re-register or complete your registration at your earliest convenience.
+            </p>
+            <p class="card-text">
+                Please click the button below to proceed with the registration process:
+            </p>
+            <a href="{{ re_registration_link }}">
+                <button class="button">Complete Registration</button>
+            </a>
+            <p class="card-text">
+                We apologize for any inconvenience this may have caused. If you have any questions or require further assistance, please do not hesitate to contact our support team.
+            </p>
+            <p class="card-text">
+                Thank you for your understanding and cooperation.
+            </p>
+            <p class="card-text">
+                Best regards,<br>
+                The Conference Team
+            </p>
+        </div>
+    </div>
+{% endblock content %}

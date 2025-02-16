@@ -8,7 +8,7 @@ from lib.mail import EmailManager
 from lib.utils import get_full_url
 from django.utils import timezone
 from rest_framework import generics, authentication, permissions
-
+from django.conf import settings
 
 
 class AbstractListView(generics.ListCreateAPIView):
@@ -91,7 +91,7 @@ class ClearanceFileView(generics.ListCreateAPIView):
                     request=self.request, 
                     path=f"admin/event/paymentreceipt/{record.receipt.id}"
                 ),
-                'event_type': f'{serializer.validated_data['submission_type']} Submission'
+                'event_type': f'{serializer.validated_data["submission_type"]} Submission'
             },
             template_name='admin_verification_request.html',
         )
@@ -139,37 +139,47 @@ class EventRegistrationView(generics.CreateAPIView, generics.RetrieveAPIView):
     parser_classes = (FormParser, MultiPartParser)
     lookup_field = None
 
-    def get_object(self) -> User:
+    def get_object(self) -> UserEvent:
         """Retrieve and return the authenticated user."""
         return get_object_or_404(UserEvent, user=self.request.user)
 
     def perform_create(self, serializer: UserEventSerializer) -> None:
         """Create event records."""
-        user_event = serializer.save(user=self.request.user)
+        user = self.request.user
+        if hasattr(user, 'event'):
+            # if user is already registered for an event, dont do anything
+            return
 
+        user_event = serializer.save(user=self.request.user)
         # # send an email notification to user of their successful registrattion
         EmailManager.send_mail(
-            subject=f'Finish Registration for UISC-{timezone.now().year}.',
-            recipients=[self.request.user.email],
-            context={'user': self.request.user},
+            subject=f'Event Registration for UISC-{timezone.now().year}.',
+            recipients=[user.email],
+            context={
+                'user': user,
+                'registration_link': f'{settings.FRONTENT_URL}/register',
+                'clearance_submission_link': f'{settings.FRONTENT_URL}/submission',
+                'abstract_submission_link': f'{settings.FRONTENT_URL}/submit-abstract',
+            },
             template_name='event_verification_notification.html',
         )
 
-        # send email notitification to all admins
-        # notifying them of the submitted reciept
-        # that will need verification
-        admin_emails = list(User.objects.filter(is_staff=True, is_active=True).values_list('email', flat=True))
-        EmailManager.send_mail(
-            subject=f'Reciept Verification action needed',
-            recipients=admin_emails,
-            context={
-                'user': self.request.user,
-                'event_verification_link': get_full_url(
-                    request=self.request, 
-                    path=f"admin/event/paymentreceipt/{user_event.receipt.id}"
-                ),
-                'event_type': 'User registration'
-            },
-            template_name='admin_verification_request.html',
-        )
+        if user_event.receipt:
+            # send email notitification to all admins
+            # notifying them of the submitted reciept
+            # that will need verification
+            admin_emails = list(User.objects.filter(is_staff=True, is_active=True).values_list('email', flat=True))
+            EmailManager.send_mail(
+                subject=f'Reciept Verification action needed',
+                recipients=admin_emails,
+                context={
+                    'user': self.request.user,
+                    'event_verification_link': get_full_url(
+                        request=self.request, 
+                        path=f"admin/event/paymentreceipt/{user_event.receipt.id}"
+                    ),
+                    'event_type': 'User registration'
+                },
+                template_name='admin_verification_request.html',
+            )
 

@@ -9,6 +9,7 @@ import Advertisement from "./pages/Advertisement";
 // import AboutUs from "./pages/About-Us";
 // import Login from "./pages/Login";
 import Register from "./pages/Register";
+import EventRegister from "./pages/EventRegister";
 import Footer from "./components/Footer/Footer";
 import Faq from "./pages/Faq";
 import Blog from "./pages/Blog";
@@ -55,6 +56,7 @@ const App = () => {
         {/* <Route element={<AboutUs />} path="/about-us" /> */}
         {/* <Route element={<Login />} path="/login" /> */}
         <Route element={<Register />} path="/register" />
+        <Route element={<EventRegister />} path="/event" />
         <Route element={<Faq />} path="/faq" />
         <Route element={<Blog />} path="/blog" />
         <Route element={<Contact />} path="/contact-us" />

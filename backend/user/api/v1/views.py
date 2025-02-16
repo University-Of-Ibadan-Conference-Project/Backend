@@ -37,6 +37,24 @@ class UserSignupView(generics.CreateAPIView):
             template_name='user_registration_notification.html',
         )
 
+        if user.event.reciept:
+            # if the user sumbitted their registration payment reciept
+            # then send an email notification to all admins on that
+            admin_emails = list(User.objects.filter(is_staff=True, is_active=True).values_list('email', flat=True))
+            EmailManager.send_mail(
+                subject=f'Reciept Verification action needed',
+                recipients=admin_emails,
+                context={
+                    'user': self.request.user, 
+                    'event_verification_link': get_full_url(
+                        request=self.request, 
+                        path=f"admin/event/paymentreceipt/{user.event.reciept.id}"
+                    ),
+                    'event_type': 'User Registration'
+                },
+                template_name='admin_verification_request.html',
+            )
+
         headers = self.get_success_headers(serializer.data)
         return Response(user_serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 

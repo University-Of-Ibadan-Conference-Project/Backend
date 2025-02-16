@@ -92,7 +92,7 @@ class ClearanceFileSerializer(serializers.ModelSerializer):
 class UserEventSerializer(serializers.ModelSerializer):
 
     receipt = PyamentReceiptSerializer(read_only=True)
-    receipt_file = serializers.FileField(source='receipt.payment_proff', write_only=True)
+    receipt_file = serializers.FileField(source='receipt.payment_proff', write_only=True, required=False)
 
     class Meta:
         model = UserEvent
@@ -104,8 +104,11 @@ class UserEventSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data: dict[str, Any]) -> UserEvent:
         """Attach payment reciept to event."""
-        receipt_data = validated_data.pop('receipt')
-        validated_data['receipt'] = PaymentReceipt.objects.create(**receipt_data)
+        receipt_data = validated_data.pop('receipt', None)
+
+        if receipt_data:
+            validated_data['receipt'] = PaymentReceipt.objects.create(**receipt_data)
+
         return super().create(validated_data)
 
 
