@@ -34,11 +34,11 @@ class AbstractListView(generics.ListCreateAPIView):
         )
 
         # send email notitification to all admins
-        # notifying them of the submitted reciept
+        # notifying them of the submitted receipt
         # that will need verification
         admin_emails = list(User.objects.filter(is_staff=True, is_active=True).values_list('email', flat=True))
         EmailManager.send_mail(
-            subject=f'Reciept Verification action needed',
+            subject=f'Receipt Verification action needed',
             recipients=admin_emails,
             context={
                 'user': self.request.user,
@@ -65,7 +65,7 @@ class ClearanceFileView(generics.ListCreateAPIView):
         record = serializer.save(user=self.request.user)
 
         if serializer.validated_data['submission_type'] == ClearanceFile.SUBMISSION_TYPE_EVENT:
-            # if the submission type is event attach reciept to users event
+            # if the submission type is event attach receipt to users event
             event = self.request.user.event
             event.receipt = record.receipt
             event.save(update_fields=['receipt'])
@@ -79,11 +79,11 @@ class ClearanceFileView(generics.ListCreateAPIView):
         )
 
         # send email notitification to all admins
-        # notifying them of the submitted reciept
+        # notifying them of the submitted receipt
         # that will need verification
         admin_emails = list(User.objects.filter(is_staff=True, is_active=True).values_list('email', flat=True))
         EmailManager.send_mail(
-            subject=f'Reciept Verification action needed',
+            subject=f'Receipt Verification action needed',
             recipients=admin_emails,
             context={
                 'user': self.request.user, 
@@ -166,11 +166,11 @@ class EventRegistrationView(generics.CreateAPIView, generics.RetrieveAPIView):
 
         if user_event.receipt:
             # send email notitification to all admins
-            # notifying them of the submitted reciept
+            # notifying them of the submitted receipt
             # that will need verification
             admin_emails = list(User.objects.filter(is_staff=True, is_active=True).values_list('email', flat=True))
             EmailManager.send_mail(
-                subject=f'Reciept Verification action needed',
+                subject=f'Receipt Verification action needed',
                 recipients=admin_emails,
                 context={
                     'user': self.request.user,

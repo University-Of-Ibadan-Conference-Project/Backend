@@ -1,3 +1,4 @@
+import { useState } from 'react'; // Add this import for state management
 import CountDownTimer from "../components/Countdown/Countdown";
 import styles from "./../sass/pages/Home.module.scss";
 import PropTypes from "prop-types";
@@ -11,10 +12,41 @@ import speaker5 from "./../assets/speakers/_5.JPG";
 import speaker6 from "./../assets/speakers/_6.JPG";
 import speaker7 from "./../assets/speakers/_7.JPG";
 
+// Define the Modal component
+const Modal = ({ isOpen, onClose, children }) => {
+  if (!isOpen) return null;
+  return (
+    <div className={styles.ModalOverlay} onClick={onClose}>
+      <div className={styles.ModalContent} onClick={e => e.stopPropagation()}>
+        {children}
+        <button onClick={onClose}>Close</button>
+      </div>
+    </div>
+  );
+};
 
 const Home = () => {
+  // State to control modal visibility
+  const [showModal, setShowModal] = useState(true);
+
+  // Calculate the last day of the current month
+  const today = new Date();
+  const lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+  const deadlineDate = lastDayOfMonth.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+
   return (
     <>
+      {/* Modal pop-up */}
+      <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
+        <h2>Registration Deadline</h2>
+        <p>The registration deadline has been extended to {deadlineDate}.</p>
+        <a href="/register">Register Now</a>
+      </Modal>
+
       <div className={styles.Home}>
         <div className={styles.Hero}>
           <div className={styles.title}>
@@ -39,7 +71,8 @@ const Home = () => {
           </p>
         </div>
       </div>
-      <CountDownTimer />
+      {/* Update existing CountDownTimer to include conference date */}
+      <CountDownTimer targetDate={new Date('2025-05-06')} />
 
       <div className={styles.HomeInfo}>
         <h2>ANNOUNCEMENT</h2>
@@ -52,8 +85,8 @@ const Home = () => {
           Science Lakeside Lecture Theater, University of Ibadan. The theme for
           this conference is{""}
           <b>
-            &quot;Scientific Research, Innovation and Partnership in
-            Contemporary World&quot;
+            "Scientific Research, Innovation and Partnership in
+            Contemporary World"
           </b>
           . The objective of the conference is to promote the international and
           interdisciplinary exchange of scientific information among scientists
@@ -78,16 +111,15 @@ const Home = () => {
             isKeyNoteSpeaker
           />
           <Speaker
-            name="Austin Avuru"
-            dp={speaker2}
-            speakerType="keynote"
-            isKeyNoteSpeaker
-          />
-          <Speaker
-            name="Prof. Moshood  Niyi Tijani"
+            name="Prof. Moshood Niyi Tijani"
             dp={speaker3}
             speakerType="guest"
             isKeyNoteSpeaker
+          />
+          <Speaker
+            dp={speaker7}
+            speakerType="plenary"
+            name="Prof. Odunayo Clement Adebooye"
           />
         </div>
         <div className={styles.Speakers}>
@@ -96,17 +128,10 @@ const Home = () => {
           <Speaker
             dp={speaker6}
             speakerType="plenary"
-            name=" Prof. Abel Idowu"
-          />
-          <Speaker 
-            dp={speaker7} 
-            speakerType="plenary" 
-            name="Prof. Odunayo Clement Adebooye" 
+            name="Prof. Abel Idowu"
           />
         </div>
       </div>
-
-      {/* Event subtheme */}
 
       <SubTheme />
     </>
@@ -117,9 +142,9 @@ const Speaker = ({ dp, name, speakerType, status }) => {
   return (
     <div className={styles.Speaker}>
       <img src={dp} alt={name} />
-      <a 
-        href={`https://www.google.com/search?q=${encodeURIComponent(name)}`} 
-        target={"_blank"} 
+      <a
+        href={`https://www.google.com/search?q=${encodeURIComponent(name)}`}
+        target="_blank"
         rel="noreferrer"
       >
         <h5>{name}</h5>
@@ -131,8 +156,8 @@ const Speaker = ({ dp, name, speakerType, status }) => {
             {speakerType === "keynote"
               ? "KEYNOTE SPEAKER"
               : speakerType === "plenary"
-                ? "PLENARY SPEAKER"
-                : "GUEST SPEAKER"}
+              ? "PLENARY SPEAKER"
+              : "GUEST SPEAKER"}
           </span>
         </h6>
       </a>
@@ -143,7 +168,7 @@ const Speaker = ({ dp, name, speakerType, status }) => {
 Speaker.propTypes = {
   dp: PropTypes.string,
   status: PropTypes.string,
-  speakerType: "keynote" || "plenary" || "guest",
+  speakerType: PropTypes.oneOf(["keynote", "plenary", "guest"]),
   name: PropTypes.string,
 };
 
