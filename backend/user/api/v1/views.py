@@ -9,6 +9,7 @@ from django.db import transaction
 from lib.mail import EmailManager
 from django.utils import timezone
 from django.conf import settings
+from lib.utils import get_full_url
 
 
 class UserSignupView(generics.CreateAPIView):
@@ -37,18 +38,18 @@ class UserSignupView(generics.CreateAPIView):
             template_name='user_registration_notification.html',
         )
 
-        if user.event.reciept:
-            # if the user sumbitted their registration payment reciept
+        if user.event and user.event.receipt:
+            # if the user sumbitted their registration payment receipt
             # then send an email notification to all admins on that
             admin_emails = list(User.objects.filter(is_staff=True, is_active=True).values_list('email', flat=True))
             EmailManager.send_mail(
-                subject=f'Reciept Verification action needed',
+                subject=f'Receipt Verification action needed',
                 recipients=admin_emails,
                 context={
                     'user': self.request.user, 
                     'event_verification_link': get_full_url(
                         request=self.request, 
-                        path=f"admin/event/paymentreceipt/{user.event.reciept.id}"
+                        path=f"admin/event/paymentreceipt/{user.event.receipt.id}"
                     ),
                     'event_type': 'User Registration'
                 },

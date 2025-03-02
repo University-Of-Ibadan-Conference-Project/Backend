@@ -35,7 +35,14 @@
                 Thank you for registering!
             </p>
 
-            {% if not user.event.receipt %}
+            {% if user.event.receipt %}
+                <p class="card-text">
+                    You can now submit your abstract for the conference.
+                </p>
+                <a href="{{abstract_submission_link}}">
+                    <button class="button">Submit Abstract</button>
+                </a>
+            {% else %}
                 <p class="card-text">
                     To complete the registration process, please submit receipt of payment for the registration.
                 </p>
@@ -48,13 +55,6 @@
                 </p>
                 <a href="{{registration_link}}">
                     <button class="button">Registration Page</button>
-                </a>
-            {% else %}
-                <p class="card-text">
-                    You can now submit your abstract for the conference.
-                </p>
-                <a href="{{abstract_submission_link}}">
-                    <button class="button">Submit Abstract</button>
                 </a>
             {% endif %}
 

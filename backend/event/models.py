@@ -121,12 +121,12 @@ class PaymentReceipt(models.Model):
             models.CheckConstraint(
                 check=~models.Q(status=2, failure_reason=''),
                 name='failure_reason required for `Failed verification` status',
-                violation_error_message='Please add a failure reason when marking a payment reciept status as `Failed verification`'
+                violation_error_message='Please add a failure reason when marking a payment receipt status as `Failed verification`'
             ),
             models.CheckConstraint(
                 check=~models.Q(status=1, verification_log__isnull=True),
                 name='verification_log requireed for `Verified` status',
-                violation_error_message='Please ensure to add a reciept verification log when marking a payment reciept status as `Verified`'
+                violation_error_message='Please ensure to add a receipt verification log when marking a payment receipt status as `Verified`'
             ),
         ]
 

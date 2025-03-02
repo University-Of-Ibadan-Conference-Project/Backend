@@ -259,3 +259,52 @@
   align-items: center;
   min-height: 20px;
 }
+
+// Modal Overlay
+.ModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+// Modal Content
+.ModalContent {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+}
+
+// Close Button
+.ModalContent button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: #f44336; // Vibrant red
+  color: #fff;
+  border: none;
+  border-radius: 10%;
+  width: 4rem;
+  height: 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: #d32f2f; // Darker red on hover
+  }
+}

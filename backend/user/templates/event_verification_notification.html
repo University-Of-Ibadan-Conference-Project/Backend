@@ -36,7 +36,14 @@
                 <i>6th International Conference on Scientific Research in Nigeria</i>!
             </p>
 
-            {% if not user.event.receipt %}
+            {% if user.event.receipt %}
+                <p class="card-text">
+                    Your payment has been verified. You can now proceed to submit your abstract for the conference.
+                </p>
+                <a href="{{ abstract_submission_link }}">
+                    <button class="button">Submit Abstract</button>
+                </a>
+            {% else %}
                 <p class="card-text">
                     Your payment is currently under verification. To complete your registration, please submit your payment receipt.
                 </p>
@@ -48,13 +55,6 @@
                 </p>
                 <a href="{{ registration_link }}">
                     <button class="button">Registration Page</button>
-                </a>
-            {% else %}
-                <p class="card-text">
-                    Your payment has been verified. You can now proceed to submit your abstract for the conference.
-                </p>
-                <a href="{{ abstract_submission_link }}">
-                    <button class="button">Submit Abstract</button>
                 </a>
             {% endif %}
 

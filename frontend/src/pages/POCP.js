@@ -28,7 +28,7 @@ const POCP = () => {
         <a href="POCP.pdf" style={{ color: "red", textDecoration: "none" }}>
           here{" "}
         </a>
-        on or before 30, April, 2025. Manuscripts that do not conform to the
+        on or before 31, March, 2025. Manuscripts that do not conform to the
         journal&apos;s guidelines will be rejected. Please note that only the
         papers presented at the conference shall be considered for publication
         after the payment of the Processing Fees of{" "}

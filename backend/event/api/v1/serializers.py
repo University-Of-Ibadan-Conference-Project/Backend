@@ -68,7 +68,7 @@ class AbstarctSerializer(serializers.ModelSerializer):
         required_fields = fields
 
     def create(self, validated_data: dict[str, Any]) -> Abstract:
-        """Attach payment reciept to event."""
+        """Attach payment receipt to event."""
         receipt_data = validated_data.pop('receipt')
         validated_data['receipt'] = PaymentReceipt.objects.create(**receipt_data)
         return super().create(validated_data)
@@ -83,7 +83,7 @@ class ClearanceFileSerializer(serializers.ModelSerializer):
         fields = ['submission_type', 'submission_file', 'receipt', 'receipt_file']
 
     def create(self, validated_data: dict[str, Any]) -> ClearanceFile | PaymentReceipt:
-        """Attach payment reciept to event."""
+        """Attach payment receipt to event."""
         receipt_data = validated_data.pop('receipt')
         validated_data['receipt'] = PaymentReceipt.objects.create(**receipt_data)
         return super().create(validated_data)
@@ -103,7 +103,7 @@ class UserEventSerializer(serializers.ModelSerializer):
         read_only_fields = ['date_created', 'receipt']
 
     def create(self, validated_data: dict[str, Any]) -> UserEvent:
-        """Attach payment reciept to event."""
+        """Attach payment receipt to event."""
         receipt_data = validated_data.pop('receipt', None)
 
         if receipt_data:
