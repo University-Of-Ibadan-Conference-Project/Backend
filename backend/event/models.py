@@ -20,8 +20,9 @@ class UserEvent(models.Model):
     address =  models.CharField(blank=True, max_length=300)
     participant_type =  models.CharField(choices=PARTICIPANT_TYPE_CHOICE, max_length=300)
     receipt = models.OneToOneField(
-        to='event.paymentreceipt', 
-        on_delete=models.CASCADE, 
+        to='event.paymentreceipt',
+        related_name='userevent',  
+        on_delete=models.CASCADE,
         null=True,
     )
     date_created = models.DateTimeField(auto_now_add=True, editable=False)
@@ -55,7 +56,11 @@ class Abstract(models.Model):
     keywords= models.JSONField(default=list)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
-    receipt = models.OneToOneField(to='event.paymentreceipt', on_delete=models.CASCADE)
+    receipt = models.OneToOneField(
+        to='event.paymentreceipt',
+        related_name='abstract',  
+        on_delete=models.CASCADE
+    )
      
     def __str__(self):
         return f"{self.coresponding_author_fullname} Abstract"
@@ -82,7 +87,11 @@ class ClearanceFile(models.Model):
         max_length=500,
         storage=RawMediaCloudinaryStorage(),
     )
-    receipt = models.OneToOneField(to='event.paymentreceipt', on_delete=models.CASCADE)
+    receipt = models.OneToOneField(
+        to='event.paymentreceipt',
+        related_name='clearance_file', 
+        on_delete=models.CASCADE
+    )
     created_at=models.DateTimeField(auto_now_add=True)
 
 
@@ -106,15 +115,9 @@ class PaymentReceipt(models.Model):
         storage=RawMediaCloudinaryStorage(),
     )
     failure_reason = models.CharField(max_length=200, blank=True)
+    user_notified = models.BooleanField(default=False)
     date_created = models.DateTimeField(auto_now_add=True, editable=False)
     date_updated = models.DateTimeField(auto_now=True, editable=False)
-    verification_log = models.OneToOneField(
-        'event.ReceiptVerificationLogs', 
-        null=True,
-        blank=True,
-        on_delete=models.CASCADE, 
-        related_name="reciept"
-    )
 
     class Meta:
         constraints = [
@@ -123,45 +126,10 @@ class PaymentReceipt(models.Model):
                 name='failure_reason required for `Failed verification` status',
                 violation_error_message='Please add a failure reason when marking a payment receipt status as `Failed verification`'
             ),
-            models.CheckConstraint(
-                check=~models.Q(status=1, verification_log__isnull=True),
-                name='verification_log requireed for `Verified` status',
-                violation_error_message='Please ensure to add a receipt verification log when marking a payment receipt status as `Verified`'
-            ),
         ]
 
     def __str__(self):
         return f"Receipt #{self.id} - Status: {self.get_status_display()}"
-
-
-class ReceiptVerificationLogs(models.Model):
-    verified_by = models.ForeignKey(
-        User, 
-        blank=True, 
-        on_delete=models.CASCADE, 
-        related_name="verification_logs",
-    )
-    transaction_id = models.CharField(max_length=200)
-    payment_bank = models.CharField(max_length=200, choices=BANK_CHOICES)
-    date_created = models.DateTimeField(auto_now_add=True, editable=False)
-
-    class Meta:
-        ordering = ['-date_created']
-        verbose_name = 'receipt verification log'
-        verbose_name_plural = 'receipt verification logs'
-        constraints = [
-            models.UniqueConstraint(
-                fields=['transaction_id', 'payment_bank'],
-                name='transaction_id_unique_with_payment_bank',
-                violation_error_message=(
-                    'A transaction with the specifeid ID already exists in the system. This might be a fraud case.'
-                ),
-            ),
-        ]
-
-    def __str__(self):
-        return f"Transaction id: [{self.transaction_id}] Bank: [{self.payment_bank}]"
-
 
 
 class UserContactRequest(models.Model):
