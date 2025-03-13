@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Receipt Verification
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <p>Dear <strong>{{ user.first_name|title }} {{ user.last_name|title }}</strong>,</p>
+    <p>{{ message }}</p>
+    <p>For any inqueries please reach out to the conference team.</p>
+</div>
+{% endblock content %}

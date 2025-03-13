@@ -7,7 +7,6 @@ from event.models import (
     ClearanceFile, 
     PaymentReceipt, 
     UserContactRequest, 
-    ReceiptVerificationLogs, 
 )
 
 
@@ -78,22 +77,6 @@ class UserContactRequestAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         obj.resolved_by = request.user
         obj.resolution_date = timezone.now()
-        super().save_model(request, obj, form, change)
-
-
-@admin.register(ReceiptVerificationLogs)
-class ReceiptVerificationLogsAdmin(admin.ModelAdmin):
-    fields = [
-        'verified_by',
-        'transaction_id',
-        'payment_bank',
-        'date_created',
-    ]
-    readonly_fields = ['verified_by', 'date_created']
-    date_hierarchy ='date_created'
-
-    def save_model(self, request, obj, form, change):
-        obj.verified_by = request.user
         super().save_model(request, obj, form, change)
 
 
