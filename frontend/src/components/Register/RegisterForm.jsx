@@ -1,11 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import { Country } from "country-state-city";
+import { RiUploadCloud2Line, RiFileTextLine } from "react-icons/ri";
 import Spinner from "./../Spinner/Spinner";
 
 import "./../../sass/components/Form/Form.scss";
 import { useFormik } from "formik";
 import axios from "axios";
 import Swal from "sweetalert2";
+
+const formatBytes = (bytes) => {
+  if (!bytes) return "";
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+};
 
 const RegisterForm = () => {
   const ref = useRef();
@@ -42,7 +50,7 @@ const RegisterForm = () => {
     onSubmit: async (values) => {
       console.log(JSON.stringify({ ...values }, null, 2), receipt_file);
       const requestBody = new FormData();
-      
+
       if (receipt_file !== null) {
         requestBody.append("receipt_file", receipt_file);
       }
@@ -271,22 +279,52 @@ const RegisterForm = () => {
             />
           </div>
           <div className="section-2">
-            <label className="" htmlFor="file">
-              Attach the the receipt of your payment
+            <label htmlFor="receipt_file">Receipt of Payment</label>
+            <label
+              htmlFor="receipt_file"
+              className={`file-drop ${receipt_file ? "file-drop--filled" : ""}`}
+            >
+              <span className="file-drop__icon">
+                {receipt_file ? (
+                  <RiFileTextLine size={18} />
+                ) : (
+                  <RiUploadCloud2Line size={20} />
+                )}
+              </span>
+              <span className="file-drop__body">
+                <span className="file-drop__primary">
+                  {receipt_file ? receipt_file.name : "Upload receipt"}
+                </span>
+                <span className="file-drop__hint">
+                  {receipt_file
+                    ? formatBytes(receipt_file.size)
+                    : "PDF, JPG or PNG · up to ~5 MB"}
+                </span>
+              </span>
+              {receipt_file && (
+                <button
+                  type="button"
+                  className="file-drop__clear"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    set_receipt_file(null);
+                    if (ref.current) ref.current.value = "";
+                  }}
+                >
+                  Remove
+                </button>
+              )}
+              <input
+                type="file"
+                id="receipt_file"
+                name="receipt_file"
+                accept=".pdf, .jpg, .jpeg, .png"
+                ref={ref}
+                onChange={(e) => {
+                  set_receipt_file(e.target.files[0]);
+                }}
+              />
             </label>
-            <input
-              type="file"
-              name="receipt_file"
-              // Accepts pdf and image files
-              accept=".pdf, .jpg, .jpeg, .png"
-              ref={ref}
-              onChange={(e) => {
-                // console.log(e.target.files[0]);
-                set_receipt_file(e.target.files[0]);
-              }}
-              // value={formik.values.receipt_file}
-              // required
-            />
           </div>
         </div>
         <button className="submit" disabled={submitting}>

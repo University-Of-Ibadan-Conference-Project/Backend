@@ -115,11 +115,13 @@ function Submission() {
 
 const FileUploader = ({ setRequiredUpload, requiredUpload, fileName }) => {
   // const [requiredUpload, setRequiredUpload] = useState(null);
-  const onDrop = useCallback(async (acceptedFiles) => {
-    if (acceptedFiles.length > 1) return;
-    setRequiredUpload(acceptedFiles[0]);
-    console.log(acceptedFiles);
-  }, []);
+  const onDrop = useCallback(
+    async (acceptedFiles) => {
+      if (acceptedFiles.length > 1) return;
+      setRequiredUpload(acceptedFiles[0]);
+    },
+    [setRequiredUpload],
+  );
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (

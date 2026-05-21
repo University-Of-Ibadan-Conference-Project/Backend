@@ -1,6 +1,26 @@
 .input-field {
-  border: 3px solid #38ca3e80;
-  border-radius: 20px;
-  padding: 10px 20px;
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 0.875rem;
   outline: none;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  background-color: var(--color-white);
+  color: var(--color-ink);
+  transition:
+    border 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: var(--color-ink-500);
+  }
+
+  &:focus {
+    border-color: var(--color-ink);
+    box-shadow: 0 0 0 3px rgba(15, 29, 54, 0.08);
+  }
+
+  &::placeholder {
+    color: var(--color-muted);
+  }
 }

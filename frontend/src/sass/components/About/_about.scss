@@ -1,41 +1,62 @@
 .app__about {
-  background-color: white;
-  padding: 1.5rem 1.5rem;
+  background-color: var(--color-paper);
+  padding: 4rem 1.5rem;
 
   .app__about-section {
     text-align: center;
+    max-width: var(--container);
+    margin: 0 auto;
 
     h1 {
+      font-family: var(--font-serif);
       margin-top: 2.5rem;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
+      font-size: 2.25rem;
+      color: var(--color-ink);
     }
   }
 
   .app__about-organizers {
     .app__about-organizers_list {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       gap: 2.5rem;
 
       .organizer__card {
+        text-align: center;
+
         img {
-          width: 12rem;
+          width: 11rem;
+          height: 11rem;
+          object-fit: cover;
+          border-radius: 50%;
+          border: 3px solid var(--color-gold);
         }
       }
     }
   }
 
   .app__about-speakers {
+    margin-top: 3rem;
+
     .app__about-speakers_list {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       gap: 2.5rem;
 
       .speaker__card {
+        text-align: center;
+
         img {
-          width: 12rem;
+          width: 11rem;
+          height: 11rem;
+          object-fit: cover;
+          border-radius: 50%;
+          border: 3px solid var(--color-line-strong);
         }
       }
     }

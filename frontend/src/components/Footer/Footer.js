@@ -1,104 +1,35 @@
-import {
-  RiFacebookCircleFill,
-  RiInstagramFill,
-  RiTwitterFill,
-  RiWhatsappFill,
-} from "react-icons/ri";
 import { Link } from "react-router-dom";
-import styles from "./../../sass/components/Footer.module.scss";
 import logo from "./../../assets/img/v2-logo.png";
+import styles from "./../../sass/components/Footer.module.scss";
 
 export default function Footer() {
   return (
-    <>
-      {/* <Subscribe /> */}
-      <div className={styles.Footer}>
-        <div className={styles.FooterData}>
-          <div>
-            <img src={logo} alt="logo" />
-            <p>Faculty of Science, University of Ibadan</p>
-          </div>
-          <div>
-            <h2>Quick Links</h2>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/submit-abstract">Abstract Submission</Link>
-              </li>
-              <li>
-                <Link to="/register">Register</Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h2>Other Pages</h2>
-            <ul>
-              <li>
-                <Link to="/accomodation">Accomodation</Link>
-              </li>
-              <li>
-                <Link to="/advertisement">Advertisement</Link>
-              </li>
-              {/* <li>
-                <Link to="/about-us">About Us</Link>
-              </li> */}
-              <li>
-                <Link to="/committee">Committee</Link>
-              </li>
-            </ul>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "start",
-              gap: "1em",
-            }}
-          >
-            <div>
-              <h2>Socials</h2>
-              <a href="https://twitter.com/" target="_blank" rel="noreferrer">
-                <RiTwitterFill
-                  size={30}
-                  fill="#98A2B3"
-                  className={styles.FooterIcon}
-                />
-              </a>
-              <a
-                href="https://web.facebook.com/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <RiFacebookCircleFill
-                  size={30}
-                  fill="#98A2B3"
-                  className={styles.FooterIcon}
-                />
-              </a>
-              <a href="https://instagram.com/" target="_blank" rel="noreferrer">
-                <RiInstagramFill
-                  size={30}
-                  fill="#98A2B3"
-                  className={styles.FooterIcon}
-                />
-              </a>
-              <a href="https://whatsapp.com/" target="_blank" rel="noreferrer">
-                <RiWhatsappFill
-                  size={30}
-                  fill="#98A2B3"
-                  className={styles.FooterIcon}
-                />
-              </a>
-            </div>
-          </div>
+    <footer className={styles.Footer}>
+      <div className={styles.FooterInner}>
+        <Link to="/" className={styles.FooterBrand} aria-label="Home">
+          <img src={logo} alt="University of Ibadan" />
+          <span>
+            <span className={styles.FooterBrandTitle}>Faculty of Science</span>
+            <span className={styles.FooterBrandSub}>
+              University of Ibadan · 6th ICSR
+            </span>
+          </span>
+        </Link>
+
+        <nav className={styles.FooterNav} aria-label="Footer">
+          <Link to="/programme">Programme</Link>
+          <Link to="/call-for-papers">Call for Papers</Link>
+          <Link to="/register">Register</Link>
+          <Link to="/contact-us">Contact</Link>
+        </nav>
+
+        <div className={styles.FooterContact}>
+          <a href="mailto:faculty_science@ui.edu.ng">
+            faculty_science@ui.edu.ng
+          </a>
+          <span>© {new Date().getFullYear()} Faculty of Science · UI</span>
         </div>
-        <span className={styles.FooterCopyRight}>
-          Copyright &copy; {new Date().getFullYear()} - Faculty of Science
-          Science - University of Ibadan
-        </span>
       </div>
-    </>
+    </footer>
   );
 }

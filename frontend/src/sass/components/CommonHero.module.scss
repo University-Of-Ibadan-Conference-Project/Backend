@@ -1,29 +1,69 @@
 .CommonHero {
   background-size: cover;
   background-position: center;
-  background-color: rgba(50, 50, 50, 0.458);
-  background-blend-mode: multiply;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-gold) 50%,
+      transparent
+    );
+  }
 
   .NavbarLight {
     ul {
       li {
-        color: #ffffff;
+        color: var(--color-white);
       }
     }
   }
 
   &Info {
-    margin: auto;
+    margin: 0 auto;
     text-align: center;
-    padding: 8em 0;
-    color: #ffffff;
+    padding: 6.5rem 1.5rem;
+    max-width: 900px;
+    color: var(--color-white);
 
     h1 {
-      font-size: 3em;
+      font-family: var(--font-serif);
+      font-weight: 600;
+      font-size: 3.25rem;
+      color: var(--color-white);
+      line-height: 1.15;
+      margin: 0;
+      letter-spacing: -0.005em;
     }
 
     span {
+      display: inline-block;
+      margin-top: 1rem;
+      font-family: var(--font-serif);
+      font-style: italic;
       font-weight: 500;
+      font-size: 1.125rem;
+      color: var(--color-gold-soft);
+      letter-spacing: 0.01em;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .CommonHero {
+    &Info {
+      padding: 5rem 1.25rem;
+
+      h1 {
+        font-size: 2.5rem;
+      }
     }
   }
 }
@@ -32,7 +72,11 @@
   .CommonHero {
     &Info {
       h1 {
-        font-size: 2em;
+        font-size: 2rem;
+      }
+
+      span {
+        font-size: 1rem;
       }
     }
   }
@@ -42,7 +86,7 @@
   .CommonHero {
     &Info {
       h1 {
-        font-size: 1.3em;
+        font-size: 1.625rem;
       }
     }
   }

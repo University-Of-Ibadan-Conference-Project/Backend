@@ -1,13 +1,10 @@
+import { useEffect, useRef } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
-import { useEffect, useState } from "react";
 import Home from "./pages/Home";
 import Help from "./pages/Help";
 import Accomodation from "./pages/Accomodation";
-import Committee from "./pages/Committee";
 import Advertisement from "./pages/Advertisement";
-// import AboutUs from "./pages/About-Us";
-// import Login from "./pages/Login";
 import Register from "./pages/Register";
 import EventRegister from "./pages/EventRegister";
 import Footer from "./components/Footer/Footer";
@@ -15,15 +12,20 @@ import Faq from "./pages/Faq";
 import Blog from "./pages/Blog";
 import Contact from "./components/Contact/Contact";
 import Notfound from "./pages/Notfound";
-import SubmissionGuidlines from "./pages/SubmissionGuidlines";
-import PresentationGuidline from "./pages/PresentationGuideline";
-import POCP from "./pages/POCP";
+import CallForPapers from "./pages/CallForPapers";
 import OrderOfProgram from "./pages/Order-Of-Program";
-import Exhibition from "./pages/Exhibition";
-import RegistrationGuide from "./pages/RegistrationGuide";
 import Submission from "./pages/Submission";
 
+const ScrollToTop = ({ scrollRef }) => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [pathname, scrollRef]);
+  return null;
+};
+
 const App = () => {
+  const scrollRef = useRef(null);
   // const [loading, setLoading] = useState(true);
   // const spinner = document.getElementById("spinner");
   // if (spinner) {
@@ -35,24 +37,26 @@ const App = () => {
 
   return (
     // !loading && (
-    <div className="scrollContainer">
+    <div className="scrollContainer" ref={scrollRef}>
+      <ScrollToTop scrollRef={scrollRef} />
       <Navbar />
       <Routes>
         <Route element={<Home />} path="/" />
         <Route element={<Help />} path="/submit-abstract" />
-        <Route element={<SubmissionGuidlines />} path="/submit-guidelines" />
-        <Route element={<POCP />} path="/publication-of-conference-papers" />
-        <Route element={<OrderOfProgram />} path="/programme" />
-        <Route element={<Exhibition />} path="/exhibition" />
-        <Route element={<RegistrationGuide />} path="/registration-guideline" />
+        <Route element={<CallForPapers />} path="/call-for-papers" />
+        <Route element={<CallForPapers />} path="/submit-guidelines" />
         <Route
-          element={<PresentationGuidline />}
-          path="/presentation-guideline"
+          element={<CallForPapers />}
+          path="/publication-of-conference-papers"
         />
+        <Route element={<CallForPapers />} path="/presentation-guideline" />
+        <Route element={<OrderOfProgram />} path="/programme" />
+        <Route element={<OrderOfProgram />} path="/registration-guideline" />
+        <Route element={<OrderOfProgram />} path="/committee" />
+        <Route element={<Advertisement />} path="/advertisement" />
+        <Route element={<Advertisement />} path="/exhibition" />
         <Route element={<Submission />} path="/submission" />
         <Route element={<Accomodation />} path="/accomodation" />
-        <Route element={<Advertisement />} path="/advertisement" />
-        <Route element={<Committee />} path="/committee" />
         {/* <Route element={<AboutUs />} path="/about-us" /> */}
         {/* <Route element={<Login />} path="/login" /> */}
         <Route element={<Register />} path="/register" />

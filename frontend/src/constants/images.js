@@ -3,9 +3,11 @@ import organizer_2 from "../assets/organizers/organizer_2.jpg";
 import speaker_1 from "../assets/speakers/_1.PNG";
 import speaker_2 from "../assets/speakers/_2.jpeg";
 
-export default {
+const images = {
   organizer_1,
   organizer_2,
   speaker_1,
   speaker_2,
 };
+
+export default images;

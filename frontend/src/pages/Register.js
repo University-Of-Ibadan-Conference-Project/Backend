@@ -1,75 +1,145 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import "../sass/components/Form/Form.scss";
 import CommonHero from "./../components/CommonHero/CommonHero";
-import styles from "./../sass/pages/Accomodation.module.scss";
 import RegisterForm from "../components/Register/RegisterForm";
-import { Link } from "react-router-dom";
+import styles from "./../sass/pages/Register.module.scss";
 
-export default function Register() {
-  const [countdown, setCountdown] = useState("");
-  const [isClosed, setIsClosed] = useState(false);
+const DEADLINE = new Date("2026-05-31T23:59:59");
+
+const fees = [
+  { label: "Local Participant", amount: "₦40,000" },
+  { label: "Local Student (with ID)", amount: "₦20,000" },
+  { label: "International Participant", amount: "$100" },
+  { label: "International Student", amount: "$50" },
+];
+
+const bank = [
+  {
+    label: "Account Name",
+    value: "University of Ibadan, Faculty of Science Alumni Association",
+  },
+  { label: "Bank", value: "Union Bank" },
+  { label: "Account Number", value: "0109363898" },
+];
+
+const pad = (n) => (n > 9 ? `${n}` : `0${n}`);
+
+const useCountdown = (target) => {
+  const compute = () => {
+    const diff = +target - +new Date();
+    if (diff <= 0) return null;
+    return {
+      days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+      hours: pad(Math.floor((diff / (1000 * 60 * 60)) % 24)),
+      minutes: pad(Math.floor((diff / (1000 * 60)) % 60)),
+      seconds: pad(Math.floor((diff / 1000) % 60)),
+    };
+  };
+  const [remaining, setRemaining] = useState(compute);
 
   useEffect(() => {
-    const deadline = new Date();
-    deadline.setMonth(deadline.getMonth() + 1, 0); // Last day of the current month
-    deadline.setHours(23, 59, 59, 999);
-
-    const updateCountdown = () => {
-      const now = new Date();
-      const diff = deadline - now;
-      if (diff <= 0) {
-        setIsClosed(true);
-        return;
-      }
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-      setCountdown(`${days}d ${hours}h ${minutes}m ${seconds}s`);
-    };
-
-    updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
-    return () => clearInterval(interval);
+    setRemaining(compute());
+    const id = setInterval(() => setRemaining(compute()), 1000);
+    return () => clearInterval(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  return remaining;
+};
+
+export default function Register() {
+  const remaining = useCountdown(DEADLINE);
+  const isClosed = remaining === null;
+
   return (
-    <div>
+    <>
       <CommonHero
-        title="Register with us."
+        title="Register"
+        info="Secure your seat at the 6th International Conference on Scientific Research"
         bg="https://www.eventpro.net/images/online-event-attendee-registration.jpg"
       />
-      <div className={styles.ActivityCard}>
-        {isClosed ? (
-          <h1 style={{ color: "red", fontWeight: "bold", textAlign: "center" }}>
-            Registration is closed.
-          </h1>
-        ) : (
-          <>
-            <p>
-              The registration deadline is <b style={{ color: "red" }}>31st of March 2025</b>.
+
+      <section className={styles.Page}>
+        <header className={styles.Head}>
+          <span className={styles.Eyebrow}>Registration</span>
+          <h2 className={styles.Title}>Reserve your place</h2>
+          <p className={styles.Lede}>
+            Registration covers conference materials, lunch and tea breaks. Only
+            registered participants and invited guests will be admitted to the
+            venue.
+          </p>
+        </header>
+
+        <div
+          className={`${styles.Deadline} ${isClosed ? styles.DeadlineClosed : ""}`}
+        >
+          <div className={styles.DeadlineMeta}>
+            <span className={styles.DeadlineLabel}>
+              {isClosed ? "Registration closed" : "Registration closes in"}
+            </span>
+            <span className={styles.DeadlineDate}>31 May 2026</span>
+          </div>
+          {!isClosed && (
+            <div className={styles.Countdown}>
+              <CountUnit value={remaining.days} label="days" />
+              <span className={styles.CountSep}>:</span>
+              <CountUnit value={remaining.hours} label="hours" />
+              <span className={styles.CountSep}>:</span>
+              <CountUnit value={remaining.minutes} label="min" />
+              <span className={styles.CountSep}>:</span>
+              <CountUnit value={remaining.seconds} label="sec" />
+            </div>
+          )}
+        </div>
+
+        <h3 className={styles.SubTitle}>Registration Fees</h3>
+        <ul className={styles.Rates}>
+          {fees.map((fee, i) => (
+            <li key={fee.label}>
+              <span className={styles.RateIndex}>
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span className={styles.RateLabel}>{fee.label}</span>
+              <span className={styles.RateAmount}>{fee.amount}</span>
+            </li>
+          ))}
+        </ul>
+
+        <h3 className={styles.SubTitle}>Payment Details</h3>
+        <dl className={styles.Bank}>
+          {bank.map((row) => (
+            <div key={row.label} className={styles.BankRow}>
+              <dt>{row.label}</dt>
+              <dd>{row.value}</dd>
+            </div>
+          ))}
+        </dl>
+        <p className={styles.BankNote}>
+          Please pay the registration fee to the conference account above and
+          upload the receipt of your payment in the form below.
+        </p>
+      </section>
+
+      {!isClosed && (
+        <section className={styles.FormSection}>
+          <header className={styles.Head}>
+            <span className={styles.Eyebrow}>Form</span>
+            <h2 className={styles.Title}>Your details</h2>
+            <p className={styles.Lede}>
+              Fill out the form below and attach proof of payment. You will
+              receive a confirmation email once your registration is verified.
             </p>
-            <p>
-              Countdown to deadline: <b style={{ color: "blue" }}>{countdown}</b>
-            </p>
-            <p>
-              The registration fee covering the cost of conference materials, lunch
-              and tea breaks is{" "}
-              <b style={{ color: "red" }}>N40,000.00</b>. The registration for international participant is{" "}
-              <b style={{ color: "red" }}>$100</b>. The registration fee for students who are not academic staff and
-              with identity cards is <b style={{ color: "red" }}>N20,000.00</b>.
-            </p>
-            <p>
-              The registration fee for international student is <b style={{ color: "red" }}>$50</b>. Please pay the registration fee to the conference account
-              ( Name of account: University of Ibadan, Faculty of Science Alumni Association,
-              Bank: Union Bank, Account Number: 0109363898) and upload the receipt
-              of your payment. Only registered participants and invited guests will
-              be allowed into the conference venue.
-            </p>
-          </>
-        )}
-      </div>
-      {!isClosed && <RegisterForm />}
-    </div>
+          </header>
+          <RegisterForm />
+        </section>
+      )}
+    </>
   );
 }
+
+const CountUnit = ({ value, label }) => (
+  <div className={styles.CountUnit}>
+    <span className={styles.CountValue}>{value}</span>
+    <span className={styles.CountLabel}>{label}</span>
+  </div>
+);

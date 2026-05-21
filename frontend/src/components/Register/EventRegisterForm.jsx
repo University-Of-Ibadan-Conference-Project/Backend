@@ -8,7 +8,6 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import withAuth from "../hoc";
 
-
 const EventRegisterForm = () => {
   const ref = useRef();
   const [receipt_file, set_receipt_file] = useState(null);
@@ -38,7 +37,7 @@ const EventRegisterForm = () => {
     onSubmit: async (values) => {
       console.log(JSON.stringify({ ...values }, null, 2), receipt_file);
       const requestBody = new FormData();
-      
+
       if (receipt_file !== null) {
         requestBody.append("receipt_file", receipt_file);
       }
