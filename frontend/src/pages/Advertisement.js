@@ -1,67 +1,127 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation, NavLink } from "react-router-dom";
 import CommonHero from "../components/CommonHero/CommonHero";
 
-const advertisement = () => {
+const advertRates = [
+  { label: "Back Full Cover Page", amount: "₦50,000" },
+  { label: "Half Back Cover Page", amount: "₦25,000" },
+  { label: "Inner Full Cover Page", amount: "₦40,000" },
+  { label: "Half Inner Cover Page", amount: "₦20,000" },
+  { label: "Full Inner Page", amount: "₦25,000" },
+  { label: "Half Inner Page", amount: "₦13,000" },
+  { label: "Quarter Inner Page", amount: "₦8,500" },
+];
+
+const exhibitionRates = [
+  { label: "Exhibition Stand (per booth)", amount: "₦50,000" },
+];
+
+const pathToAnchor = {
+  "/exhibition": "exhibition",
+};
+
+const Advertisement = () => {
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    const target = hash.replace("#", "") || pathToAnchor[pathname];
+    if (target) {
+      const el = document.getElementById(target);
+      if (el) {
+        requestAnimationFrame(() =>
+          el.scrollIntoView({ behavior: "smooth", block: "start" }),
+        );
+      }
+    } else {
+      window.scrollTo({ top: 0 });
+    }
+  }, [pathname, hash]);
+
   return (
     <>
       <CommonHero
-        title="Advertisment"
+        title="Adverts & Exhibition"
+        info="Promote your brand at the 6th International Conference on Scientific Research"
         bg="https://producer.musicradiocreative.com/wp-content/uploads/2013/04/megaphone.jpg"
       />
-      <div
-        style={{
-          width: "80%",
-          margin: "auto",
-          // textAlign: "left",
-          textAlign: "justify",
-          textJustify: "inter-word",
-          lineHeight: "2em",
-          padding: "2em 0 4em",
-        }}
-      >
-        Individuals, companies, and organisations wishing to place adverts
-        and/or goodwill messages in the conference programme/Book of Abstracts
-        should send their write-up with the payment fee (cash) to the secretary
-        of the LOC on or before 7 April 2025
-      </div>
 
-      <div className="app__adverts">
-        <div className="app__adverts-section app__adverts-rates">
-          <h1>RATES</h1>
-          <div className="rates-list">
-            <span className="rate">
-              <p>Back Full Cover Page</p>
-              <p>₦50,000.00</p>
-            </span>
-            <span className="rate">
-              <p>Half Back Cover Page</p>
-              <p>₦25,000.00</p>
-            </span>
-            <span className="rate">
-              <p>Inner Full Cover Page</p>
-              <p>₦40,000.00</p>
-            </span>
-            <span className="rate">
-              <p>Half Inner Cover Page</p>
-              <p>₦20,000.00</p>
-            </span>
-            <span className="rate">
-              <p>Full Inner Page</p>
-              <p>₦25,000.00</p>
-            </span>
-            <span className="rate">
-              <p>Half Inner Page</p>
-              <p>₦13,000.00</p>
-            </span>
-            <span className="rate">
-              <p>Quarter Inner Page</p>
-              <p>₦8,500.00</p>
-            </span>
-          </div>
+      <nav className="adv-nav" aria-label="Adverts & Exhibition sections">
+        <div className="adv-nav__inner">
+          <NavLink to="/advertisement#adverts" className="adv-nav__link">
+            Adverts
+          </NavLink>
+          <NavLink to="/advertisement#exhibition" className="adv-nav__link">
+            Exhibition
+          </NavLink>
         </div>
-      </div>
+      </nav>
+
+      <section id="adverts" className="adv">
+        <header className="adv__header">
+          <span className="adv__eyebrow">Adverts</span>
+          <h2 className="adv__title">Adverts &amp; Goodwill Messages</h2>
+          <p className="adv__lede">
+            Individuals, companies and organisations wishing to place adverts or
+            goodwill messages in the conference programme / Book of Abstracts
+            should send their write-up together with the payment fee (cash) to
+            the Secretary of the LOC on or before <strong>7 April 2025</strong>.
+          </p>
+        </header>
+
+        <ul className="adv__rates">
+          {advertRates.map((rate, i) => (
+            <li key={rate.label}>
+              <span className="adv__index">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span className="adv__label">{rate.label}</span>
+              <span className="adv__amount">{rate.amount}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div className="adv__cta">
+          <p>Ready to place an advert?</p>
+          <a href="mailto:faculty_science@ui.edu.ng?subject=Conference%20Advert">
+            Contact the LOC
+          </a>
+        </div>
+      </section>
+
+      <section id="exhibition" className="adv">
+        <header className="adv__header">
+          <span className="adv__eyebrow">Exhibition</span>
+          <h2 className="adv__title">Exhibit at the Conference</h2>
+          <p className="adv__lede">
+            The Organising Committee invites organisations, industries, NGOs and
+            individuals to exhibit their products and services at the
+            conference. Exhibition stands will be made available at the venue.
+            Interested participants should contact the LOC Secretary on or
+            before <strong>7 April 2025</strong>.
+          </p>
+        </header>
+
+        <ul className="adv__rates">
+          {exhibitionRates.map((rate, i) => (
+            <li key={rate.label}>
+              <span className="adv__index">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span className="adv__label">{rate.label}</span>
+              <span className="adv__amount">{rate.amount}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div className="adv__cta">
+          <p>Interested in exhibiting?</p>
+          <a href="mailto:faculty_science@ui.edu.ng?subject=Conference%20Exhibition">
+            Reserve a Stand
+          </a>
+        </div>
+      </section>
     </>
   );
 };
 
-export default advertisement;
+export default Advertisement;

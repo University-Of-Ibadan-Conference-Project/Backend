@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import Dropdown from "../Dropdown/Dropdown";
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import uiLogo from "./../../assets/img/v2-logo.png";
 
 import styles from "../../sass/components/navbar.module.scss";
@@ -13,149 +10,98 @@ function Navbar() {
 
   useEffect(() => {
     if (navVisibility) setNavVisibility(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
-
-  const [activeNav, setActiveNav] = useState("/");
-  const { pathname } = useLocation();
-  useEffect(() => {
-    setActiveNav(pathname);
-  }, [pathname]);
 
   useEffect(() => {
     if (navVisibility) {
-      window.onscroll = () => window.scroll(0, 0);
+      document.body.style.overflow = "hidden";
     } else {
-      window.onscroll = () => {};
+      document.body.style.overflow = "";
     }
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [navVisibility]);
-  const color = "#cfcfcf";
+
+  const linkClass = ({ isActive }) =>
+    isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink;
 
   return (
-    <div className={styles.MainNav}>
-      <h2>
-        <Link to={"/"}>
-          <img src={uiLogo} alt="University of Ibadan" />
-        </Link>
-      </h2>
-      <ul className={navVisibility ? styles.visibleNav : styles.inVisibleNav}>
-        <li>
-          <Link className="link" to={"/"}>
-            <p style={{ color: activeNav === "/" ? color : "" }}>Home</p>
-          </Link>
-        </li>
-        <li>
-          <Dropdown
-            dropdownName="Call For Papers"
-            dropdownContent={[
-              {
-                name: "Submission Guideline",
-                route: "/submit-guidelines",
-              },
-              {
-                name: "Abstract Submission",
-                route: "/submit-abstract",
-              },
-              {
-                name: "Presentation Guideline",
-                route: "/presentation-guideline",
-              },
-              {
-                name: "Publication of Conference Papers",
-                route: "/publication-of-conference-papers",
-              },
-            ]}
-          />
-        </li>
-        <li>
-          <Dropdown
-            dropdownName="Advertisement"
-            dropdownContent={[
-              {
-                name: "Advertisement",
-                route: "/advertisement",
-              },
-              {
-                name: "Exhibition",
-                route: "/exhibition",
-              },
-            ]}
-          />
-        </li>
-        <li>
-          <Dropdown
-            dropdownName="Programme"
-            dropdownContent={[
-              {
-                name: "Order of Programme",
-                route: "/programme",
-              },
-              {
-                name: "Registration Guideline",
-                route: "/registration-guideline",
-              },
-              {
-                name: "Committees",
-                route: "/committee",
-              },
-            ]}
-          />
-        </li>
-        <li>
-          <Link className="link" to={"/accomodation"}>
-            <p style={{ color: activeNav === "/accomodation" ? color : "" }}>
-              {" "}
-              Accomodation
-            </p>
-          </Link>
-        </li>
-        {/* <Link className="link" to={"/submit-abstract"}>
-            Call For Papers
-          </Link> */}
-        <li>
-          <Link className="link" to={"/contact-us"}>
-            Contact Us
-          </Link>{" "}
-        </li>
-        <li>
-          <Link className="link" to={"/register"}>
-            <p style={{ color: activeNav === "/register" ? color : "" }}>
-              {" "}
+    <header className={styles.MainNav}>
+      <Link to="/" className={styles.brand} aria-label="Home">
+        <img src={uiLogo} alt="University of Ibadan" />
+        <span className={styles.brandText}>
+          <span className={styles.brandTitle}>University of Ibadan</span>
+          <span className={styles.brandSub}>Faculty of Science · 6th ICSR</span>
+        </span>
+      </Link>
+
+      <nav
+        className={`${styles.navList} ${
+          navVisibility ? styles.visibleNav : styles.inVisibleNav
+        }`}
+        aria-label="Primary"
+      >
+        <ul>
+          <li>
+            <NavLink to="/" end className={linkClass}>
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/call-for-papers" className={linkClass}>
+              Call For Papers
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/advertisement" className={linkClass}>
+              Ads &amp; Exhibition
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/programme" className={linkClass}>
+              Programme
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/accomodation" className={linkClass}>
+              Accommodation
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/contact-us" className={linkClass}>
+              Contact
+            </NavLink>
+          </li>
+          <li className={styles.mobileOnly}>
+            <NavLink to="/register" className={linkClass}>
               Register
-            </p>
-          </Link>
-        </li>
-      </ul>
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
+
       <div className={styles.connect}>
-        {/* <span>
-          <Link className="link" to={"/login"}>
-            Login
-          </Link>
-        </span> */}
-        <Link className={styles.linkBtn} to={"/register"}>
+        <Link className={styles.linkBtn} to="/register">
           Register Now
         </Link>
       </div>
 
-      <div className={styles.hamburger}>
-        <span
-          type="checkbox"
-          tabIndex="-1"
-          id="checkbox"
-          className={[
-            styles.hamburger_check,
-            navVisibility ? styles.hamburger_check_checked : "",
-          ].join(" ")}
-        ></span>
-        <div
-          className={styles.Checkbox}
-          onClick={() => setNavVisibility((visibility) => !visibility)}
-        >
-          <span className={styles.hamburger_bars}></span>
-          <span className={styles.hamburger_bars}></span>
-          <span className={styles.hamburger_bars}></span>
-        </div>
-      </div>
-    </div>
+      <button
+        type="button"
+        className={`${styles.hamburger} ${
+          navVisibility ? styles.hamburgerOpen : ""
+        }`}
+        aria-label="Toggle menu"
+        aria-expanded={navVisibility}
+        onClick={() => setNavVisibility((v) => !v)}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
   );
 }
 

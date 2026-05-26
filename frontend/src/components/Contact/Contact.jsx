@@ -1,55 +1,100 @@
 import React from "react";
+import {
+  RiMailLine,
+  RiPhoneLine,
+  RiMapPin2Line,
+  RiTimeLine,
+  RiArrowRightLine,
+} from "react-icons/ri";
 import "../../sass/components/contact.scss";
 
 const Contact = () => {
   return (
     <section className="contactPage">
-      <div className="body">
-        <h2>Get in touch</h2>
-        <div className="mail">
-          <h2>
-            All inquiries about the conference should be directed to the
-            Secretary of the Local Organising Committee
-          </h2>
-          <br />
+      <div className="contactPage__intro">
+        <span className="eyebrow">Contact</span>
+        <h1>Get in touch</h1>
+        <p className="lede">
+          For all inquiries about the conference, please reach out to the
+          Secretary of the Local Organising Committee. We&apos;re happy to help
+          with registration, submissions, accommodation, or logistics.
+        </p>
+      </div>
 
-          <h2>Telephones: +2348035566361</h2>
+      <div className="contactPage__grid">
+        <a
+          href="mailto:faculty_science@ui.edu.ng"
+          className="contactPage__card"
+        >
+          <span className="contactPage__cardIcon">
+            <RiMailLine size={22} />
+          </span>
+          <div className="contactPage__cardBody">
+            <span className="contactPage__cardLabel">Email</span>
+            <span className="contactPage__cardValue">
+              faculty_science@ui.edu.ng
+            </span>
+            <span className="contactPage__cardHint">
+              Send a message <RiArrowRightLine size={14} />
+            </span>
+          </div>
+        </a>
 
-          <br />
+        <a href="tel:+2348035566361" className="contactPage__card">
+          <span className="contactPage__cardIcon">
+            <RiPhoneLine size={22} />
+          </span>
+          <div className="contactPage__cardBody">
+            <span className="contactPage__cardLabel">Telephone</span>
+            <span className="contactPage__cardValue">+234 803 556 6361</span>
+            <span className="contactPage__cardHint">Conference Secretary</span>
+          </div>
+        </a>
 
-          <h2>E-mails: faculty_science@ui.edu.ng</h2>
+        <div className="contactPage__card">
+          <span className="contactPage__cardIcon">
+            <RiMapPin2Line size={22} />
+          </span>
+          <div className="contactPage__cardBody">
+            <span className="contactPage__cardLabel">Venue</span>
+            <span className="contactPage__cardValue">
+              Faculty of Science, University of Ibadan
+            </span>
+            <span className="contactPage__cardHint">
+              Lakeside Lecture Theater
+            </span>
+          </div>
         </div>
-        <div className="feedback">
-          <p>Any feedback is appreciated</p>
+
+        <div className="contactPage__card">
+          <span className="contactPage__cardIcon">
+            <RiTimeLine size={22} />
+          </span>
+          <div className="contactPage__cardBody">
+            <span className="contactPage__cardLabel">Office hours</span>
+            <span className="contactPage__cardValue">
+              Mon – Fri · 9am – 4pm
+            </span>
+            <span className="contactPage__cardHint">West Africa Time</span>
+          </div>
         </div>
       </div>
-      {/* <div className="form">
-        <div className="head">
-          <div className="section-1">
-            <label htmlFor="fname">First Name</label>
-            <input type="text" placeholder="First Name" />
-          </div>
-          <div className="section-2">
-            <label htmlFor="lname">Last Name</label>
-            <input type="text" placeholder="Last Name" />
-          </div>
+
+      <div className="contactPage__callout">
+        <div>
+          <h3>Have feedback for the organisers?</h3>
+          <p>
+            We welcome your suggestions — every piece of feedback helps us shape
+            a better conference.
+          </p>
         </div>
-        <div className="head">
-          <div className="section-1">
-            <label htmlFor="email">Email</label>
-            <input type="email" placeholder="Enter email address" />
-          </div>
-          <div className="section-2">
-            <label htmlFor="num">Phone Number</label>
-            <input type="number" placeholder="+000 00000000" />
-          </div>
-        </div>
-        <div className="mes">
-          <label htmlFor="mes">Message</label>
-          <textarea placeholder="Message"></textarea>
-        </div>
-        <button>Submit</button>
-      </div> */}
+        <a
+          href="mailto:faculty_science@ui.edu.ng?subject=Conference%20Feedback"
+          className="contactPage__calloutBtn"
+        >
+          Share feedback <RiArrowRightLine size={16} />
+        </a>
+      </div>
     </section>
   );
 };

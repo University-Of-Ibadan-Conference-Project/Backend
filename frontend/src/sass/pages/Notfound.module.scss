@@ -1,19 +1,41 @@
 .Notfound {
-  min-height: 500px;
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  padding: 4rem 1.5rem;
 
   h1 {
-    font-weight: 500;
-    font-size: 2.5rem;
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 3.5rem;
+    color: var(--color-ink);
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: var(--color-muted);
+    font-size: 1.0625rem;
+    margin-bottom: 2rem;
   }
 
   a {
-    color: #000;
-    text-decoration: underline;
-    font-weight: 500;
-    font-size: 1.5rem;
+    color: var(--color-burgundy);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.875rem 1.75rem;
+    border: 1px solid var(--color-burgundy);
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: var(--color-burgundy);
+      color: var(--color-white);
+    }
   }
 }

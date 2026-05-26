@@ -54,4 +54,5 @@ const speakers = [
   },
 ];
 
-export default { organizers, speakers };
+const data = { organizers, speakers };
+export default data;

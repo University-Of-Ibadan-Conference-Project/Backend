@@ -14,8 +14,50 @@ body {
   overflow-y: scroll;
   height: 100dvh;
   scroll-behavior: smooth;
+  overscroll-behavior: none;
+  background-color: var(--color-paper);
+
+  // Firefox
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-ink-500) transparent;
+
+  // WebKit / Chromium (Chrome, Edge, Safari)
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-ink-500);
+    border-radius: var(--radius-pill);
+    border: 2px solid var(--color-paper);
+    background-clip: padding-box;
+
+    &:hover {
+      background: var(--color-ink);
+      background-clip: padding-box;
+    }
+  }
+
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
 }
 
 img {
   max-width: 100%;
+}
+
+// Shared utility — used by hero/page-title overlays
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold);
 }

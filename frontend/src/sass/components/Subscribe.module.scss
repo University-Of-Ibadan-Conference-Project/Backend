@@ -1,25 +1,49 @@
 .Subscribe {
-  background-color: #205ef1;
-  padding: 4em 6em;
-  margin-top: 5em;
+  background: var(--color-ink);
+  padding: 4rem 1.5rem;
+  margin-top: 5rem;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-gold) 50%,
+      transparent
+    );
+  }
 
   &Content {
-    color: white;
+    color: var(--color-white);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 3rem;
     margin: auto;
     width: 90%;
-    max-width: 1440px;
+    max-width: var(--container);
   }
 
   &Header {
     flex: 2;
 
     h2 {
-      margin: 0;
-      margin-bottom: 0.25em;
-      font-size: 1.75em;
+      margin: 0 0 0.5rem;
+      color: var(--color-white);
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    p {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 1rem;
     }
   }
 
@@ -28,36 +52,51 @@
 
     input {
       display: block;
-      outline: 3px white;
-      border: none;
-      background-color: rgba($color: #ffffff, $alpha: 0.15);
-      border-radius: 5px;
-      width: 90%;
-      font-size: 1.1em;
-      color: white;
-      padding: 0.75em;
-      margin: 0.5em 0 0.75em;
+      outline: none;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background-color: rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-sm);
+      width: 100%;
+      font-size: 0.9375rem;
+      color: var(--color-white);
+      padding: 0.875rem 1rem;
+      margin: 0 0 0.75rem;
+      font-family: var(--font-sans);
+      transition:
+        border 0.2s ease,
+        background 0.2s ease;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      &:focus {
+        border-color: var(--color-gold);
+        background-color: rgba(255, 255, 255, 0.1);
+      }
     }
   }
 
   @media screen and (max-width: 768px) {
-    padding: 3em 0;
+    padding: 3rem 1.25rem;
 
     &Content {
       flex-direction: column;
+      align-items: stretch;
+      gap: 1.5rem;
       width: 90%;
       max-width: 90%;
+      text-align: center;
     }
 
     &Header {
       h2 {
-        font-size: 1.5em;
+        font-size: 1.625rem;
       }
     }
 
     &Form {
       width: 100%;
-      margin-top: 2em;
     }
   }
 }
@@ -65,9 +104,20 @@
 .Button {
   outline: none;
   border: none;
-  border-radius: 5px;
-  color: white;
-  background-color: black;
-  height: 45px;
-  padding: 0 3em;
+  border-radius: var(--radius-sm);
+  color: var(--color-white);
+  background-color: var(--color-burgundy);
+  height: 46px;
+  padding: 0 1.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  width: 100%;
+
+  &:hover {
+    background: var(--color-burgundy-dark);
+  }
 }
