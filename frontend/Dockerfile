@@ -1,9 +1,33 @@
-FROM node:18.9.1
+# Build stage
+FROM node:18-alpine AS builder
 
-WORKDIR /frontend/
-COPY package.json /frontend/
-RUN npm install --global serve
-RUN npm install
-COPY . /frontend/
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci
+
+# Copy source code
+COPY . .
+
+# Build the app
 RUN npm run build
-COPY . /frontend/
+
+# Production stage
+FROM node:18-alpine
+
+# Install a lightweight static server
+RUN npm install -g serve@14.1.2
+
+WORKDIR /app
+
+# Copy built app from builder
+COPY --from=builder /app/build ./build
+
+# Expose port
+EXPOSE 9000
+
+# Start the static server
+CMD ["serve", "-s", "build", "-l", "9000"]
