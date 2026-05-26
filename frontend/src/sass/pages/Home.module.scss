@@ -412,6 +412,109 @@
   margin-bottom: 0.625rem;
 }
 
+.Dates {
+  max-width: var(--container);
+  width: 90%;
+  margin: 6rem auto;
+  padding-top: 4rem;
+  border-top: 1px solid var(--color-line);
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 768px) {
+    padding-top: 3rem;
+    margin: 4rem auto;
+  }
+}
+
+.DatesHead {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.DatesEyebrow {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 1.25rem;
+}
+
+.DatesTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--color-ink);
+  margin: 0 auto 1.5rem;
+  max-width: 18ch;
+  text-wrap: balance;
+}
+
+.DatesKicker {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+  margin: 0 auto;
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.DatesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--color-line);
+
+  li {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid var(--color-line);
+    transition: background 0.15s ease;
+    font-family: var(--font-sans);
+
+    &:hover {
+      background: var(--color-cream);
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      gap: 0.25rem;
+      padding: 0.875rem 0.75rem;
+    }
+  }
+}
+
+.DateActivity {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.0625rem;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+}
+
+.DateValue {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+
+  @media (max-width: 600px) {
+    text-align: left;
+  }
+}
+
 .Speakers {
   margin-top: 3rem;
   display: grid;

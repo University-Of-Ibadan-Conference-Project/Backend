@@ -33,7 +33,7 @@ function Navbar() {
         <img src={uiLogo} alt="University of Ibadan" />
         <span className={styles.brandText}>
           <span className={styles.brandTitle}>University of Ibadan</span>
-          <span className={styles.brandSub}>Faculty of Science · 6th ICSR</span>
+          <span className={styles.brandSub}>Faculty of Computing · ICFC</span>
         </span>
       </Link>
 
@@ -65,10 +65,15 @@ function Navbar() {
             </NavLink>
           </li>
           <li>
+            <NavLink to="/committees" className={linkClass}>
+              Committees
+            </NavLink>
+          </li>
+          {/* <li>
             <NavLink to="/accomodation" className={linkClass}>
               Accommodation
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink to="/contact-us" className={linkClass}>
               Contact

@@ -3,7 +3,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home";
 import Help from "./pages/Help";
-import Accomodation from "./pages/Accomodation";
+// import Accomodation from "./pages/Accomodation";
 import Advertisement from "./pages/Advertisement";
 import Register from "./pages/Register";
 import EventRegister from "./pages/EventRegister";
@@ -15,6 +15,7 @@ import Notfound from "./pages/Notfound";
 import CallForPapers from "./pages/CallForPapers";
 import OrderOfProgram from "./pages/Order-Of-Program";
 import Submission from "./pages/Submission";
+import Committees from "./pages/Committees";
 
 const ScrollToTop = ({ scrollRef }) => {
   const { pathname } = useLocation();
@@ -52,11 +53,12 @@ const App = () => {
         <Route element={<CallForPapers />} path="/presentation-guideline" />
         <Route element={<OrderOfProgram />} path="/programme" />
         <Route element={<OrderOfProgram />} path="/registration-guideline" />
+        <Route element={<Committees />} path="/committees" />
         <Route element={<OrderOfProgram />} path="/committee" />
         <Route element={<Advertisement />} path="/advertisement" />
         <Route element={<Advertisement />} path="/exhibition" />
         <Route element={<Submission />} path="/submission" />
-        <Route element={<Accomodation />} path="/accomodation" />
+        {/* <Route element={<Accomodation />} path="/accomodation" /> */}
         {/* <Route element={<AboutUs />} path="/about-us" /> */}
         {/* <Route element={<Login />} path="/login" /> */}
         <Route element={<Register />} path="/register" />

@@ -41,7 +41,7 @@ const Advertisement = () => {
     <>
       <CommonHero
         title="Adverts & Exhibition"
-        info="Promote your brand at the 6th International Conference on Scientific Research"
+        info="Promote your brand at the International Conference for Faculty of Computing (ICFC)"
         bg="https://producer.musicradiocreative.com/wp-content/uploads/2013/04/megaphone.jpg"
       />
 
@@ -82,7 +82,7 @@ const Advertisement = () => {
 
         <div className="adv__cta">
           <p>Ready to place an advert?</p>
-          <a href="mailto:faculty_science@ui.edu.ng?subject=Conference%20Advert">
+          <a href="mailto:icfc@ui.edu.ng?subject=Conference%20Advert">
             Contact the LOC
           </a>
         </div>
@@ -115,7 +115,7 @@ const Advertisement = () => {
 
         <div className="adv__cta">
           <p>Interested in exhibiting?</p>
-          <a href="mailto:faculty_science@ui.edu.ng?subject=Conference%20Exhibition">
+          <a href="mailto:icfc@ui.edu.ng?subject=Conference%20Exhibition">
             Reserve a Stand
           </a>
         </div>

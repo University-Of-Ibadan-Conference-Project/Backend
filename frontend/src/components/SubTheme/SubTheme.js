@@ -1,59 +1,79 @@
 import React from "react";
-import climate from "./../../assets/conference pictures/climate.jpeg";
 import ai from "./../../assets/conference pictures/ai.jpeg";
-import biodiversity from "./../../assets/conference pictures/biodiversity.jpeg";
-import indigenous from "./../../assets/conference pictures/indigenous.jpeg";
-import mineral from "./../../assets/conference pictures/mineral.jpeg";
-import biomed from "./../../assets/conference pictures/biomed.jpeg";
-import maths from "./../../assets/conference pictures/maths.jpeg";
-import aicult from "./../../assets/conference pictures/aicult.jpeg";
+import engineering from "./../../assets/conference pictures/nanotech.jpg";
+import security from "./../../assets/conference pictures/science-security.jpg";
+import quantum from "./../../assets/conference pictures/math-modelling.jpg";
+import network from "./../../assets/conference pictures/information-technology.webp";
+import software from "./../../assets/conference pictures/aicult.jpeg";
 
 import "./SubTheme.css";
 
 const SubTheme = () => {
-  const events = [
+  const themes = [
     {
-      id: 1,
-      title: "Climate change, energy transition and global peace",
-      backgroundImage: climate,
+      id: 6,
+      title: "Software Engineering and Systems",
+      topics: [
+        "Software Analysis and Design",
+        "Software Engineering of Mobile Applications",
+      ],
+      backgroundImage: software,
     },
     {
-      id: 2,
-      title: "Artificial intelligence, robotics and digital technology",
+      id: 1,
+      title: "AI and Data Science",
+      topics: [
+        "Computer Vision",
+        "Natural Language Processing",
+        "Big Data Analytics",
+      ],
       backgroundImage: ai,
     },
     {
-      id: 3,
-      title:
-        "Biotechnology, biodiversity, tourism and environmental conservation",
-      backgroundImage: biodiversity,
+      id: 4,
+      title: "Quantum Computing",
+      topics: [
+        "Quantum Information Science",
+        "Quantum Algorithms",
+        "Quantum Machine Learning",
+      ],
+      backgroundImage: quantum,
     },
     {
-      id: 4,
-      title: "Indigenous knowledge and conservation in the era of innovations",
-      backgroundImage: indigenous,
+      id: 3,
+      title: "Security, Privacy and Trust",
+      topics: [
+        "Cybersecurity",
+        "Blockchain and Distributed Ledger",
+        "Zero Trust Architecture",
+        "Trustworthy Artificial Intelligence",
+      ],
+      backgroundImage: security,
     },
     {
       id: 5,
-      title:
-        "Critical minerals, exploration and exploitation for green and blue economics",
-      backgroundImage: mineral,
+      title: "Network and Communications",
+      topics: [
+        "5G/6G & Future Networks",
+        "Edge and Fog Computing",
+        "Network Protocols",
+        "IoT",
+        "Embedded Systems",
+      ],
+      backgroundImage: network,
     },
     {
-      id: 6,
-      title: "Frontiers in chemical, biomedical and molecular sciences",
-      backgroundImage: biomed,
-    },
-    {
-      id: 7,
-      title:
-        "Mathematical sciences in research, innovation and partnership for the 21st century",
-      backgroundImage: maths,
-    },
-    {
-      id: 8,
-      title: "Culture change and artificial intelligence",
-      backgroundImage: aicult,
+      id: 2,
+      title: "Computing in Engineering",
+      topics: [
+        "Mechatronics",
+        "Civil/Environmental",
+        "Aerospace",
+        "Electrical/Electronics",
+        "Petrochemical",
+        "Food/Agri",
+      ],
+      backgroundImage: engineering,
     },
   ];
 
@@ -61,18 +81,18 @@ const SubTheme = () => {
     <section className="sub-theme">
       <header className="sub-theme__header">
         <span className="sub-theme__eyebrow">Conference Tracks</span>
-        <h2>Sub-Themes</h2>
+        <h2>Thematic Areas</h2>
         <p>
-          Eight focus areas spanning the frontiers of contemporary scientific
-          research, innovation and partnership.
+          Six focus areas spanning the frontiers of computing for sustainable
+          development.
         </p>
       </header>
 
       <div className="events">
-        {events.map((event, idx) => (
-          <article key={event.id} className="event-card">
+        {themes.map((theme, idx) => (
+          <article key={theme.id} className="event-card">
             <div className="event-card__media">
-              <img src={event.backgroundImage} alt="" />
+              <img src={theme.backgroundImage} alt="" />
             </div>
             <div className="event-card__body">
               <div className="event-card__indexRow">
@@ -81,7 +101,12 @@ const SubTheme = () => {
                 </span>
                 <span className="event-card__rule" aria-hidden="true"></span>
               </div>
-              <h3>{event.title}</h3>
+              <h3>{theme.title}</h3>
+              <ul className="event-card__topics">
+                {theme.topics.map((topic) => (
+                  <li key={topic}>{topic}</li>
+                ))}
+              </ul>
             </div>
           </article>
         ))}

@@ -9,9 +9,11 @@ export default function Footer() {
         <Link to="/" className={styles.FooterBrand} aria-label="Home">
           <img src={logo} alt="University of Ibadan" />
           <span>
-            <span className={styles.FooterBrandTitle}>Faculty of Science</span>
+            <span className={styles.FooterBrandTitle}>
+              Faculty of Computing
+            </span>
             <span className={styles.FooterBrandSub}>
-              University of Ibadan · 6th ICSR
+              University of Ibadan · ICFC
             </span>
           </span>
         </Link>
@@ -24,10 +26,8 @@ export default function Footer() {
         </nav>
 
         <div className={styles.FooterContact}>
-          <a href="mailto:faculty_science@ui.edu.ng">
-            faculty_science@ui.edu.ng
-          </a>
-          <span>© {new Date().getFullYear()} Faculty of Science · UI</span>
+          <a href="mailto:icfc@ui.edu.ng">icfc@ui.edu.ng</a>
+          <span>© {new Date().getFullYear()} Faculty of Computing · UI</span>
         </div>
       </div>
     </footer>

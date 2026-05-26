@@ -1,0 +1,209 @@
+.Page {
+  max-width: var(--container);
+  width: 90%;
+  margin: 4rem auto 6rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--color-line);
+
+  @media (max-width: 768px) {
+    margin: 3rem auto 4rem;
+    padding-top: 2rem;
+  }
+}
+
+.Head {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.Eyebrow {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 1.25rem;
+}
+
+.Title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--color-ink);
+  margin: 0 auto 1.5rem;
+  max-width: 22ch;
+  text-wrap: balance;
+}
+
+.Lede {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--color-muted);
+  margin: 0 auto;
+  max-width: 60ch;
+}
+
+.Quicknav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin: 3rem 0;
+  border-top: 1px solid var(--color-line);
+  border-left: 1px solid var(--color-line);
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    border-right: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+    text-decoration: none;
+    color: var(--color-ink);
+    transition: background 0.15s ease;
+    font-family: var(--font-sans);
+
+    &:hover {
+      background: var(--color-cream);
+
+      .QuicknavIndex {
+        color: var(--color-burgundy);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.QuicknavIndex {
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--color-gold);
+  font-variant-numeric: tabular-nums;
+  transition: color 0.15s ease;
+}
+
+.QuicknavLabel {
+  font-size: 0.875rem;
+  line-height: 1.35;
+  color: var(--color-ink);
+}
+
+.CommitteeList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--color-line);
+}
+
+.Committee {
+  border-bottom: 1px solid var(--color-line);
+  padding: 2.5rem 0;
+  scroll-margin-top: 1rem;
+
+  @media (max-width: 768px) {
+    padding: 2rem 0;
+  }
+}
+
+.CommitteeHead {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.CommitteeIndex {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--color-gold);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.CommitteeRule {
+  flex-shrink: 0;
+  width: 48px;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+.CommitteeName {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.25rem, 2.2vw, 1.625rem);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--color-ink);
+  margin: 0;
+}
+
+.CommitteeBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.RoleGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.RoleGroupTitle {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin: 0 0 0.625rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.RoleGroupList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: -0.005em;
+    color: var(--color-ink);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--color-line);
+    line-height: 1.4;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+}
+
+.RoleChair {
+  color: var(--color-burgundy);
+}
+
+.RoleSecretary {
+  color: var(--color-gold);
+}
+
+.RoleMember {
+  color: var(--color-muted);
+}

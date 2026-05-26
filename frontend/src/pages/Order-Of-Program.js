@@ -11,27 +11,26 @@ import styles from "./../sass/pages/Order-Of-Program.module.scss";
 
 const days = [
   {
-    weekday: "Tuesday",
-    date: "6 May 2025",
-    sessions: ["Arrival and Registration of Participants"],
-  },
-  {
     weekday: "Wednesday",
-    date: "7 May 2025",
+    date: "15 July 2026",
     sessions: [
+      "Arrival and Registration of Participants",
       "Opening Ceremony",
       "Plenary and Technical Sessions",
-      "Conference Cocktail",
     ],
   },
   {
     weekday: "Thursday",
-    date: "8 May 2025",
-    sessions: ["Plenary and Technical Sessions", "Dinner"],
+    date: "16 July 2026",
+    sessions: [
+      "Plenary and Technical Sessions",
+      "Conference Cocktail",
+      "Dinner",
+    ],
   },
   {
     weekday: "Friday",
-    date: "9 May 2025",
+    date: "17 July 2026",
     sessions: [
       "Technical and Plenary Sessions",
       "Awards and Closing",
@@ -143,10 +142,10 @@ export default function OrderOfProgram() {
           <span className={styles.Eyebrow}>Schedule</span>
           <h2 className={styles.Title}>Conference Schedule</h2>
           <p className={styles.Lede}>
-            The 6<sup>th</sup> International Conference on Scientific Research
-            runs across four days, opening with arrivals and closing with the
-            awards ceremony. Times for individual sessions will be published
-            closer to the event.
+            The International Conference for Faculty of Computing (ICFC) runs
+            across three days, opening with arrivals and closing with the awards
+            ceremony. Times for individual sessions will be published closer to
+            the event.
           </p>
         </header>
 

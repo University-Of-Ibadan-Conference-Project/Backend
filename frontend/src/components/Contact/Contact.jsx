@@ -22,18 +22,13 @@ const Contact = () => {
       </div>
 
       <div className="contactPage__grid">
-        <a
-          href="mailto:faculty_science@ui.edu.ng"
-          className="contactPage__card"
-        >
+        <a href="mailto:icfc@ui.edu.ng" className="contactPage__card">
           <span className="contactPage__cardIcon">
             <RiMailLine size={22} />
           </span>
           <div className="contactPage__cardBody">
             <span className="contactPage__cardLabel">Email</span>
-            <span className="contactPage__cardValue">
-              faculty_science@ui.edu.ng
-            </span>
+            <span className="contactPage__cardValue">icfc@ui.edu.ng</span>
             <span className="contactPage__cardHint">
               Send a message <RiArrowRightLine size={14} />
             </span>
@@ -58,7 +53,7 @@ const Contact = () => {
           <div className="contactPage__cardBody">
             <span className="contactPage__cardLabel">Venue</span>
             <span className="contactPage__cardValue">
-              Faculty of Science, University of Ibadan
+              Faculty of Computing, University of Ibadan
             </span>
             <span className="contactPage__cardHint">
               Lakeside Lecture Theater
@@ -89,7 +84,7 @@ const Contact = () => {
           </p>
         </div>
         <a
-          href="mailto:faculty_science@ui.edu.ng?subject=Conference%20Feedback"
+          href="mailto:icfc@ui.edu.ng?subject=Conference%20Feedback"
           className="contactPage__calloutBtn"
         >
           Share feedback <RiArrowRightLine size={16} />
