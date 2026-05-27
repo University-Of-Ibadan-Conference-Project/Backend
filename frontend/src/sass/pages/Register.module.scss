@@ -194,7 +194,7 @@
     }
 
     @media (max-width: 600px) {
-      grid-template-columns: 36px 1fr auto;
+      grid-template-columns: 36px 1fr;
       gap: 0.5rem 0.875rem;
       padding: 0.875rem 0.75rem;
     }
@@ -226,6 +226,11 @@
   color: var(--color-ink);
   text-align: right;
   font-variant-numeric: tabular-nums;
+
+  @media (max-width: 600px) {
+    grid-column: 2;
+    text-align: left;
+  }
 }
 
 /* ─── Bank details ─── */
