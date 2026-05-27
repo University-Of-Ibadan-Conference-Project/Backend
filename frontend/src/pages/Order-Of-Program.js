@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useLocation, NavLink, Link } from "react-router-dom";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import CommonHero from "../components/CommonHero/CommonHero";
 
-import VCPic from "./../assets/profileImages/profile-3.jpeg";
-import ChairmanPic from "./../assets/profileImages/avatar.jpg";
-import DeanPic from "./../assets/profileImages/profile-1.jpeg";
+// import VCPic from "./../assets/profileImages/profile-3.jpeg";
+// import ChairmanPic from "./../assets/profileImages/avatar.jpg";
+// import DeanPic from "./../assets/profileImages/profile-1.jpeg";
 
 import styles from "./../sass/pages/Order-Of-Program.module.scss";
 
@@ -45,53 +45,53 @@ const fees = [
   { label: "International Participants", amount: "€100" },
 ];
 
-const leadership = [
-  {
-    image: VCPic,
-    name: "Prof. K.O. Adebowale, mni, FAS",
-    role: "Vice Chancellor",
-    org: "University of Ibadan",
-  },
-  {
-    image: DeanPic,
-    name: "Prof. O.O. Sonibare",
-    role: "Dean, Faculty of Science",
-    org: "University of Ibadan",
-  },
-  {
-    image: ChairmanPic,
-    name: "Prof. S.T. Ogunbanwo",
-    role: "Chairman",
-    org: "Conference Organising Committee",
-  },
-];
+// const leadership = [
+//   {
+//     image: VCPic,
+//     name: "Prof. K.O. Adebowale, mni, FAS",
+//     role: "Vice Chancellor",
+//     org: "University of Ibadan",
+//   },
+//   {
+//     image: DeanPic,
+//     name: "Prof. O.O. Sonibare",
+//     role: "Dean, Faculty of Science",
+//     org: "University of Ibadan",
+//   },
+//   {
+//     image: ChairmanPic,
+//     name: "Prof. S.T. Ogunbanwo",
+//     role: "Chairman",
+//     org: "Conference Organising Committee",
+//   },
+// ];
 
-const members = [
-  { name: "Professor O. O. Sonibare", role: "Dean, Faculty of Science" },
-  { name: "Professor S. T. Ogunbanwo", role: "Chairman" },
-  { name: "Professor O. C. Adeigbe", role: "Co-Chairman" },
-  { name: "Dr. B. O. Onasanya", role: "Conference Secretary" },
-  { name: "Professor F. C. Ukpokolo", role: "Member" },
-  { name: "Dr. A. O. Adeyi", role: "Member" },
-  { name: "Dr. Olutoyin A. Fashae", role: "Member" },
-  { name: "Dr. Oluwayemisi Alaba", role: "Member" },
-  { name: "Dr. K. Banwo", role: "Member" },
-  { name: "Dr. Felicia F. Ajayi", role: "Member" },
-  { name: "Dr. Nancy C. Wood", role: "Member" },
-  { name: "Dr. N. D. Ojo", role: "Member" },
-  { name: "Dr. T. T. Ogunseye", role: "Member" },
-  { name: "Dr. B. I. Ayinla", role: "Member" },
-  { name: "Dr. O. O. Popoola", role: "Member" },
-  { name: "M. A. Adejumo", role: "Member" },
-  { name: "I. O. Akinwale", role: "Member" },
-  { name: "S. O. Alao", role: "Member" },
-  { name: "Olaitan Odedele", role: "Faculty Officer" },
-];
+// const members = [
+//   { name: "Professor O. O. Sonibare", role: "Dean, Faculty of Science" },
+//   { name: "Professor S. T. Ogunbanwo", role: "Chairman" },
+//   { name: "Professor O. C. Adeigbe", role: "Co-Chairman" },
+//   { name: "Dr. B. O. Onasanya", role: "Conference Secretary" },
+//   { name: "Professor F. C. Ukpokolo", role: "Member" },
+//   { name: "Dr. A. O. Adeyi", role: "Member" },
+//   { name: "Dr. Olutoyin A. Fashae", role: "Member" },
+//   { name: "Dr. Oluwayemisi Alaba", role: "Member" },
+//   { name: "Dr. K. Banwo", role: "Member" },
+//   { name: "Dr. Felicia F. Ajayi", role: "Member" },
+//   { name: "Dr. Nancy C. Wood", role: "Member" },
+//   { name: "Dr. N. D. Ojo", role: "Member" },
+//   { name: "Dr. T. T. Ogunseye", role: "Member" },
+//   { name: "Dr. B. I. Ayinla", role: "Member" },
+//   { name: "Dr. O. O. Popoola", role: "Member" },
+//   { name: "M. A. Adejumo", role: "Member" },
+//   { name: "I. O. Akinwale", role: "Member" },
+//   { name: "S. O. Alao", role: "Member" },
+//   { name: "Olaitan Odedele", role: "Faculty Officer" },
+// ];
 
 // Map legacy paths to a section anchor so old links keep working.
 const pathToAnchor = {
   "/registration-guideline": "registration",
-  "/committee": "committee",
+  // "/committee": "committee",
 };
 
 export default function OrderOfProgram() {
@@ -131,9 +131,9 @@ export default function OrderOfProgram() {
           >
             Registration
           </NavLink>
-          <NavLink to="/programme#committee" className={styles.SectionNavLink}>
+          {/* <NavLink to="/programme#committee" className={styles.SectionNavLink}>
             Committee
-          </NavLink>
+          </NavLink> */}
         </div>
       </nav>
 
@@ -207,7 +207,7 @@ export default function OrderOfProgram() {
         </div>
       </section>
 
-      <section id="committee" className={styles.OrderOfProgram}>
+      {/* <section id="committee" className={styles.OrderOfProgram}>
         <header className={styles.Header}>
           <span className={styles.Eyebrow}>Committee</span>
           <h2 className={styles.Title}>Committees & Leadership</h2>
@@ -235,27 +235,27 @@ export default function OrderOfProgram() {
             </li>
           ))}
         </ul>
-      </section>
+      </section> */}
     </>
   );
 }
 
-const LeadCard = ({ image, name, role, org }) => (
-  <article className={styles.Lead}>
-    <div className={styles.LeadImg}>
-      <img src={image} alt={name} />
-    </div>
-    <div className={styles.LeadBody}>
-      <h6>{role}</h6>
-      <h5>{name}</h5>
-      {org && <span>{org}</span>}
-    </div>
-  </article>
-);
+// const LeadCard = ({ image, name, role, org }) => (
+//   <article className={styles.Lead}>
+//     <div className={styles.LeadImg}>
+//       <img src={image} alt={name} />
+//     </div>
+//     <div className={styles.LeadBody}>
+//       <h6>{role}</h6>
+//       <h5>{name}</h5>
+//       {org && <span>{org}</span>}
+//     </div>
+//   </article>
+// );
 
-LeadCard.propTypes = {
-  image: PropTypes.string,
-  name: PropTypes.string,
-  role: PropTypes.string,
-  org: PropTypes.string,
-};
+// LeadCard.propTypes = {
+//   image: PropTypes.string,
+//   name: PropTypes.string,
+//   role: PropTypes.string,
+//   org: PropTypes.string,
+// };
