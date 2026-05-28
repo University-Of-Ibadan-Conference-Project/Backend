@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import styles from "./../../sass/components/Subscribe.module.scss";
 
 export default function Subscribe() {

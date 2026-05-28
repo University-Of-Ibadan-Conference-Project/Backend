@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./../../sass/components/CommonHero.module.scss";
 import PropTypes from "prop-types";
 

@@ -1,3 +1,4 @@
+import React from "react";
 import CommonHero from "../components/CommonHero/CommonHero";
 import { RiArrowRightUpLine, RiPhoneLine, RiMapPin2Line } from "react-icons/ri";
 import styles from "./../sass/pages/Accomodation.module.scss";
@@ -75,7 +76,7 @@ const Accomodation = () => {
           standard hotels and guest houses around the University of Ibadan.
           Nightly charges range between <strong>N8,000 and N55,000</strong>. All
           inquiries should be directed to the{" "}
-          <a href="mailto:uisc2023@gmail.com">
+          <a href="mailto:icfc@ui.edu.ng">
             Secretary of the Local Organising Committee
           </a>
           .

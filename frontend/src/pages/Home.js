@@ -1,3 +1,4 @@
+import React from "react";
 import CountDownTimer from "../components/Countdown/Countdown";
 import styles from "./../sass/pages/Home.module.scss";
 // import PropTypes from "prop-types";

@@ -1,10 +1,10 @@
-@import "base/reset";
-@import "components/Input/input.scss";
-@import "components/page-title/page-title";
-@import "components/About/about";
-@import "components/Faq/faq";
-@import "pages/Advertisement.scss";
-@import "pages/Conference.scss";
+@use "base/reset";
+@use "components/Input/input";
+@use "components/page-title/page-title";
+@use "components/About/about";
+@use "components/Faq/faq";
+@use "pages/Advertisement";
+@use "pages/Conference";
 
 body {
   overflow-y: hidden;
@@ -12,6 +12,7 @@ body {
 
 .scrollContainer {
   overflow-y: scroll;
+  overflow-x: hidden;
   height: 100dvh;
   scroll-behavior: smooth;
   overscroll-behavior: none;
