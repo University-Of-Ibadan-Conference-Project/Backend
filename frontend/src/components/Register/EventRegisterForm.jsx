@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { Country } from "country-state-city";
+import { useRef, useState } from "react";
+import countries from "../../data/countries";
 import Spinner from "../Spinner/Spinner";
 
 import "./../../sass/components/Form/Form.scss";
@@ -11,18 +11,7 @@ import withAuth from "../hoc";
 const EventRegisterForm = () => {
   const ref = useRef();
   const [receipt_file, set_receipt_file] = useState(null);
-
-  // Country and state initialization state
-  const [countries, setCountries] = useState([]);
   const [submitting, setSubmitting] = useState(false);
-
-  useEffect(() => {
-    const allCountries = Country.getAllCountries();
-    const countriesData = allCountries.map((country) => {
-      return { name: country.name, isoCode: country.isoCode };
-    });
-    setCountries(countriesData);
-  }, []);
 
   const formik = useFormik({
     initialValues: {

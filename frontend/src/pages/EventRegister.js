@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../sass/components/Form/Form.scss";
 import CommonHero from "./../components/CommonHero/CommonHero";
 import styles from "./../sass/pages/Accomodation.module.scss";

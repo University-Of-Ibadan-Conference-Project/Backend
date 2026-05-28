@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import logo from "./../../assets/img/v2-logo.png";
 import styles from "./../../sass/components/Footer.module.scss";

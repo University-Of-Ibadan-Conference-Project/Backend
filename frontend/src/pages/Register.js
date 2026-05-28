@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../sass/components/Form/Form.scss";
 import CommonHero from "./../components/CommonHero/CommonHero";
 import RegisterForm from "../components/Register/RegisterForm";
 import styles from "./../sass/pages/Register.module.scss";
 
-const DEADLINE = new Date("2026-05-31T23:59:59");
+const DEADLINE = new Date("2026-07-15T23:59:59");
 
 const fees = [
   { label: "Local Participant", amount: "₦40,000" },
@@ -77,7 +77,7 @@ export default function Register() {
             <span className={styles.DeadlineLabel}>
               {isClosed ? "Registration closed" : "Registration closes in"}
             </span>
-            <span className={styles.DeadlineDate}>31 May 2026</span>
+            <span className={styles.DeadlineDate}>15 July 2026</span>
           </div>
           {!isClosed && (
             <div className={styles.Countdown}>

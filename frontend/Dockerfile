@@ -29,5 +29,5 @@ COPY --from=builder /app/build ./build
 # Expose port
 EXPOSE 9000
 
-# Start the static server
-CMD ["serve", "-s", "build", "-l", "9000"]
+# Start the static server (no -s rewrite: SSG produces per-route .html files)
+CMD ["serve", "build", "-l", "9000"]
