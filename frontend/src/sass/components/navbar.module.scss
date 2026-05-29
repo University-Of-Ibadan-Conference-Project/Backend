@@ -3,8 +3,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  padding: 0 2.5rem;
-  height: 110px;
+  padding: 0.75rem 2.5rem;
+  min-height: 100px;
   background: var(--color-ink);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   position: sticky;
@@ -12,17 +12,17 @@
   z-index: 100;
 
   @media screen and (max-width: 1180px) {
-    padding: 0 1.5rem;
+    padding: 0.75rem 1.5rem;
   }
 
   @media screen and (max-width: 1024px) {
-    padding: 0 1.25rem;
-    height: 90px;
+    padding: 0.75rem 1.25rem;
+    min-height: 88px;
   }
 
   @media screen and (max-width: 768px) {
-    padding: 0 1rem;
-    height: 80px;
+    padding: 0.5rem 1rem;
+    min-height: 80px;
   }
 }
 
@@ -32,50 +32,28 @@
   gap: 0.875rem;
   text-decoration: none;
   flex-shrink: 0;
+}
 
-  img {
-    width: 210px;
-    height: 210px;
-    object-fit: contain;
+.brandConferenceLogo {
+  height: 84px;
+  width: auto;
+  object-fit: contain;
 
-    @media screen and (max-width: 1024px) {
-      width: 180px;
-      height: 180px;
-    }
-
-    @media screen and (max-width: 768px) {
-      width: 160px;
-      height: 160px;
-    }
+  @media screen and (max-width: 768px) {
+    height: 66px;
   }
 }
 
-.brandText {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
+.brandFacultyLogo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  flex-shrink: 0;
 
-  @media screen and (max-width: 1280px) {
-    display: none;
+  @media screen and (max-width: 768px) {
+    width: 48px;
+    height: 48px;
   }
-}
-
-.brandTitle {
-  font-family: var(--font-serif);
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: var(--color-white);
-  letter-spacing: 0.005em;
-}
-
-.brandSub {
-  font-family: var(--font-sans);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-gold);
-  margin-top: 0.25rem;
 }
 
 .navList {

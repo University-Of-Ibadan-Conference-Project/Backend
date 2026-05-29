@@ -2,24 +2,15 @@ import React, { useEffect, useState } from "react";
 import "../sass/components/Form/Form.scss";
 import CommonHero from "./../components/CommonHero/CommonHero";
 import RegisterForm from "../components/Register/RegisterForm";
+import RegistrationFeesTable from "../components/RegistrationFeesTable/RegistrationFeesTable";
 import styles from "./../sass/pages/Register.module.scss";
 
 const DEADLINE = new Date("2026-07-15T23:59:59");
 
-const fees = [
-  { label: "Local Participant", amount: "₦40,000" },
-  { label: "Local Student (with ID)", amount: "₦20,000" },
-  { label: "International Participant", amount: "$100" },
-  { label: "International Student", amount: "$50" },
-];
-
 const bank = [
-  {
-    label: "Account Name",
-    value: "University of Ibadan, Faculty of Science Alumni Association",
-  },
-  { label: "Bank", value: "Union Bank" },
-  { label: "Account Number", value: "0109363898" },
+  { label: "Account Name", value: "UI MicroFinance Bank" },
+  { label: "Bank Name", value: "First Bank" },
+  { label: "Account Number", value: "2020527642" },
 ];
 
 const pad = (n) => (n > 9 ? `${n}` : `0${n}`);
@@ -93,17 +84,7 @@ export default function Register() {
         </div>
 
         <h3 className={styles.SubTitle}>Registration Fees</h3>
-        <ul className={styles.Rates}>
-          {fees.map((fee, i) => (
-            <li key={fee.label}>
-              <span className={styles.RateIndex}>
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <span className={styles.RateLabel}>{fee.label}</span>
-              <span className={styles.RateAmount}>{fee.amount}</span>
-            </li>
-          ))}
-        </ul>
+        <RegistrationFeesTable />
 
         <h3 className={styles.SubTitle}>Payment Details</h3>
         <dl className={styles.Bank}>

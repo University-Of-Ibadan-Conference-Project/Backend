@@ -7,6 +7,7 @@ import CommonHero from "../components/CommonHero/CommonHero";
 // import ChairmanPic from "./../assets/profileImages/avatar.jpg";
 // import DeanPic from "./../assets/profileImages/profile-1.jpeg";
 
+import RegistrationFeesTable from "../components/RegistrationFeesTable/RegistrationFeesTable";
 import styles from "./../sass/pages/Order-Of-Program.module.scss";
 
 const days = [
@@ -37,12 +38,6 @@ const days = [
       "Departure",
     ],
   },
-];
-
-const fees = [
-  { label: "Local Participants", amount: "₦40,000" },
-  { label: "Students (with valid ID)", amount: "₦20,000" },
-  { label: "International Participants", amount: "€100" },
 ];
 
 // const leadership = [
@@ -187,17 +182,7 @@ export default function OrderOfProgram() {
           </p>
         </header>
 
-        <ul className={styles.Fees}>
-          {fees.map((fee, i) => (
-            <li key={fee.label}>
-              <span className={styles.FeeIndex}>
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <span className={styles.FeeLabel}>{fee.label}</span>
-              <span className={styles.FeeAmount}>{fee.amount}</span>
-            </li>
-          ))}
-        </ul>
+        <RegistrationFeesTable />
 
         <div className={styles.RegisterCta}>
           <p>Ready to attend?</p>

@@ -17,8 +17,8 @@ import { Link } from "react-router-dom";
 
 const importantDates = [
   { activity: "Call for Papers Opens", date: "May 28, 2026" },
-  { activity: "Paper Submission Deadline", date: "June 20, 2026" },
-  { activity: "Review Period", date: "June 21 – July 5, 2026" },
+  { activity: "Paper Submission Deadline", date: "June 6, 2026" },
+  { activity: "Review Period", date: "June 7 – July 5, 2026" },
   { activity: "Notification of Acceptance", date: "July 6, 2026" },
   { activity: "Final Corrected Copy Submission", date: "July 10, 2026" },
 ];

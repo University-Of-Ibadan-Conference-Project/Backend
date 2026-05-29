@@ -7,7 +7,7 @@ export default function CommonHero({ title, info, bg }) {
     <div
       className={styles.CommonHero}
       style={{
-        backgroundImage: `linear-gradient(180deg, rgba(15, 29, 54, 0.78) 0%, rgba(15, 29, 54, 0.88) 100%), url(${bg})`,
+        backgroundImage: `linear-gradient(180deg, rgba(90, 0, 90, 0.78) 0%, rgba(90, 0, 90, 0.88) 100%), url(${bg})`,
       }}
     >
       <div className={styles.CommonHeroInfo}>
