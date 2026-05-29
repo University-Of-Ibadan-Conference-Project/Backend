@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
+import facultyLogo from "../../assets/img/v2-logo.png";
 import styles from "../../sass/components/navbar.module.scss";
 
 const committees = [
@@ -52,11 +53,16 @@ function Navbar() {
   return (
     <header className={styles.MainNav}>
       <Link to="/" className={styles.brand} aria-label="Home">
-        <img src="/ICFC FULL.jpg" alt="University of Ibadan" />
-        <span className={styles.brandText}>
-          <span className={styles.brandTitle}>University of Ibadan</span>
-          <span className={styles.brandSub}>Faculty of Computing · ICFC</span>
-        </span>
+        <img
+          src="/ICFC_Logo.png"
+          alt="International Conference for Faculty of Computing"
+          className={styles.brandConferenceLogo}
+        />
+        <img
+          src={facultyLogo}
+          alt="Faculty of Computing, University of Ibadan"
+          className={styles.brandFacultyLogo}
+        />
       </Link>
 
       <nav

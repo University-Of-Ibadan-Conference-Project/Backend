@@ -3,6 +3,7 @@ import "../sass/components/Form/Form.scss";
 import CommonHero from "./../components/CommonHero/CommonHero";
 import styles from "./../sass/pages/Accomodation.module.scss";
 import EventRegisterForm from "../components/Register/EventRegisterForm";
+import RegistrationFeesTable from "../components/RegistrationFeesTable/RegistrationFeesTable";
 
 export default function Register() {
   const [countdown, setCountdown] = useState("");
@@ -45,20 +46,14 @@ export default function Register() {
         <p>
           Countdown to deadline: <b style={{ color: "blue" }}>{countdown}</b>
         </p>
+        <RegistrationFeesTable />
         <p>
-          The registration fee covering the cost of conference materials, lunch
-          and tea breaks is <b style={{ color: "red" }}>N40,000.00</b>. The
-          registration for international participant is{" "}
-          <b style={{ color: "red" }}>$100</b>. The registration fee for
-          students who are not academic staff and with identity cards is{" "}
-          <b style={{ color: "red" }}>N20,000.00</b>.
+          Registration covers conference materials, lunch and tea breaks.
         </p>
         <p>
-          The registration fee for international student is{" "}
-          <b style={{ color: "red" }}>$50</b>. Please pay the registration fee
-          to the conference account ( Name of account: University of Ibadan,
-          Faculty of Science Alumni Association, Bank: Union Bank, Account
-          Number: 0109363898) and upload the receipt of your payment. Only
+          Please pay the registration fee to the conference account (Account
+          Name: UI MicroFinance Bank, Bank Name: First Bank, Account Number:
+          2020527642) and upload the receipt of your payment. Only
           registered participants and invited guests will be allowed into the
           conference venue.
         </p>
