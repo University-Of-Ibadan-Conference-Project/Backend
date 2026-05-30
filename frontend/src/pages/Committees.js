@@ -173,10 +173,24 @@ export default function Committees() {
           <span className={styles.Eyebrow}>Organising Structure</span>
           <h2 className={styles.Title}>Committees &amp; Leadership</h2>
           <p className={styles.Lede}>
-            Eleven committees coordinate the conference. Members are grouped by
-            rank — Chair, Secretary, then Members.
+            The Local Organising Committee (LOC) leads all conference committees.
+            Members are grouped by rank — Chair, Secretary, then Members.
           </p>
         </header>
+
+        <section className={styles.LocLeadership} aria-label="LOC leadership">
+          <h3 className={styles.LocTitle}>Local Organising Committee (LOC)</h3>
+          <ul className={styles.LocList}>
+            <li>
+              <span className={styles.LocRole}>Chair</span>
+              <span className={styles.LocName}>Dr. Angela Makolo</span>
+            </li>
+            <li>
+              <span className={styles.LocRole}>Co-Chair</span>
+              <span className={styles.LocName}>Dr. Babatunde I. Ayinla</span>
+            </li>
+          </ul>
+        </section>
 
         <nav className={styles.Quicknav} aria-label="Jump to committee">
           {committees.map((c, i) => (

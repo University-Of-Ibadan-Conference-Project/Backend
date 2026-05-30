@@ -1,79 +1,50 @@
 import React from "react";
 import ai from "./../../assets/conference pictures/ai.jpeg";
-import engineering from "./../../assets/conference pictures/nanotech.jpg";
 import security from "./../../assets/conference pictures/science-security.jpg";
-import quantum from "./../../assets/conference pictures/math-modelling.jpg";
-import network from "./../../assets/conference pictures/information-technology.webp";
 import software from "./../../assets/conference pictures/aicult.jpeg";
+import data from "./../../assets/conference pictures/math-modelling.jpg";
 
 import "./SubTheme.css";
 
 const SubTheme = () => {
   const themes = [
     {
-      id: 6,
-      title: "Software Engineering and Systems",
-      topics: [
-        "Software Analysis and Design",
-        "Software Engineering of Mobile Applications",
-      ],
-      backgroundImage: software,
-    },
-    {
       id: 1,
-      title: "AI and Data Science",
+      title: "Track 1: ICT & Cybersecurity",
       topics: [
-        "Computer Vision",
-        "Natural Language Processing",
-        "Big Data Analytics",
-      ],
-      backgroundImage: ai,
-    },
-    {
-      id: 4,
-      title: "Quantum Computing",
-      topics: [
-        "Quantum Information Science",
-        "Quantum Algorithms",
-        "Quantum Machine Learning",
-      ],
-      backgroundImage: quantum,
-    },
-    {
-      id: 3,
-      title: "Security, Privacy and Trust",
-      topics: [
-        "Cybersecurity",
-        "Blockchain and Distributed Ledger",
-        "Zero Trust Architecture",
-        "Trustworthy Artificial Intelligence",
+        "Cybersecurity & Digital Trust",
+        "Cloud Security & Zero Trust Architecture",
       ],
       backgroundImage: security,
     },
     {
-      id: 5,
-      title: "Network and Communications",
+      id: 2,
+      title: "Track 2: Data Science",
       topics: [
-        "5G/6G & Future Networks",
-        "Edge and Fog Computing",
-        "Network Protocols",
-        "IoT",
-        "Embedded Systems",
+        "Big Data Engineering, Cloud Analytics & Predictive Systems",
+        "Explainable AI, Data Storytelling & Responsible Intelligence",
+        "Bioinformatics & Health Informatics",
       ],
-      backgroundImage: network,
+      backgroundImage: data,
     },
     {
-      id: 2,
-      title: "Computing in Engineering",
+      id: 3,
+      title: "Track 3: Software Engineering",
       topics: [
-        "Mechatronics",
-        "Civil/Environmental",
-        "Aerospace",
-        "Electrical/Electronics",
-        "Petrochemical",
-        "Food/Agri",
+        "AI-Powered Software Development & Intelligent Engineering Systems",
+        "Software Engineering Intelligence & Data Driven Development",
       ],
-      backgroundImage: engineering,
+      backgroundImage: software,
+    },
+    {
+      id: 4,
+      title: "Track 4: Computer Science & AI",
+      topics: [
+        "Machine Learning & Deep Learning Applications",
+        "Natural Language Processing & Conversational AI",
+        "Explainable AI & Responsible AI",
+      ],
+      backgroundImage: ai,
     },
   ];
 
@@ -83,7 +54,7 @@ const SubTheme = () => {
         <span className="sub-theme__eyebrow">Conference Tracks</span>
         <h2>Thematic Areas</h2>
         <p>
-          Six focus areas spanning the frontiers of computing for sustainable
+          Four focus areas spanning the frontiers of computing for sustainable
           development.
         </p>
       </header>

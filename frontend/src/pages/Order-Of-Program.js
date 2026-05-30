@@ -32,11 +32,7 @@ const days = [
   {
     weekday: "Friday",
     date: "17 July 2026",
-    sessions: [
-      "Technical and Plenary Sessions",
-      "Awards and Closing",
-      "Departure",
-    ],
+    sessions: ["Departure"],
   },
 ];
 
@@ -137,7 +133,7 @@ export default function OrderOfProgram() {
           <span className={styles.Eyebrow}>Schedule</span>
           <h2 className={styles.Title}>Conference Schedule</h2>
           <p className={styles.Lede}>
-            The International Conference for Faculty of Computing (ICFC) runs
+            The International Conference of The Faculty of Computing (ICFC) runs
             across three days, opening with arrivals and closing with the awards
             ceremony. Times for individual sessions will be published closer to
             the event.

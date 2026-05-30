@@ -53,10 +53,10 @@ const Contact = () => {
           <div className="contactPage__cardBody">
             <span className="contactPage__cardLabel">Venue</span>
             <span className="contactPage__cardValue">
-              Faculty of Computing, University of Ibadan
+              Koladaisi
             </span>
             <span className="contactPage__cardHint">
-              Lakeside Lecture Theater
+              University of Ibadan
             </span>
           </div>
         </div>

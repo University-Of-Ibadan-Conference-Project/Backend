@@ -1,58 +1,17 @@
-import axios from "axios";
 import React, { useEffect } from "react";
 import Swal from "sweetalert2";
+import { promptRegistrationEmail } from "../../utils/registrationGate";
 
 const withAuth = (WrappedComponent) => {
-  const login = () => {
-    Swal.fire({
-      title: "Login",
-      input: "text",
-      html: `<span>Looks like you've not registered</span>
-              <br />
-            <span>Kindly enter your email to confirm that</span>`,
-      icon: "info",
-      inputAttributes: {
-        autocapitalize: "off",
-      },
-      showDenyButton: true,
-      confirmButtonText: "Look up",
-      showLoaderOnConfirm: true,
-      preConfirm: async (email) => {
-        try {
-          const response = await axios.post("/accounts/login/", {
-            email: email,
-            password: "uics2025",
-          });
-          console.log(response);
-          if (response.data === null) {
-            return Swal.showValidationMessage(`
-              Request failed: Looks like you've not registered
-            `);
-          }
-          return response.data;
-        } catch (error) {
-          Swal.showValidationMessage(`
-            Request failed: Looks like you've not registered
-          `);
-        }
-      },
-      allowEscapeKey: false,
-      allowOutsideClick: false,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        localStorage.setItem("user", JSON.stringify(result.value));
-        Swal.fire({
-          title: `Welcome ${result.value.first_name}!`,
-          text: "You are now logged in!",
-        });
-      } else if (result.isDenied) {
-        Swal.fire(
-          "Error",
-          "Kindly register to continue or login again",
-          "error",
-        ).then(() => {});
-      }
-    });
+  const login = async () => {
+    const user = await promptRegistrationEmail();
+    if (user) {
+      Swal.fire({
+        title: `Welcome ${user.first_name}!`,
+        text: "You are now logged in!",
+        icon: "success",
+      });
+    }
   };
 
   const promptConfirm = (user) => {
