@@ -64,7 +64,7 @@ const Advertisement = () => {
             Individuals, companies and organisations wishing to place adverts or
             goodwill messages in the conference programme / Book of Abstracts
             should send their write-up together with the payment fee (cash) to
-            the Secretary of the LOC on or before <strong>7 April 2025</strong>.
+            the Secretary of the LOC on or before <strong>June 2026</strong>.
           </p>
         </header>
 
@@ -97,7 +97,7 @@ const Advertisement = () => {
             individuals to exhibit their products and services at the
             conference. Exhibition stands will be made available at the venue.
             Interested participants should contact the LOC Secretary on or
-            before <strong>7 April 2025</strong>.
+            before <strong>June 2026</strong>.
           </p>
         </header>
 

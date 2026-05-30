@@ -33,15 +33,14 @@ const Home = () => {
               Faculty of Computing · University of Ibadan
             </span>
             <span className={styles.HeroBadge}>
-              International Conference for Faculty of Computing (ICFC)
+              International Conference of The Faculty of Computing (ICFC)
             </span>
             <h1 className={styles.HeroTitle}>
               Frontiers in Computing for Sustainable Development
             </h1>
             <p className={styles.HeroTheme}>
               <span className={styles.HeroThemeLabel}>Theme</span>
-              INTERNATIONAL CONFERENCE ON FRONTIERS IN COMPUTING FOR SUSTAINABLE
-              DEVELOPMENT
+              Frontiers In Computing For Sustainable Development
             </p>
             <div className={styles.HeroMeta}>
               <span className={styles.HeroMetaItem}>
@@ -51,7 +50,7 @@ const Home = () => {
               <span className={styles.HeroMetaDivider} aria-hidden="true" />
               <span className={styles.HeroMetaItem}>
                 <span className={styles.HeroMetaLabel}>Venue</span>
-                Lakeside Lecture Theater, UI
+                Koladaisi Lecture Theatre
               </span>
             </div>
             <div className={styles.HeroActions}>
@@ -81,15 +80,13 @@ const Home = () => {
         <div className={styles.AnnouncementBody}>
           <p className={styles.AnnouncementLead}>
             The Faculty of Computing, University of Ibadan is pleased to
-            announce the International Conference for Faculty of Computing
-            (ICFC), scheduled to be held between 15th and 17th July 2026, at the
-            Lakeside Lecture Theater, University of Ibadan.
+            announce the International Conference of The Faculty of Computing
+            (ICFC),             scheduled to be held between 15th and 17th July 2026, at Koladaisi Lecture Theatre.
           </p>
 
           <blockquote className={styles.AnnouncementQuote}>
             <span className={styles.AnnouncementQuoteLabel}>Theme</span>
-            INTERNATIONAL CONFERENCE ON FRONTIERS IN COMPUTING FOR SUSTAINABLE
-            DEVELOPMENT
+            Frontiers In Computing For Sustainable Development
           </blockquote>
 
           <p>
