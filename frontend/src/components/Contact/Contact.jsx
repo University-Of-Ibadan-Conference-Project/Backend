@@ -35,13 +35,13 @@ const Contact = () => {
           </div>
         </a>
 
-        <a href="tel:+2348035566361" className="contactPage__card">
+        <a href="tel:+2348035777159" className="contactPage__card">
           <span className="contactPage__cardIcon">
             <RiPhoneLine size={22} />
           </span>
           <div className="contactPage__cardBody">
             <span className="contactPage__cardLabel">Telephone</span>
-            <span className="contactPage__cardValue">+234 803 556 6361</span>
+            <span className="contactPage__cardValue">+234 803 577 7159</span>
             <span className="contactPage__cardHint">Conference Secretary</span>
           </div>
         </a>

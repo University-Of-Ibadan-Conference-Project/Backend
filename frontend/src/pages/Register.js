@@ -46,7 +46,7 @@ export default function Register() {
     <>
       <CommonHero
         title="Register"
-        info="Secure your seat at the International Conference for Faculty of Computing (ICFC)"
+        info="Secure your seat at the International Conference of the Faculty of Computing (ICFC)"
         bg="https://www.eventpro.net/images/online-event-attendee-registration.jpg"
       />
 

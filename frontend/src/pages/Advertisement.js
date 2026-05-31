@@ -41,7 +41,7 @@ const Advertisement = () => {
     <>
       <CommonHero
         title="Adverts & Exhibition"
-        info="Promote your brand at the International Conference for Faculty of Computing (ICFC)"
+        info="Promote your brand at the International Conference of the Faculty of Computing (ICFC)"
         bg="https://producer.musicradiocreative.com/wp-content/uploads/2013/04/megaphone.jpg"
       />
 
@@ -62,9 +62,9 @@ const Advertisement = () => {
           <h2 className="adv__title">Adverts &amp; Goodwill Messages</h2>
           <p className="adv__lede">
             Individuals, companies and organisations wishing to place adverts or
-            goodwill messages in the conference programme / Book of Abstracts
+            goodwill messages in the conference programme / Conference proceedings
             should send their write-up together with the payment fee (cash) to
-            the Secretary of the LOC on or before <strong>June 2026</strong>.
+            the Secretary of the LOC on or before <strong>July 2026</strong>.
           </p>
         </header>
 
@@ -97,7 +97,7 @@ const Advertisement = () => {
             individuals to exhibit their products and services at the
             conference. Exhibition stands will be made available at the venue.
             Interested participants should contact the LOC Secretary on or
-            before <strong>June 2026</strong>.
+            before <strong>July 2026</strong>.
           </p>
         </header>
 

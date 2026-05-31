@@ -21,7 +21,7 @@ const fullPaperRules = [
 const publicationRules = [
   {
     label: "Journal",
-    value: "Journal of Science Research (Special Issue)",
+    value: "Journal of Computing Research (Special Issue)",
   },
   { label: "Manuscript deadline", value: "6 June 2026" },
   { label: "Processing fee", value: "₦30,000" },
@@ -138,11 +138,10 @@ export default function CallForPapers() {
           <span className="adv__eyebrow">Publication</span>
           <h2 className="adv__title">Publication of Conference Papers</h2>
           <p className="adv__lede">
-            Participants who want their papers to appear in the Special Issue of
-            the <em>Journal of Science Research</em> should submit a full
-            manuscript that follows the journal&apos;s guidelines. Manuscripts
-            that do not conform will be rejected. Only papers presented at the
-            conference are considered for publication.
+             All accepted and presented papers will be published in the official
+  Conference Proceedings of the 1st International Conference of the Faculty
+  of Computing (ICFC 2026). The proceedings will serve as the permanent
+  scholarly record of the conference. Outstanding papers will be published in the Faculty of Computing Journal.
           </p>
         </header>
 
