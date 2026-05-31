@@ -187,6 +187,16 @@
   }
 }
 
+/* ─── Inline validation message ─── */
+.field-error {
+  display: block;
+  margin-top: 0.375rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: #e02424;
+}
+
 /* ─── Editorial file-drop input ─── */
 .file-drop {
   display: flex;
@@ -207,8 +217,11 @@
     background: var(--color-white);
   }
 
-  &:focus-within {
+  &:focus-visible,
+  &--active {
+    outline: none;
     border-color: var(--color-ink);
+    border-style: solid;
     background: var(--color-white);
     box-shadow: 0 0 0 3px rgba(15, 29, 54, 0.08);
   }
@@ -253,6 +266,7 @@
   }
 
   &--filled {
+    cursor: default;
     border-style: solid;
     border-color: var(--color-gold);
     background: var(--color-white);
