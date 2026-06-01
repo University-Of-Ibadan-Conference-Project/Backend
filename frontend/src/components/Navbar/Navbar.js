@@ -54,14 +54,14 @@ function Navbar() {
     <header className={styles.MainNav}>
       <Link to="/" className={styles.brand} aria-label="Home">
         <img
-          src="/ICFC_Logo.png"
-          alt="International Conference for Faculty of Computing"
-          className={styles.brandConferenceLogo}
-        />
-        <img
           src={facultyLogo}
           alt="Faculty of Computing, University of Ibadan"
           className={styles.brandFacultyLogo}
+        />
+        <img
+          src="/ICFC_Logo.png"
+          alt="International Conference for Faculty of Computing"
+          className={styles.brandConferenceLogo}
         />
       </Link>
 

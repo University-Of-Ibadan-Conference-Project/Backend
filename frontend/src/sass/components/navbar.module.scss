@@ -3,8 +3,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  padding: 0.75rem 2.5rem;
-  min-height: 100px;
+  padding: 0.5rem 2.5rem;
+  min-height: 64px;
   background: var(--color-ink);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   position: sticky;
@@ -12,17 +12,17 @@
   z-index: 100;
 
   @media screen and (max-width: 1180px) {
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 1.5rem;
   }
 
   @media screen and (max-width: 1024px) {
-    padding: 0.75rem 1.25rem;
-    min-height: 88px;
+    padding: 0.5rem 1.25rem;
+    min-height: 60px;
   }
 
   @media screen and (max-width: 768px) {
     padding: 0.5rem 1rem;
-    min-height: 80px;
+    min-height: 56px;
   }
 }
 
@@ -35,24 +35,23 @@
 }
 
 .brandConferenceLogo {
-  height: 84px;
+  height: 52px;
   width: auto;
   object-fit: contain;
 
   @media screen and (max-width: 768px) {
-    height: 66px;
+    height: 42px;
   }
 }
 
 .brandFacultyLogo {
-  width: 60px;
-  height: 60px;
+  height: 44px;
+  width: auto;
   object-fit: contain;
   flex-shrink: 0;
 
   @media screen and (max-width: 768px) {
-    width: 48px;
-    height: 48px;
+    height: 36px;
   }
 }
 

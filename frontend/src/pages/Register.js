@@ -15,25 +15,27 @@ const bank = [
 
 const pad = (n) => (n > 9 ? `${n}` : `0${n}`);
 
+// Starts as `undefined` so the server-rendered HTML and the first client
+// render are identical (avoids an SSG hydration mismatch from time-based
+// output). The live value is only computed after mount.
 const useCountdown = (target) => {
-  const compute = () => {
-    const diff = +target - +new Date();
-    if (diff <= 0) return null;
-    return {
-      days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-      hours: pad(Math.floor((diff / (1000 * 60 * 60)) % 24)),
-      minutes: pad(Math.floor((diff / (1000 * 60)) % 60)),
-      seconds: pad(Math.floor((diff / 1000) % 60)),
-    };
-  };
-  const [remaining, setRemaining] = useState(compute);
+  const [remaining, setRemaining] = useState(undefined);
 
   useEffect(() => {
+    const compute = () => {
+      const diff = +target - +new Date();
+      if (diff <= 0) return null;
+      return {
+        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+        hours: pad(Math.floor((diff / (1000 * 60 * 60)) % 24)),
+        minutes: pad(Math.floor((diff / (1000 * 60)) % 60)),
+        seconds: pad(Math.floor((diff / 1000) % 60)),
+      };
+    };
     setRemaining(compute());
     const id = setInterval(() => setRemaining(compute()), 1000);
     return () => clearInterval(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [target]);
 
   return remaining;
 };
@@ -70,7 +72,7 @@ export default function Register() {
             </span>
             <span className={styles.DeadlineDate}>15 July 2026</span>
           </div>
-          {!isClosed && (
+          {!isClosed && remaining && (
             <div className={styles.Countdown}>
               <CountUnit value={remaining.days} label="days" />
               <span className={styles.CountSep}>:</span>
