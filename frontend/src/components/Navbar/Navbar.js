@@ -55,7 +55,7 @@ function Navbar() {
       <Link to="/" className={styles.brand} aria-label="Home">
         <img
           src="/ICFC_Logo.png"
-          alt="International Conference for Faculty of Computing"
+          alt="International Conference of The Faculty of Computing"
           className={styles.brandConferenceLogo}
         />
         <img
