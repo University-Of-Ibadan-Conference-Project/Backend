@@ -37,6 +37,20 @@ services:
     depends_on:
       - backend
 
+  # Internal admin dashboard for managing registrations. It talks directly to
+  # Firebase (not the Django backend), so it has no backend dependency. The
+  # passcode is inlined at build time — set VITE_ADMIN_PASSCODE in ./.env.
+  admin-manager:
+    container_name: admin-manager
+    build:
+      context: ./admin-manager/
+      args:
+        VITE_ADMIN_PASSCODE: ${VITE_ADMIN_PASSCODE}
+        ADMIN_BASE: /admin-manager/
+    restart: on-failure
+    ports:
+      - 9000
+
   nginx:
     build:
       context: ./nginx/
@@ -48,6 +62,7 @@ services:
     depends_on:
       - backend
       - frontend
+      - admin-manager
     volumes:
       - ./backend:/backend
       - ./nginx:/etc/nginx/conf.d
