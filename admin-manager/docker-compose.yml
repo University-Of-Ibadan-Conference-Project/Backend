@@ -1,0 +1,32 @@
+# Registrations admin dashboard. It talks directly to Firebase (no Django
+# backend dependency) and sits behind the VPS Caddy reverse proxy, which lives
+# on the external `web` network — same pattern as frontend/docker-compose.yml.
+# Caddy reaches it by container name: `reverse_proxy admin-manager:8080`.
+#
+#   docker network create web   # once, if it doesn't exist yet
+#   docker compose -f admin-manager/docker-compose.yml up -d --build
+#
+services:
+  admin-manager:
+    container_name: admin-manager
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # Vite inlines VITE_* values at BUILD time, so the passcode is a build
+      # arg, not a runtime env var. Set VITE_ADMIN_PASSCODE in admin-manager/.env
+      # or your shell. ADMIN_BASE is Vite's base path: leave it `/` for a
+      # dedicated host/subdomain in Caddy, or set it to a sub-path (e.g.
+      # /admin-manager/) if Caddy serves the app under one.
+      args:
+        VITE_ADMIN_PASSCODE: ${VITE_ADMIN_PASSCODE:-change-me}
+        ADMIN_BASE: ${ADMIN_BASE:-/}
+    restart: unless-stopped
+    networks:
+      - web
+    # No host port mapping needed — Caddy proxies it over the `web` network on
+    # 8080 (see Dockerfile). For standalone local testing, add e.g.
+    # `ports: ["8080:8080"]`.
+
+networks:
+  web:
+    external: true
