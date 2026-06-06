@@ -50,26 +50,36 @@ project. The web config is not secret; access is governed by Firestore rules.
 
 ## Deployment
 
-The dashboard ships as a static site behind the project's nginx, via
-`docker-compose.production.yml`. It is built to static files and served by
-`serve` (see `Dockerfile`), then proxied at **`/admin-manager/`** on the main
-domain (the longer prefix takes precedence over the Django `/admin` route).
+The dashboard has its own `docker-compose.yml` in this directory. It is built to
+static files and served by `serve` (see `Dockerfile`) on port **8080** (the
+public frontend uses 9000, so the two never clash). It sits behind the VPS
+**Caddy** reverse proxy, which lives on the external `web` Docker network — the
+same pattern as `frontend/docker-compose.yml`.
+
+```bash
+docker network create web   # once, if it doesn't already exist
+docker compose -f admin-manager/docker-compose.yml up -d --build
+```
+
+Point Caddy at it by container name, e.g. in your Caddyfile:
+
+```
+admin.example.com {
+    reverse_proxy admin-manager:8080
+}
+```
 
 Because Vite inlines `VITE_*` values at **build time**, the passcode is passed
-as a Docker **build arg**, not a runtime env var. Set it in the root `./.env`:
+as a Docker **build arg**, not a runtime env var. Set `VITE_ADMIN_PASSCODE` in
+`admin-manager/.env` (read by compose for build-arg interpolation) or in your
+shell:
 
 ```
 VITE_ADMIN_PASSCODE=your-strong-passcode
 ```
 
-then build and start:
-
-```bash
-docker compose -f docker-compose.production.yml up -d --build admin-manager nginx
-```
-
-The image is built with `ADMIN_BASE=/admin-manager/` (Vite's `base`), so all
-asset URLs are prefixed and nginx strips the prefix when proxying. To serve it
-at the domain root or a subdomain instead, set `ADMIN_BASE=/` in the compose
-build args and adjust the nginx `location` accordingly. Changing the passcode
-requires a rebuild (it is baked into the bundle).
+`ADMIN_BASE` (Vite's `base`) defaults to `/`, which is right when Caddy serves
+the app on its own host/subdomain. If you serve it under a sub-path instead
+(e.g. `/admin-manager/`), set `ADMIN_BASE=/admin-manager/` so asset URLs are
+prefixed, and strip the prefix in Caddy with `handle_path /admin-manager/*`.
+Changing the passcode requires a rebuild (it is baked into the bundle).

@@ -37,38 +37,9 @@ services:
     depends_on:
       - backend
 
-  # Internal admin dashboard for managing registrations. It talks directly to
-  # Firebase (not the Django backend), so it has no backend dependency. The
-  # passcode is inlined at build time — set VITE_ADMIN_PASSCODE in ./.env.
-  admin-manager:
-    container_name: admin-manager
-    build:
-      context: ./admin-manager/
-      args:
-        VITE_ADMIN_PASSCODE: ${VITE_ADMIN_PASSCODE}
-        ADMIN_BASE: /admin-manager/
-    restart: on-failure
-    ports:
-      - 9000
-
-  nginx:
-    build:
-      context: ./nginx/
-      dockerfile: Dockerfile
-    ports:
-      - 80:80
-      - 8000:8000
-      - 443:443
-    depends_on:
-      - backend
-      - frontend
-      - admin-manager
-    volumes:
-      - ./backend:/backend
-      - ./nginx:/etc/nginx/conf.d
-      - /static:/static
-      - /etc/letsencrypt:/etc/letsencrypt:ro
-      - /tmp/acme_challenge:/tmp/acme_challenge
+  # Reverse proxy / TLS is handled by the VPS Caddy on the external `web`
+  # network, not by an in-project nginx. The admin dashboard has its own compose
+  # file (admin-manager/docker-compose.yml) that joins the same `web` network.
 
 volumes:
   pgdata: {}

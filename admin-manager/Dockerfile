@@ -13,7 +13,7 @@ RUN npm install --no-audit --no-fund
 # Build-time configuration. Vite inlines VITE_* values into the bundle at BUILD
 # time, so the admin passcode must be supplied here — a runtime env_file cannot
 # change an already-built static site. ADMIN_BASE sets Vite's base path so the
-# app can be served under a sub-path (e.g. /admin-manager/) behind nginx.
+# app can be served under a sub-path (e.g. /admin-manager/) behind a proxy.
 ARG VITE_ADMIN_PASSCODE
 ARG ADMIN_BASE=/
 ENV VITE_ADMIN_PASSCODE=$VITE_ADMIN_PASSCODE
@@ -31,7 +31,9 @@ RUN npm install -g serve@14.1.2
 WORKDIR /app
 COPY --from=builder /app/dist ./dist
 
-EXPOSE 9000
+# Served on 8080 to stay clear of the public frontend (9000); Caddy reaches it
+# by container name over the shared `web` network.
+EXPOSE 8080
 
 # -s rewrites unknown routes to index.html (single-page app).
-CMD ["serve", "-s", "dist", "-l", "9000"]
+CMD ["serve", "-s", "dist", "-l", "8080"]
