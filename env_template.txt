@@ -18,3 +18,8 @@ CLOUDINARY_API_PROXY
 
 ################## FRONTEND ##################
 REACT_APP_API_URI
+
+################## ADMIN MANAGER ##################
+# Passcode that unlocks the admin dashboard. Read by docker-compose as a
+# build arg and inlined into the static bundle at build time.
+VITE_ADMIN_PASSCODE
