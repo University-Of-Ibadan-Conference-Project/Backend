@@ -17,8 +17,8 @@ import { Link } from "react-router-dom";
 
 const importantDates = [
   { activity: "Call for Papers Opens", date: "May 28, 2026" },
-  { activity: "Paper Submission Deadline", date: "June 6, 2026" },
-  { activity: "Review Period", date: "June 7 – July 5, 2026" },
+  { activity: "Paper Submission Deadline", date: "15 June 2026" },
+  { activity: "Review Period", date: "16 June – July 5, 2026" },
   { activity: "Notification of Acceptance", date: "July 6, 2026" },
   { activity: "Final Corrected Copy Submission", date: "July 10, 2026" },
 ];
@@ -38,10 +38,6 @@ const Home = () => {
             <h1 className={styles.HeroTitle}>
               Frontiers in Computing for Sustainable Development
             </h1>
-            <p className={styles.HeroTheme}>
-              <span className={styles.HeroThemeLabel}>Theme</span>
-              Frontiers In Computing For Sustainable Development
-            </p>
             <div className={styles.HeroMeta}>
               <span className={styles.HeroMetaItem}>
                 <span className={styles.HeroMetaLabel}>Date</span>15 – 17 July
@@ -50,7 +46,7 @@ const Home = () => {
               <span className={styles.HeroMetaDivider} aria-hidden="true" />
               <span className={styles.HeroMetaItem}>
                 <span className={styles.HeroMetaLabel}>Venue</span>
-                Koladaisi Lecture Theatre
+                Koladaisi Lecture Theatre, Faculty of Computing, UI
               </span>
             </div>
             <div className={styles.HeroActions}>
@@ -81,13 +77,9 @@ const Home = () => {
           <p className={styles.AnnouncementLead}>
             The Faculty of Computing, University of Ibadan is pleased to
             announce the International Conference of The Faculty of Computing
-            (ICFC),             scheduled to be held between 15th and 17th July 2026, at Koladaisi Lecture Theatre.
+            (ICFC), scheduled to be held between 15th and 17th July 2026, at
+            Koladaisi Lecture Theatre, Faculty of Computing, UI.
           </p>
-
-          <blockquote className={styles.AnnouncementQuote}>
-            <span className={styles.AnnouncementQuoteLabel}>Theme</span>
-            Frontiers In Computing For Sustainable Development
-          </blockquote>
 
           <p>
             The objective of the conference is to promote the international and

@@ -23,7 +23,7 @@ const publicationRules = [
     label: "Journal",
     value: "Journal of Computing Research (Special Issue)",
   },
-  { label: "Manuscript deadline", value: "6 June 2026" },
+  { label: "Manuscript deadline", value: "15 June 2026" },
   { label: "Processing fee", value: "₦30,000" },
   {
     label: "Eligibility",
