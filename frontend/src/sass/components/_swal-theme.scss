@@ -1,0 +1,242 @@
+// ---------------------------------------------------------------------------
+// SweetAlert2 — editorial theme
+//
+// Re-skins every Swal modal across the app (registration gate, register /
+// event / abstract forms, submission flow) to match the site's editorial
+// language: warm paper surface, deep-purple ink, a single gold ruler accent,
+// thin rules instead of heavy shadows, display type for headings.
+//
+// SweetAlert2's own rules are authored with zero-specificity `:where()`
+// selectors, so the plain single/double-class selectors below always win —
+// independent of whether SweetAlert2 injects its stylesheet before or after
+// this one at runtime. That's why we override the elements directly rather
+// than fighting the `--swal2-*` custom-property cascade.
+// ---------------------------------------------------------------------------
+
+// Dimmed, brand-tinted backdrop ------------------------------------------------
+// The tint colour is applied by SweetAlert2 on the `.swal2-backdrop-show`
+// modifier, so match that specificity to override it.
+.swal2-container {
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.swal2-container.swal2-backdrop-show {
+  background: rgba(31, 4, 31, 0.55);
+}
+
+// Popup surface — paper card with a gold ruler at the top ----------------------
+.swal2-popup {
+  width: 30rem;
+  padding: 2.25rem 2rem 1.75rem;
+  background: var(--color-paper);
+  color: var(--color-text);
+  border: 1px solid var(--color-line-strong);
+  border-top: 3px solid var(--color-gold);
+  border-radius: var(--radius-md);
+  box-shadow: 0 24px 60px -24px rgba(31, 4, 31, 0.35);
+  font-family: var(--font-sans);
+}
+
+// Title — display type, ink ----------------------------------------------------
+.swal2-title {
+  padding: 0.25rem 0 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+}
+
+// Body copy — muted, comfortable -----------------------------------------------
+.swal2-html-container {
+  margin-top: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+
+  b,
+  strong {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+
+  a {
+    color: var(--color-burgundy);
+  }
+}
+
+// Inputs (e.g. the registration-email prompt) ----------------------------------
+.swal2-input,
+.swal2-textarea,
+.swal2-select {
+  margin: 1.25rem auto 0.25rem;
+  padding: 0.65rem 0.85rem;
+  height: auto;
+  background: var(--color-white);
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-sm);
+  box-shadow: none;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &::placeholder {
+    color: var(--color-line-strong);
+  }
+
+  &:hover {
+    box-shadow: none;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 3px rgba(176, 136, 66, 0.18);
+  }
+}
+
+.swal2-input-label {
+  margin: 0.25rem auto 0;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+// Action buttons — gold primary, ghost-outline secondaries ---------------------
+.swal2-actions {
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.swal2-styled {
+  margin: 0;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: none;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(176, 136, 66, 0.35);
+  }
+}
+
+.swal2-styled.swal2-confirm {
+  background: var(--color-gold);
+  color: var(--color-ink);
+
+  &:hover {
+    background: var(--color-ink);
+    color: var(--color-white);
+  }
+}
+
+.swal2-styled.swal2-deny,
+.swal2-styled.swal2-cancel {
+  background: transparent;
+  color: var(--color-muted);
+  border-color: var(--color-line-strong);
+
+  &:hover {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    border-color: var(--color-ink);
+  }
+}
+
+// Spinner shown while a confirm action is in flight ----------------------------
+.swal2-loader {
+  border-color: var(--color-gold) transparent var(--color-gold) transparent;
+}
+
+// Status icons — re-tinted to the brand palette -------------------------------
+.swal2-icon.swal2-info {
+  border-color: var(--color-ink);
+  color: var(--color-ink);
+}
+
+.swal2-icon.swal2-question {
+  border-color: var(--color-ink-500);
+  color: var(--color-ink-500);
+}
+
+.swal2-icon.swal2-warning {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+.swal2-icon.swal2-success {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+
+  .swal2-success-ring {
+    border-color: rgba(176, 136, 66, 0.3);
+  }
+
+  [class^="swal2-success-line"] {
+    background-color: var(--color-gold);
+  }
+}
+
+.swal2-icon.swal2-error {
+  border-color: #b8455a;
+  color: #b8455a;
+
+  [class^="swal2-x-mark-line"] {
+    background-color: #b8455a;
+  }
+}
+
+// Inline validation message ----------------------------------------------------
+.swal2-validation-message {
+  margin-top: 1.25rem;
+  border-radius: var(--radius-sm);
+  background: #f7edef;
+  color: #9e2a3c;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 400;
+
+  &::before {
+    background-color: #b8455a;
+  }
+}
+
+// Close button & footer (used by some flows) ----------------------------------
+.swal2-close {
+  color: var(--color-line-strong);
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--color-ink);
+  }
+}
+
+.swal2-footer {
+  border-top: 1px solid var(--color-line);
+  color: var(--color-muted);
+  font-family: var(--font-sans);
+}

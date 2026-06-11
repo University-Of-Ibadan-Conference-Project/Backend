@@ -1,10 +1,34 @@
-import axios from "axios";
 import Swal from "sweetalert2";
-
-const LOGIN_PASSWORD = "uics2025";
+import { collection, getDocs, limit, query, where } from "firebase/firestore";
+import { db } from "../firebase";
 
 /**
- * Prompt for email and verify registration (same flow as submit-abstract).
+ * Look up a registered participant by email in Firestore.
+ * Registration emails are stored as typed, so we try the value as entered and
+ * then its lowercase form to stay tolerant of casing differences.
+ * Returns the participant record (with its doc id) or null if none match.
+ */
+async function findParticipantByEmail(email) {
+  const participantsRef = collection(db, "participants");
+  const lower = email.toLowerCase();
+  const candidates = lower === email ? [email] : [email, lower];
+
+  for (const value of candidates) {
+    const snapshot = await getDocs(
+      query(participantsRef, where("email", "==", value), limit(1)),
+    );
+    if (!snapshot.empty) {
+      const doc = snapshot.docs[0];
+      return { id: doc.id, ...doc.data() };
+    }
+  }
+
+  return null;
+}
+
+/**
+ * Prompt for email and verify registration against Firebase (the backend that
+ * previously handled this has been retired).
  * Returns user object on success; null if cancelled or not registered.
  */
 export async function promptRegistrationEmail() {
@@ -23,23 +47,22 @@ export async function promptRegistrationEmail() {
     confirmButtonText: "Continue",
     showLoaderOnConfirm: true,
     preConfirm: async (email) => {
-      if (!email?.trim()) {
+      const trimmed = email?.trim();
+      if (!trimmed) {
         return Swal.showValidationMessage("Please enter your email");
       }
       try {
-        const response = await axios.post("/accounts/login/", {
-          email: email.trim(),
-          password: LOGIN_PASSWORD,
-        });
-        if (response.data === null) {
+        const participant = await findParticipantByEmail(trimmed);
+        if (!participant) {
           return Swal.showValidationMessage(
             "This email is not registered. Please register first.",
           );
         }
-        return response.data;
-      } catch {
+        return participant;
+      } catch (error) {
+        console.error("Registration lookup failed", error);
         return Swal.showValidationMessage(
-          "This email is not registered. Please register first.",
+          "We couldn't verify your registration right now. Please try again.",
         );
       }
     },
