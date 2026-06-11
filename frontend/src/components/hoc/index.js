@@ -21,7 +21,6 @@ const withAuth = (WrappedComponent) => {
       icon: "question",
       showCancelButton: false,
       denyButtonText: "Not me, Logout",
-      denyButtonColor: "#f00",
       allowEscapeKey: false,
       showDenyButton: true,
       allowOutsideClick: false,
