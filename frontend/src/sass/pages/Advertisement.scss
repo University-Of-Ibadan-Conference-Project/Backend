@@ -179,6 +179,29 @@
     }
   }
 
+  &__amount-old {
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+    color: var(--color-muted);
+    margin-right: 0.5rem;
+  }
+
+  &__amount-new {
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+
+  &__amount-tag {
+    margin-left: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-gold);
+    white-space: nowrap;
+  }
+
   &__cta {
     display: flex;
     align-items: center;

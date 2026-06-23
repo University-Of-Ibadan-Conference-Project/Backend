@@ -23,7 +23,11 @@ const publicationRules = [
     label: "Journal",
     value: "Journal of Computing Research (Special Issue)",
   },
-  { label: "Manuscript deadline", value: "15 June 2026" },
+  {
+    label: "Manuscript deadline",
+    value: "27 June 2026",
+    previousValue: "15 June 2026",
+  },
   { label: "Processing fee", value: "₦30,000" },
   {
     label: "Eligibility",
@@ -44,6 +48,15 @@ const CMT_AUTHOR_GUIDE_URL =
 const renderRuleValue = (rule) => {
   if (rule.href) {
     return <GatedCmtLink href={rule.href}>{rule.value}</GatedCmtLink>;
+  }
+  if (rule.previousValue) {
+    return (
+      <>
+        <s className="adv__amount-old">{rule.previousValue}</s>
+        <span className="adv__amount-new">{rule.value}</span>
+        <span className="adv__amount-tag">Extended</span>
+      </>
+    );
   }
   return rule.value;
 };
