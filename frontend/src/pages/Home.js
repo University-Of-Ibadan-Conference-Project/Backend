@@ -17,7 +17,11 @@ import { Link } from "react-router-dom";
 
 const importantDates = [
   { activity: "Call for Papers Opens", date: "May 28, 2026" },
-  { activity: "Paper Submission Deadline", date: "15 June 2026" },
+  {
+    activity: "Paper Submission Deadline",
+    date: "27 June 2026",
+    previousDate: "15 June 2026",
+  },
   { activity: "Review Period", date: "16 June – July 5, 2026" },
   { activity: "Notification of Acceptance", date: "July 6, 2026" },
   { activity: "Final Corrected Copy Submission", date: "July 10, 2026" },
@@ -113,7 +117,17 @@ const Home = () => {
           {importantDates.map((item) => (
             <li key={item.activity}>
               <span className={styles.DateActivity}>{item.activity}</span>
-              <span className={styles.DateValue}>{item.date}</span>
+              <span className={styles.DateValue}>
+                {item.previousDate ? (
+                  <>
+                    <s className={styles.DateValueOld}>{item.previousDate}</s>
+                    <span className={styles.DateValueNew}>{item.date}</span>
+                    <span className={styles.DateExtended}>Extended</span>
+                  </>
+                ) : (
+                  item.date
+                )}
+              </span>
             </li>
           ))}
         </ul>

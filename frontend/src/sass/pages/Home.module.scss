@@ -515,6 +515,28 @@
   }
 }
 
+.DateValueOld {
+  color: var(--color-muted);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+  margin-right: 0.5rem;
+}
+
+.DateValueNew {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+.DateExtended {
+  margin-left: 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-gold);
+  white-space: nowrap;
+}
+
 .Speakers {
   margin-top: 3rem;
   display: grid;
