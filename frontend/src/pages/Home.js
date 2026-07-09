@@ -1,19 +1,31 @@
 import React from "react";
 import CountDownTimer from "../components/Countdown/Countdown";
 import styles from "./../sass/pages/Home.module.scss";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import SubTheme from "../components/SubTheme/SubTheme";
 import { Link } from "react-router-dom";
 
-// Speakers hidden for now — restore by uncommenting the imports, the
-// <div className={styles.HomeInfo}> block in Home, and the Speaker component
-// definition + PropTypes at the bottom of the file.
-// import speaker1 from "./../assets/speakers/_3.JPG";
-// import speaker3 from "./../assets/speakers/_2.JPG";
-// import speaker4 from "./../assets/speakers/_4.JPG";
-// import speaker5 from "./../assets/speakers/_5.JPG";
-// import speaker6 from "./../assets/speakers/_6.JPG";
-// import speaker7 from "./../assets/speakers/_7.JPG";
+const featuredPeople = [
+  {
+    name: "Professor Olusola Adesina",
+    image: "/Keynote.jpg",
+    role: "Keynote Speaker",
+    description: "Dean of Applied Science, Kola Daisi University",
+  },
+  {
+    name: "Professor Benjamin Aribisala",
+    image: "/speak.jpg",
+    role: "Speaker",
+    description: "Department of Computer Science, Lagos State University",
+  },
+  {
+    name: "Angela Makolo",
+    image: "/locc.png",
+    role: "LOC Chairman",
+    description:
+      "Associate Professor, Faculty of Computing, University of Ibadan",
+  },
+];
 
 const importantDates = [
   { activity: "Call for Papers Opens", date: "May 28, 2026" },
@@ -133,88 +145,48 @@ const Home = () => {
         </ul>
       </section>
 
-      {/*
       <div className={styles.HomeInfo}>
-        <h2>SPEAKERS</h2>
+        <h2>SPEAKERS &amp; LEADERSHIP</h2>
         <div className={styles.Speakers}>
-          <Speaker
-            name="Prof. Christian Happi"
-            dp={speaker1}
-            speakerType="keynote"
-            isKeyNoteSpeaker
-          />
-          <Speaker
-            name="Prof. Moshood Niyi Tijani"
-            dp={speaker3}
-            speakerType="guest"
-            isKeyNoteSpeaker
-          />
-          <Speaker
-            dp={speaker7}
-            speakerType="plenary"
-            name="Prof. Odunayo Clement Adebooye"
-          />
-        </div>
-        <div className={styles.Speakers}>
-          <Speaker
-            dp={speaker4}
-            speakerType="plenary"
-            name="Prof. Olufemi Adebisi Bamiro"
-          />
-          <Speaker
-            dp={speaker5}
-            speakerType="plenary"
-            name="Prof. Adenike Osofisan"
-          />
-          <Speaker
-            dp={speaker6}
-            speakerType="plenary"
-            name="Prof. Abel Idowu"
-          />
+          {featuredPeople.map((person) => (
+            <Speaker key={person.name} {...person} />
+          ))}
         </div>
       </div>
-      */}
 
       <SubTheme />
     </>
   );
 };
 
-// const Speaker = ({ dp, name, speakerType, status }) => {
-//   const label =
-//     speakerType === "keynote"
-//       ? "Keynote Speaker"
-//       : speakerType === "plenary"
-//         ? "Plenary Speaker"
-//         : "Guest Speaker";
-//
-//   return (
-//     <div className={styles.Speaker}>
-//       <div className={styles.speakerImg}>
-//         <img src={dp} alt={name} />
-//       </div>
-//       <a
-//         href={`https://www.google.com/search?q=${encodeURIComponent(name)}`}
-//         target="_blank"
-//         rel="noreferrer"
-//       >
-//         <h6>{label}</h6>
-//         <h5>{name}</h5>
-//         {status && (
-//           <span>
-//             <i>{status}</i>
-//           </span>
-//         )}
-//       </a>
-//     </div>
-//   );
-// };
-//
-// Speaker.propTypes = {
-//   dp: PropTypes.string,
-//   status: PropTypes.string,
-//   speakerType: PropTypes.oneOf(["keynote", "plenary", "guest"]),
-//   name: PropTypes.string,
-// };
+const Speaker = ({ image, name, role, description }) => {
+  return (
+    <div className={styles.Speaker}>
+      <div className={styles.speakerImg}>
+        <img src={image} alt={name} />
+      </div>
+      <a
+        href={`https://www.google.com/search?q=${encodeURIComponent(name)}`}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <h6>{role}</h6>
+        <h5>{name}</h5>
+        {description && (
+          <span>
+            <i>{description}</i>
+          </span>
+        )}
+      </a>
+    </div>
+  );
+};
+
+Speaker.propTypes = {
+  image: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+  description: PropTypes.string,
+};
 
 export default Home;
